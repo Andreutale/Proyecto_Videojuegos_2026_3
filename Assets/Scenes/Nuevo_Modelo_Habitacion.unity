@@ -20243,8 +20243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialCono: {fileID: 2100000, guid: 631c4a2297d3a8f4eaad4d07d8959a5b, type: 2}
-  rangoVision: 13
-  anguloVision: 50
+  rangoVision: 10
+  anguloVision: 90
   resolucion: 100
   colorNormal: {r: 0, g: 1, b: 0, a: 0.39215687}
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.39215687}
@@ -20313,7 +20313,7 @@ Transform:
   m_GameObject: {fileID: 1787926150}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.3122005, y: -0.40012652, z: -1}
+  m_LocalPosition: {x: -0.0193, y: -0.4119, z: -1}
   m_LocalScale: {x: 0.6666667, y: 0.6666665, z: 0.6666665}
   m_ConstrainProportionsScale: 0
   m_Children: []
