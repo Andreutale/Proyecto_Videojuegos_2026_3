@@ -18,9 +18,11 @@ public class PlayerMovimiento : MonoBehaviour
     [SerializeField] private float Gravedad = -9f;
     private Vector3 velocidadVertical;
 
+    private Animator animator;
+
     void Start()
     {
-
+        animator = GetComponentInChildren<Animator>();
     }
 
     private void Awake()
@@ -44,8 +46,17 @@ public class PlayerMovimiento : MonoBehaviour
     {
         if (!controlador.enabled) return;
 
-        float Horizontal = Input.GetAxis("Horizontal");
-        float Vertical = Input.GetAxis("Vertical");
+        float Horizontal = Input.GetAxisRaw("Horizontal");
+        float Vertical = Input.GetAxisRaw("Vertical");
+
+        Vector3 inputDireccion = new Vector3(Horizontal, 0, Vertical);
+
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", inputDireccion.magnitude);
+        }
+
+
 
         /* if (Input.GetKey(KeyCode.RightArrow)) Horizontal += 1f;
          if (Input.GetKey(KeyCode.LeftArrow)) Horizontal -= 1f;
@@ -53,10 +64,10 @@ public class PlayerMovimiento : MonoBehaviour
          if (Input.GetKey(KeyCode.DownArrow)) Vertical -= 1f;
 
          Horizontal += Input.GetAxisRaw("MandoHorizontal");
-         Vertical += Input.GetAxisRaw("MandoVertical");
+         Vertical += Input.GetAxisRaw("MandoVertical");*/
 
-         Horizontal = Mathf.Clamp(Horizontal, -1f, 1f);
-         Vertical = Mathf.Clamp(Vertical, -1f, 1f);*/
+        Horizontal = Mathf.Clamp(Horizontal, -1f, 1f);
+         Vertical = Mathf.Clamp(Vertical, -1f, 1f);
 
         Vector3 adelanteCamara = camara.forward;
         Vector3 derechaCamara = camara.right;
