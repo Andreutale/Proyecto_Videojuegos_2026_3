@@ -12,16 +12,13 @@ public class Dash : MonoBehaviour
     public float dashForce = 25f;
     public float dashDuration = 0.25f;
 
-    [Header("Efecto Trail Dash")]
-    [SerializeField] private TrailRenderer trail;
-    [SerializeField] private float trailTimeNormal = 0.25f;
-    [SerializeField] private float trailTimeDash = 0.10f;
-    [SerializeField] private float trailWidthNormal = 0.15f;
-    [SerializeField] private float trailWidthDash = 0.35f;
+    [Header("Trail Dash")]
+    [SerializeField] private GameObject trailDashObject;
 
     [Header("Partículas Dash")]
     [SerializeField] private ParticleSystem psIdle;
 
+    [Header("Animación Dash")]
     [SerializeField] private Animator animator;
 
     private Color psColorNormal;
@@ -46,12 +43,18 @@ public class Dash : MonoBehaviour
         if (psIdle != null)
         {
             var main = psIdle.main;
+
             psColorNormal = main.startColor.color;
             psSpeedNormal = main.startSpeed.constant;
             psSizeNormal = main.startSize.constant;
 
             var emission = psIdle.emission;
             psRateNormal = emission.rateOverTime.constant;
+        }
+
+        if (trailDashObject != null)
+        {
+            trailDashObject.SetActive(false);
         }
     }
 
@@ -62,11 +65,11 @@ public class Dash : MonoBehaviour
 
     private IEnumerator DashRoutine()
     {
-        Debug.Log("DASH ACTIVADO");
-
         ActivarTrailDash();
 
-        if (controller != null) controller.enabled = false;
+        if (controller != null)
+            controller.enabled = false;
+
         yield return null;
 
         rb.isKinematic = false;
@@ -74,17 +77,20 @@ public class Dash : MonoBehaviour
         rb.linearVelocity = Vector3.zero;
 
         Vector3 direction = GetDirection();
+
         rb.AddForce(direction * dashForce, ForceMode.Impulse);
 
         yield return new WaitForSeconds(dashDuration);
 
         rb.linearVelocity = Vector3.zero;
+
         rb.isKinematic = true;
         rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
 
         yield return new WaitForFixedUpdate();
 
-        if (controller != null) controller.enabled = true;
+        if (controller != null)
+            controller.enabled = true;
 
         DesactivarTrailDash();
     }
@@ -96,23 +102,19 @@ public class Dash : MonoBehaviour
             animator.SetTrigger("Dash");
         }
 
-        if (trail != null)
+        if (trailDashObject != null)
         {
-            trail.Clear();
-            trail.emitting = true;
-
-            trail.startColor = Color.yellow;
-            trail.endColor = new Color(1f, 1f, 0f, 0f);
-
-            trail.time = trailTimeDash;
-            trail.startWidth = trailWidthDash;
-            trail.endWidth = 0f;
+            trailDashObject.SetActive(true);
         }
 
         if (psIdle != null)
         {
             var main = psIdle.main;
-            main.startColor = new ParticleSystem.MinMaxGradient(Color.yellow);
+
+            main.startColor = new ParticleSystem.MinMaxGradient(
+                new Color(1f, 0.85f, 0f, 1f)
+            );
+
             main.startSpeed = 2.5f;
             main.startSize = 0.08f;
 
@@ -122,29 +124,19 @@ public class Dash : MonoBehaviour
             psIdle.Clear();
             psIdle.Play();
         }
-        else
-        {
-            Debug.LogWarning("PS_Idle no está asignado en Dash");
-        }
-
-        Debug.Log("Trail y partículas dash activados");
     }
 
     private void DesactivarTrailDash()
     {
-        if (trail != null)
+        if (trailDashObject != null)
         {
-            trail.startColor = Color.cyan;
-            trail.endColor = new Color(0f, 1f, 1f, 0f);
-
-            trail.time = trailTimeNormal;
-            trail.startWidth = trailWidthNormal;
-            trail.endWidth = 0f;
+            trailDashObject.SetActive(false);
         }
 
         if (psIdle != null)
         {
             var main = psIdle.main;
+
             main.startColor = new ParticleSystem.MinMaxGradient(psColorNormal);
             main.startSpeed = psSpeedNormal;
             main.startSize = psSizeNormal;
@@ -171,7 +163,8 @@ public class Dash : MonoBehaviour
         forward.Normalize();
         right.Normalize();
 
-        if (h == 0 && v == 0) return forward;
+        if (h == 0 && v == 0)
+            return forward;
 
         return (forward * v + right * h).normalized;
     }
