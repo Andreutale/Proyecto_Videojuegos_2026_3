@@ -7013,11 +7013,11 @@ Transform:
   m_GameObject: {fileID: 670596277}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 1.1400006, y: -1, z: 1.1599997}
+  m_LocalPosition: {x: 1.1400008, y: -1, z: 1.16}
   m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1085320232}
+  m_Father: {fileID: 1765629980}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &670596279
 TrailRenderer:
@@ -8469,7 +8469,7 @@ MonoBehaviour:
   camara: {fileID: 952506072}
   playerMovimiento: {fileID: 1639417671}
   playerController: {fileID: 1639417672}
-  playerModel: {fileID: 666245470}
+  playerModel: {fileID: 1765629979}
   possessionDuration: 10
   uiCooldown: {fileID: 322296178}
 --- !u!1 &801503385 stripped
@@ -20354,9 +20354,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 99d60ed951406b542b10877fdf08859e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1302662271}
-    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 99d60ed951406b542b10877fdf08859e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2116470659}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 99d60ed951406b542b10877fdf08859e, type: 3}
       insertIndex: -1
@@ -20476,6 +20473,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 670596278}
+  - {fileID: 2116470659}
   - {fileID: 666245471}
   m_Father: {fileID: 1085320232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25077,12 +25076,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116470658}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: -1}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -0.2, y: -1, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 666245471}
+  m_Father: {fileID: 1765629980}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &2116470660
 ParticleSystemRenderer:
@@ -25351,7 +25350,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 0.51686543, g: 0.9528302, b: 0.89854115, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -25415,7 +25414,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.15
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -30809,9 +30808,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 657017043043607508, guid: 772bcb8039c8d62489c7b1de889ec7a4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 670596278}
     - targetCorrespondingSourceObject: {fileID: 657017043043607508, guid: 772bcb8039c8d62489c7b1de889ec7a4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1765629980}
