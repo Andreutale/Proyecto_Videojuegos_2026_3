@@ -271,32 +271,27 @@ namespace Possession
         }
         private IEnumerator PossessionEntryAnimation(float speed)
         {
-            Vector3 startPos = playerModel.transform.position;
+            Vector3 startPos = playerTransform.position;  // <-- playerTransform, no playerModel
             Vector3 targetPos = currentTarget.Transform.position;
             float duration = 0.7f;
             float elapsed = 0f;
-            Vector3 startScale = playerModel.transform.localScale;
+
+            // CLAVE: desactivar el CC para poder mover el transform libremente
+            playerController.enabled = false;
 
             while (elapsed < duration)
             {
                 elapsed += Time.deltaTime;
                 float t = elapsed / duration;
-                float eased = t * t; // acelera al final
+                float eased = t * t;
 
-                // jugador vuela hacia el objeto
-                playerModel.transform.position = Vector3.Lerp(startPos, targetPos, eased);
-                // jugador se encoge
-                playerModel.transform.localScale = Vector3.Lerp(startScale, Vector3.zero, eased);
-                // jugador gira mientras vuela
+                playerTransform.position = Vector3.Lerp(startPos, targetPos, eased);
                 playerModel.transform.Rotate(0f, 720f * Time.deltaTime, 0f);
 
                 yield return null;
             }
 
             playerModel.SetActive(false);
-            playerModel.transform.localScale = startScale; // restaurar para cuando vuelva
-
-            // objeto tiembla al recibir la posesión
             yield return StartCoroutine(ShakeObject(currentTarget.Transform, 0.35f, 0.08f));
 
             currentTarget.OnPossess(speed);
