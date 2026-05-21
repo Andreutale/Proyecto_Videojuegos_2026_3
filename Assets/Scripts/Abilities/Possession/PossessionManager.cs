@@ -1,5 +1,6 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Possession
 {
@@ -176,22 +177,14 @@ namespace Possession
             outlineController.HideOutlines();
             playerMovimiento.enabled = false;
             playerController.enabled = false;
-            playerModel.SetActive(false);
 
             foreach (Collider col in playerColliders)
-            {
                 col.enabled = false;
-            }
 
             camara.SetTarget(currentTarget.Transform);
 
             float speed = config.GetSpeedForWeight(currentTarget.WeightClass);
-            currentTarget.OnPossess(speed);
-
-            possessionTimer = possessionDuration;
-            isTimerRunning = true;
-
-            Debug.Log($"[Possession] Poseyendo objeto...");
+            StartCoroutine(PossessionEntryAnimation(speed));
         }
 
         private void Depossess()
@@ -276,5 +269,59 @@ namespace Possession
 
             return nearest;
         }
+        private IEnumerator PossessionEntryAnimation(float speed)
+        {
+            Vector3 startPos = playerModel.transform.position;
+            Vector3 targetPos = currentTarget.Transform.position;
+            float duration = 0.7f;
+            float elapsed = 0f;
+            Vector3 startScale = playerModel.transform.localScale;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                float eased = t * t; // acelera al final
+
+                // jugador vuela hacia el objeto
+                playerModel.transform.position = Vector3.Lerp(startPos, targetPos, eased);
+                // jugador se encoge
+                playerModel.transform.localScale = Vector3.Lerp(startScale, Vector3.zero, eased);
+                // jugador gira mientras vuela
+                playerModel.transform.Rotate(0f, 720f * Time.deltaTime, 0f);
+
+                yield return null;
+            }
+
+            playerModel.SetActive(false);
+            playerModel.transform.localScale = startScale; // restaurar para cuando vuelva
+
+            // objeto tiembla al recibir la posesión
+            yield return StartCoroutine(ShakeObject(currentTarget.Transform, 0.35f, 0.08f));
+
+            currentTarget.OnPossess(speed);
+            possessionTimer = possessionDuration;
+            isTimerRunning = true;
+        }
+
+        private IEnumerator ShakeObject(Transform obj, float duration, float intensity)
+        {
+            Vector3 originalPos = obj.localPosition;
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float decay = 1f - (elapsed / duration);
+                obj.localPosition = originalPos + new Vector3(
+                    Random.Range(-intensity, intensity) * decay,
+                    Random.Range(-intensity, intensity) * decay,
+                    0f);
+                yield return null;
+            }
+
+            obj.localPosition = originalPos;
+        }
     }
+
 }
