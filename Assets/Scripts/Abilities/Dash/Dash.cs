@@ -21,6 +21,13 @@ public class Dash : MonoBehaviour
     [Header("Animación Dash")]
     [SerializeField] private Animator animator;
 
+    [Header("Luz Dash")]
+    [SerializeField] private Light luzDash;
+
+    private Color colorLuzNormal;
+    private float intensidadNormal;
+    private float rangeNormal;
+
     private Color psColorNormal;
     private float psSpeedNormal;
     private float psSizeNormal;
@@ -55,6 +62,13 @@ public class Dash : MonoBehaviour
         if (trailDashObject != null)
         {
             trailDashObject.SetActive(false);
+        }
+
+        if (luzDash != null)
+        {
+            colorLuzNormal = luzDash.color;
+            intensidadNormal = luzDash.intensity;
+            rangeNormal = luzDash.range;
         }
     }
 
@@ -124,6 +138,14 @@ public class Dash : MonoBehaviour
             psIdle.Clear();
             psIdle.Play();
         }
+        if (luzDash != null)
+        {
+            luzDash.color = new Color(1f, 0.95f, 0.15f, 1f);
+
+            luzDash.intensity = 5f;
+
+            luzDash.range = 2.5f;
+        }
     }
 
     private void DesactivarTrailDash()
@@ -146,6 +168,14 @@ public class Dash : MonoBehaviour
 
             psIdle.Clear();
             psIdle.Play();
+        }
+        if (luzDash != null)
+        {
+            luzDash.color = colorLuzNormal;
+
+            luzDash.intensity = intensidadNormal;
+
+            luzDash.range = rangeNormal;
         }
     }
 

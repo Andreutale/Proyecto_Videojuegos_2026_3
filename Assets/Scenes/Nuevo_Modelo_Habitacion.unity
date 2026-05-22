@@ -29401,8 +29401,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1302662270}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 43.7, y: 44.7, z: 42.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -38362,6 +38362,7 @@ MonoBehaviour:
   trailDashObject: {fileID: 186926169}
   psIdle: {fileID: 2116470661}
   animator: {fileID: 1765629981}
+  luzDash: {fileID: 1302662272}
 --- !u!54 &1639417674
 Rigidbody:
   m_ObjectHideFlags: 0
