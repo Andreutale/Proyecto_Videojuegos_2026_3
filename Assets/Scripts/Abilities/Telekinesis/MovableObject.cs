@@ -1,5 +1,6 @@
 using UnityEngine;
 using Possession;
+using System.Collections;
 
 namespace Telekinesis
 {
@@ -7,6 +8,8 @@ namespace Telekinesis
     public class MovableObject : MonoBehaviour
     {
         private Rigidbody rb;
+        private Vector3 originalPosition;
+        private Coroutine floatCoroutine;
 
         [Header("Peso")]
         [SerializeField] private WeightClass weightClass = WeightClass.Medium;
@@ -46,25 +49,46 @@ namespace Telekinesis
             arrow = gameObject.AddComponent<DirectionArrow>();
         }
 
-        public void ShowArrow(Vector3 direction) => arrow.Show(direction);
+        
         public void UpdateArrow(Vector3 direction) => arrow.UpdateDirection(direction);
-        public void HideArrow() => arrow.Hide();
+        public void ShowArrow(Vector3 direction)
+        {
+            arrow.Show(direction);
+            originalPosition = transform.position;
+            floatCoroutine = StartCoroutine(LevitarObjeto());
+        }
+
+        public void HideArrow()
+        {
+            arrow.Hide();
+            if (floatCoroutine != null) StopCoroutine(floatCoroutine);
+        }
 
         public void ApplyForce(Vector3 direction, float force)
         {
-            rb.isKinematic    = false;
+            // Parar levitación
+            if (floatCoroutine != null) StopCoroutine(floatCoroutine);
+
+            // Bajar el objeto a su posición original antes de lanzar
+            transform.position = originalPosition;
+
+            rb.isKinematic = false;
             tocandoSuperficie = false;
 
             float multiplicador = weightClass switch
             {
-                WeightClass.Light  => fuerzaLigero,
+                WeightClass.Light => fuerzaLigero,
                 WeightClass.Medium => fuerzaMedio,
-                WeightClass.Heavy  => fuerzaPesado,
-                _                  => fuerzaMedio
+                WeightClass.Heavy => fuerzaPesado,
+                _ => fuerzaMedio
             };
 
             float fuerzaFinal = force * multiplicador;
             rb.AddForce(direction.normalized * fuerzaFinal, ForceMode.Impulse);
+
+            // Efecto visual de lanzamiento: giro brusco
+            rb.AddTorque(Random.insideUnitSphere * fuerzaFinal * 0.3f, ForceMode.Impulse);
+
             Debug.Log($"[Telekinesis] Fuerza aplicada a {gameObject.name} | Peso: {weightClass} | Fuerza: {fuerzaFinal}");
         }
 
@@ -160,5 +184,36 @@ namespace Telekinesis
                     enemigo.ReportarInteraccion(origen);
             }
         }
+        private IEnumerator LevitarObjeto()
+        {
+            // — Fase 1: subir el objeto (0.3s) —
+            float subirDuration = 0.3f;
+            float elapsed = 0f;
+            Vector3 targetPos = originalPosition + Vector3.up * 0.6f;
+
+            rb.isKinematic = true; // congelamos físicas mientras levita
+
+            while (elapsed < subirDuration)
+            {
+                elapsed += Time.deltaTime;
+                transform.position = Vector3.Lerp(originalPosition, targetPos, elapsed / subirDuration);
+                yield return null;
+            }
+
+            // — Fase 2: flotar arriba y abajo indefinidamente —
+            float t = 0f;
+            while (true)
+            {
+                t += Time.deltaTime;
+                float oscilacion = Mathf.Sin(t * 2.5f) * 0.08f;
+                transform.position = targetPos + Vector3.up * oscilacion;
+
+                // Rotación lenta sobre Y
+                transform.Rotate(0f, 40f * Time.deltaTime, 0f);
+
+                yield return null;
+            }
+        }
     }
+
 }

@@ -1,5 +1,6 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Telekinesis
 {
@@ -20,6 +21,9 @@ namespace Telekinesis
         private List<MovableObject> nearbyObjects = new List<MovableObject>();
         private float scanRefreshTimer;
         private Transform originalCameraTarget;
+        private Transform brazoIzq;
+        private Transform brazoDer;
+        private Coroutine brazoCoroutine;
 
         // -------------------------------------------------- Unity
 
@@ -28,6 +32,15 @@ namespace Telekinesis
             inputHandler = GetComponent<TelekinesisInputHandler>();
             inputHandler.OnActionKeyPressed += HandleActionInput;
             inputHandler.OnCancelKeyPressed += Cancel;
+            brazoIzq = playerTransform.GetComponentsInChildren<Transform>()[0]; // lo buscamos por nombre abajo
+            brazoDer = playerTransform.GetComponentsInChildren<Transform>()[0];
+
+            // Buscar por nombre exacto
+            foreach (Transform t in playerTransform.GetComponentsInChildren<Transform>())
+            {
+                if (t.name == "Line001") brazoIzq = t;
+                if (t.name == "Line002") brazoDer = t;
+            }
         }
 
         private void OnDestroy()
@@ -147,6 +160,8 @@ namespace Telekinesis
             currentTarget.ShowArrow(initialDirection);
 
             Debug.Log($"[Telekinesis] Apuntando a: {currentTarget.gameObject.name}");
+            if (brazoCoroutine != null) StopCoroutine(brazoCoroutine);
+            brazoCoroutine = StartCoroutine(EstirarBrazos());
         }
 
         private void ApplyForce()
@@ -188,6 +203,8 @@ namespace Telekinesis
             currentState = TelekinesisState.Idle;
 
             Debug.Log("[Telekinesis] Cancelada.");
+            if (brazoCoroutine != null) StopCoroutine(brazoCoroutine);
+            StartCoroutine(RecuperarBrazos());
         }
 
         // -------------------------------------------------- Dirección (versión mejorada combinada)
@@ -252,6 +269,92 @@ namespace Telekinesis
             }
 
             return nearest;
+        }
+
+        private IEnumerator EstirarBrazos()
+        {
+            if (brazoIzq == null || brazoDer == null) yield break;
+
+            Vector3 scaleOriginalIzq = brazoIzq.localScale;
+            Vector3 scaleOriginalDer = brazoDer.localScale;
+
+            float duration = 0.3f;
+            float elapsed = 0f;
+
+            // Guardar escalas originales para poder recuperarlas
+            brazoIzq.GetComponent<MonoBehaviour>(); // solo para no perder la referencia
+
+            Vector3 scaleEstiradaIzq = new Vector3(scaleOriginalIzq.x, scaleOriginalIzq.y, scaleOriginalIzq.z * 2.5f);
+            Vector3 scaleEstiradaDer = new Vector3(scaleOriginalDer.x, scaleOriginalDer.y, scaleOriginalDer.z * 2.5f);
+
+            // Fase 1: estirar hacia el objeto (0.3s)
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+
+                brazoIzq.localScale = Vector3.Lerp(scaleOriginalIzq, scaleEstiradaIzq, t);
+                brazoDer.localScale = Vector3.Lerp(scaleOriginalDer, scaleEstiradaDer, t);
+
+                // Orientar brazos hacia el objeto
+                if (currentTarget != null)
+                {
+                    Vector3 dir = (currentTarget.transform.position - playerTransform.position).normalized;
+                    brazoIzq.rotation = Quaternion.LookRotation(dir);
+                    brazoDer.rotation = Quaternion.LookRotation(dir);
+                }
+
+                yield return null;
+            }
+
+            // Fase 2: mantener estirados y vibrar de esfuerzo
+            while (currentState == TelekinesisState.Aiming)
+            {
+                float vibra = Mathf.Sin(Time.time * 20f) * 0.03f;
+
+                brazoIzq.localScale = scaleEstiradaIzq + Vector3.one * vibra;
+                brazoDer.localScale = scaleEstiradaDer + Vector3.one * vibra;
+
+                // Seguir apuntando al objeto en tiempo real
+                if (currentTarget != null)
+                {
+                    Vector3 dir = (currentTarget.transform.position - playerTransform.position).normalized;
+                    brazoIzq.rotation = Quaternion.LookRotation(dir);
+                    brazoDer.rotation = Quaternion.LookRotation(dir);
+                }
+
+                yield return null;
+            }
+        }
+
+        private IEnumerator RecuperarBrazos()
+        {
+            if (brazoIzq == null || brazoDer == null) yield break;
+
+            Vector3 scaleActualIzq = brazoIzq.localScale;
+            Vector3 scaleActualDer = brazoDer.localScale;
+            Quaternion rotActualIzq = brazoIzq.rotation;
+            Quaternion rotActualDer = brazoDer.rotation;
+
+            // Escala y rotación originales — ajusta estos valores a los de tu modelo
+            Vector3 scaleOriginal = new Vector3(1f, 1f, 1f);
+            Quaternion rotOriginal = Quaternion.identity;
+
+            float duration = 0.2f;
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+
+                brazoIzq.localScale = Vector3.Lerp(scaleActualIzq, scaleOriginal, t);
+                brazoDer.localScale = Vector3.Lerp(scaleActualDer, scaleOriginal, t);
+                brazoIzq.rotation = Quaternion.Lerp(rotActualIzq, rotOriginal, t);
+                brazoDer.rotation = Quaternion.Lerp(rotActualDer, rotOriginal, t);
+
+                yield return null;
+            }
         }
     }
 }

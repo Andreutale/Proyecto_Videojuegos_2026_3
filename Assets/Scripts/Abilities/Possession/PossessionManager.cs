@@ -1,5 +1,6 @@
-using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Possession
 {
@@ -176,22 +177,14 @@ namespace Possession
             outlineController.HideOutlines();
             playerMovimiento.enabled = false;
             playerController.enabled = false;
-            playerModel.SetActive(false);
 
             foreach (Collider col in playerColliders)
-            {
                 col.enabled = false;
-            }
 
             camara.SetTarget(currentTarget.Transform);
 
             float speed = config.GetSpeedForWeight(currentTarget.WeightClass);
-            currentTarget.OnPossess(speed);
-
-            possessionTimer = possessionDuration;
-            isTimerRunning = true;
-
-            Debug.Log($"[Possession] Poseyendo objeto...");
+            StartCoroutine(PossessionEntryAnimation(speed));
         }
 
         private void Depossess()
@@ -276,5 +269,54 @@ namespace Possession
 
             return nearest;
         }
+        private IEnumerator PossessionEntryAnimation(float speed)
+        {
+            Vector3 startPos = playerTransform.position;  // <-- playerTransform, no playerModel
+            Vector3 targetPos = currentTarget.Transform.position;
+            float duration = 0.7f;
+            float elapsed = 0f;
+
+            // CLAVE: desactivar el CC para poder mover el transform libremente
+            playerController.enabled = false;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = elapsed / duration;
+                float eased = t * t;
+
+                playerTransform.position = Vector3.Lerp(startPos, targetPos, eased);
+                playerModel.transform.Rotate(0f, 720f * Time.deltaTime, 0f);
+
+                yield return null;
+            }
+
+            playerModel.SetActive(false);
+            yield return StartCoroutine(ShakeObject(currentTarget.Transform, 0.35f, 0.08f));
+
+            currentTarget.OnPossess(speed);
+            possessionTimer = possessionDuration;
+            isTimerRunning = true;
+        }
+
+        private IEnumerator ShakeObject(Transform obj, float duration, float intensity)
+        {
+            Vector3 originalPos = obj.localPosition;
+            float elapsed = 0f;
+
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float decay = 1f - (elapsed / duration);
+                obj.localPosition = originalPos + new Vector3(
+                    Random.Range(-intensity, intensity) * decay,
+                    Random.Range(-intensity, intensity) * decay,
+                    0f);
+                yield return null;
+            }
+
+            obj.localPosition = originalPos;
+        }
     }
+
 }
