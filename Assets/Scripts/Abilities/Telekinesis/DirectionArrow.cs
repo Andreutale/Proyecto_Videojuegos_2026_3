@@ -4,11 +4,11 @@ namespace Telekinesis
 {
     public class DirectionArrow : MonoBehaviour
     {
-        [SerializeField] private Color  arrowColor  = Color.red;
-        [SerializeField] private float  arrowLength = 1.5f;
-        [SerializeField] private float  arrowWidth  = 0.08f;
-        [SerializeField] private float  headLength  = 0.4f;
-        [SerializeField] private float  heightOffset = 1.2f;
+        [SerializeField] private Color arrowColor = new Color(0.2f, 0.8f, 1f, 1f);
+        [SerializeField] private float arrowLength = 2.0f;
+        [SerializeField] private float arrowWidth = 0.12f;
+        [SerializeField] private float headLength = 0.5f;
+        [SerializeField] private float heightOffset = 1.6f;
 
         private LineRenderer body;
         private LineRenderer head;
@@ -17,7 +17,9 @@ namespace Telekinesis
         private void Awake()
         {
             arrowRoot = new GameObject("ArrowRoot");
-            arrowRoot.transform.localPosition = Vector3.up * heightOffset;
+            arrowRoot.transform.SetParent(transform);
+            arrowRoot.transform.localPosition = Vector3.zero;
+
 
             body = CreateLine("ArrowBody", arrowWidth);
             head = CreateLine("ArrowHead", arrowWidth * 2.5f, arrowWidth * 0.01f);
