@@ -10,6 +10,7 @@ namespace Telekinesis
         [SerializeField] private Camara camara;
         [SerializeField] private TelekinesisOutlineController outlineController;
         [SerializeField] private PlayerMovimiento playerMovimiento;
+        [SerializeField] private GhostTelekinesisAnimation ghostAnimation;
 
         [Header("Sistema de Cooldown UI")]
         [SerializeField] private HabilidadCooldown uiCooldown;
@@ -159,7 +160,16 @@ namespace Telekinesis
             currentTarget.HideArrow();
 
             currentTarget.ApplyForce(direction, config.pushForce);
+            Debug.Log("Intentando lanzar animación fantasma");
 
+            if (ghostAnimation != null)
+            {
+                ghostAnimation.Play();
+            }
+            else
+            {
+                Debug.LogWarning("GhostAnimation NO está asignado en TelekinesisManager");
+            }
             // 🔹 activar cooldown
             if (uiCooldown != null)
                 uiCooldown.IniciarCooldown();
