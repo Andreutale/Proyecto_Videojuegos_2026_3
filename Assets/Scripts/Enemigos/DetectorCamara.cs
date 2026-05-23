@@ -149,6 +149,7 @@ public class DetectorCamara : MonoBehaviour
     void ActivarAlerta()
     {
         alertaActivada = true;
-        Debug.Log("La cámara ha activado una alerta global en: " + ultimoPuntoDeteccion);
+        Debug.Log("Detector: Activando alerta global en: " + ultimoPuntoDeteccion); // Verifica esto
+        AlertaGlobal.Activar(ultimoPuntoDeteccion);
     }
 }

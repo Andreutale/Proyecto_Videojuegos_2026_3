@@ -54640,7 +54640,7 @@ MonoBehaviour:
   jugador: {fileID: 1085320232}
   capaObstaculos:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   tiempoDeteccion: 2.5
   velocidadEnfoque: 4
   distanciaVision: 10
