@@ -54600,12 +54600,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc8dd6498ec943a41a7a0e1ce19273f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanciaVision: 10
-  radioBase: 3
+  distanciaVision: 12
+  radioBase: 4
   resolucion: 25
   capaObstaculos:
     serializedVersion: 2
     m_Bits: 0
+  colorActual: {r: 0, g: 1, b: 0, a: 0.3}
 --- !u!4 &4648342052381033815
 Transform:
   m_ObjectHideFlags: 0
@@ -54637,16 +54638,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jugador: {fileID: 1085320232}
-  tagJugador: Player
   capaObstaculos:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   tiempoDeteccion: 2.5
   velocidadEnfoque: 4
-  rangoVision: 17
-  aperturaHorizontal: 15
-  aperturaVertical: 40
-  resolucion: 20
+  distanciaVision: 10
+  radioBase: 3
   colorNormal: {r: 0, g: 1, b: 0, a: 0.3}
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.5}
   maxAnguloSeguimiento: 45
