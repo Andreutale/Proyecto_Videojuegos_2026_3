@@ -49327,7 +49327,7 @@ GameObject:
   - component: {fileID: 2116470661}
   - component: {fileID: 2116470660}
   m_Layer: 0
-  m_Name: PS_Idle
+  m_Name: ParticulasFantasma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
