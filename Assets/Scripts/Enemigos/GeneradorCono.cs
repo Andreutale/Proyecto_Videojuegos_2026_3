@@ -5,12 +5,15 @@ using System.Collections.Generic;
 public class GeneradorCono : MonoBehaviour
 {
     [Header("Ajustes de Visión (Reales)")]
-    public float distanciaVision = 8f; // Longitud del cono
-    public float radioBase = 3f;      // Qué tan ancho se abre al final
-    [Range(8, 64)] public int resolucion = 32;
+    public float distanciaVision = 8f;
+    public float radioBase = 3f;
+    [Range(16, 128)] public int resolucion = 64;
 
     [Header("Colisión de Malla")]
     public LayerMask capaObstaculos;
+
+    // Esta variable ahora la controla el DetectorCamara
+    [HideInInspector] public Color colorActual = new Color(0, 1, 0, 0.3f);
 
     Mesh mesh;
     MeshFilter meshFilter;
@@ -19,24 +22,28 @@ public class GeneradorCono : MonoBehaviour
     {
         meshFilter = GetComponent<MeshFilter>();
         mesh = new Mesh();
-        mesh.name = "ConoCamara_Mesh";
+        mesh.name = "ConoCamara_Mesh_Sólido";
         meshFilter.mesh = mesh;
     }
 
     void LateUpdate()
     {
-        GenerarMallaCono();
+        GenerarMallaConoSolido();
     }
 
-    void GenerarMallaCono()
+    void GenerarMallaConoSolido()
     {
         List<Vector3> vertices = new List<Vector3>();
         List<int> triangulos = new List<int>();
+        List<Color> colores = new List<Color>();
 
-        // 0. El origen (la lente de la cámara)
+        // El color final es el mismo que el actual, pero con Alfa a 0 (invisible)
+        Color colorFin = new Color(colorActual.r, colorActual.g, colorActual.b, 0f);
+
+        // 0. Vértice central
         vertices.Add(Vector3.zero);
+        colores.Add(colorActual);
 
-        // Generar puntos del círculo de la base
         for (int i = 0; i < resolucion; i++)
         {
             float progreso = (float)i / resolucion;
@@ -45,23 +52,31 @@ public class GeneradorCono : MonoBehaviour
             float x = Mathf.Cos(anguloRad) * radioBase;
             float y = Mathf.Sin(anguloRad) * radioBase;
 
-            Vector3 puntoBase = new Vector3(x, y, distanciaVision);
+            Vector3 puntoBaseIdeal = new Vector3(x, y, distanciaVision);
+            Vector3 dirGlobal = transform.TransformDirection(puntoBaseIdeal.normalized);
+            int mask = capaObstaculos;
 
-            // Raycast para que el cono choque con paredes (opcional pero queda pro)
-            Vector3 dirGlobal = transform.TransformDirection(puntoBase.normalized);
-            int mask = ~LayerMask.GetMask("Llave");
+            float diagonalLength = Mathf.Sqrt(radioBase * radioBase + distanciaVision * distanciaVision);
 
-            if (Physics.Raycast(transform.position, dirGlobal, out RaycastHit hit, distanciaVision, mask, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(transform.position, dirGlobal, out RaycastHit hit, diagonalLength, mask, QueryTriggerInteraction.Ignore))
             {
-                vertices.Add(transform.InverseTransformPoint(hit.point));
+                Vector3 puntoLocalHit = transform.InverseTransformPoint(hit.point);
+                vertices.Add(puntoLocalHit);
+
+                float porcentajeDistancia = Mathf.Clamp01(puntoLocalHit.z / distanciaVision);
+                colores.Add(Color.Lerp(colorActual, colorFin, porcentajeDistancia));
             }
             else
             {
-                vertices.Add(puntoBase);
+                vertices.Add(puntoBaseIdeal);
+                colores.Add(colorFin);
             }
         }
 
-        // 1. Triángulos de los LATERALES (Cuerpo del cono)
+        int indiceCentroTapa = vertices.Count;
+        vertices.Add(new Vector3(0, 0, distanciaVision));
+        colores.Add(colorFin);
+
         for (int i = 1; i <= resolucion; i++)
         {
             int siguiente = (i == resolucion) ? 1 : i + 1;
@@ -69,11 +84,6 @@ public class GeneradorCono : MonoBehaviour
             triangulos.Add(siguiente);
             triangulos.Add(i);
         }
-
-        // 2. Triángulos de la TAPA (Cerrar el cono al final)
-        // Añadimos un punto central para la tapa para que sea perfecta
-        int indiceCentroTapa = vertices.Count;
-        vertices.Add(new Vector3(0, 0, distanciaVision));
 
         for (int i = 1; i <= resolucion; i++)
         {
@@ -86,6 +96,8 @@ public class GeneradorCono : MonoBehaviour
         mesh.Clear();
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangulos.ToArray();
+        mesh.colors = colores.ToArray();
         mesh.RecalculateNormals();
+        mesh.RecalculateBounds();
     }
 }
