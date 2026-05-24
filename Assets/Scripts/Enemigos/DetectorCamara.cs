@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer), typeof(GeneradorCono))]
@@ -36,6 +37,8 @@ public class DetectorCamara : MonoBehaviour
     public bool PlayerDetected => jugadorEncontrado;
     public float DetectionTimer => timerDeteccion;
 
+    private Coroutine rutinaAlertaContinua;
+
     void Start()
     {
         rotacionInicial = transform.rotation;
@@ -50,6 +53,12 @@ public class DetectorCamara : MonoBehaviour
         {
             jugadorEncontrado = true;
             timerPerdida = 0f;
+
+            // Si detectamos al jugador y no estamos enviando alertas aún, empezamos la rutina
+            if (rutinaAlertaContinua == null)
+            {
+                rutinaAlertaContinua = StartCoroutine(EnviarAlertasContinuas());
+            }
         }
         else if (jugadorEncontrado)
         {
@@ -58,11 +67,17 @@ public class DetectorCamara : MonoBehaviour
             if (timerPerdida >= tiempoPerdida)
             {
                 jugadorEncontrado = false;
+
+                // Si el jugador desaparece, detenemos la rutina
+                if (rutinaAlertaContinua != null)
+                {
+                    StopCoroutine(rutinaAlertaContinua);
+                    rutinaAlertaContinua = null;
+                }
             }
         }
 
-        // --- EL CAMBIO ESTÁ AQUÍ ---
-        // Le pasamos el color directamente a los vértices, sin tocar el Material
+        // Le pasamos el color a los vértices
         if (generador != null)
         {
             generador.colorActual = jugadorEncontrado ? colorAlerta : colorNormal;
@@ -91,6 +106,17 @@ public class DetectorCamara : MonoBehaviour
                 2f * Time.deltaTime
             );
         }
+    }
+
+    // Asegúrate de tener también la corrutina en la clase
+    IEnumerator EnviarAlertasContinuas()
+    {
+        while (jugadorEncontrado)
+        {
+            AlertaGlobal.Activar(jugador.position);
+            yield return new WaitForSeconds(0.5f);
+        }
+        rutinaAlertaContinua = null;
     }
 
     bool PuedeVerJugador()
