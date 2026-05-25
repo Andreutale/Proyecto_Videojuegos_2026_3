@@ -23,6 +23,7 @@ namespace Possession
         private PossessionState currentState = PossessionState.Free;
         private IPossessable currentTarget;
         private List<IPossessable> nearbyPossessables = new List<IPossessable>();
+        private List<IPossessable> allPossessables = new List<IPossessable>();
         private float scanRefreshTimer;
         private float possessionTimer;
         private bool isTimerRunning = false;
@@ -76,8 +77,8 @@ namespace Possession
 
                 if (nearbyPossessables.Count == 0)
                 {
-                    outlineController.HideOutlines();
                     currentTarget = null;
+                    outlineController.ShowOutlines(FindVisiblePossessables(allPossessables), currentTarget);
                     return;
                 }
 
@@ -85,7 +86,7 @@ namespace Possession
                 {
                     IPossessable nearest = FindNearestFrom(nearbyPossessables);
                     currentTarget = nearest;
-                    outlineController.ShowOutlines(nearbyPossessables, currentTarget);
+                    outlineController.ShowOutlines(FindVisiblePossessables(allPossessables), currentTarget);
                     return;
                 }
             }
@@ -96,7 +97,7 @@ namespace Possession
             if (newNearest == null || newNearest == currentTarget) return;
 
             currentTarget = newNearest;
-            outlineController.ShowOutlines(nearbyPossessables, currentTarget);
+            outlineController.ShowOutlines(FindVisiblePossessables(allPossessables), currentTarget);
         }
 
         // -------------------------------------------------- Lógica de Input
@@ -159,12 +160,13 @@ namespace Possession
 
             AbilityManager.Instance.RegisterAbility(this);
 
+            allPossessables = FindAllPossessables();
             nearbyPossessables = FindAllNearby();
+
             currentTarget = FindNearestFrom(nearbyPossessables);
             currentState = PossessionState.Scanning;
 
-            if (nearbyPossessables.Count > 0)
-                outlineController.ShowOutlines(nearbyPossessables, currentTarget);
+            outlineController.ShowOutlines(FindVisiblePossessables(allPossessables), currentTarget);
 
             Debug.Log("[Possession] Escaneo iniciado.");
         }
@@ -244,9 +246,86 @@ namespace Possession
 
             foreach (Collider hit in hits)
             {
-                // Buscamos el componente que implementa la interfaz possessable
-                if (hit.TryGetComponent(out IPossessable candidate))
+                IPossessable candidate = GetPossessableFromCollider(hit);
+
+                if (candidate == null) continue;
+
+                Vector3 direction =
+                    (candidate.Transform.position - playerTransform.position).normalized;
+
+                float distance =
+                    Vector3.Distance(playerTransform.position, candidate.Transform.position);
+
+                if (Physics.Raycast(
+                        playerTransform.position,
+                        direction,
+                        out RaycastHit rayHit,
+                        distance))
+                {
+                    if (!rayHit.transform.IsChildOf(candidate.Transform))
+                        continue;
+                }
+
+                if (!result.Contains(candidate))
+                {
                     result.Add(candidate);
+                }
+            }
+
+            return result;
+        }
+
+        private IPossessable GetPossessableFromCollider(Collider col)
+        {
+            MonoBehaviour[] scripts = col.GetComponentsInParent<MonoBehaviour>(true);
+
+            foreach (MonoBehaviour script in scripts)
+            {
+                if (script is IPossessable possessable)
+                {
+                    return possessable;
+                }
+            }
+
+            return null;
+        }
+
+        private List<IPossessable> FindAllPossessables()
+        {
+            List<IPossessable> result = new List<IPossessable>();
+
+            MonoBehaviour[] allScripts = FindObjectsByType<MonoBehaviour>(
+                FindObjectsInactive.Include,
+                FindObjectsSortMode.None
+            );
+
+            foreach (MonoBehaviour mb in allScripts)
+            {
+                if (mb is IPossessable possessable && !result.Contains(possessable))
+                {
+                    result.Add(possessable);
+                }
+            }
+
+            return result;
+        }
+
+        private List<IPossessable> FindVisiblePossessables(List<IPossessable> possessables)
+        {
+            List<IPossessable> result = new List<IPossessable>();
+
+            foreach (IPossessable p in possessables)
+            {
+                Vector3 direction = (p.Transform.position - playerTransform.position).normalized;
+                float distance = Vector3.Distance(playerTransform.position, p.Transform.position);
+
+                if (Physics.Raycast(playerTransform.position, direction, out RaycastHit hit, distance))
+                {
+                    if (!hit.transform.IsChildOf(p.Transform))
+                        continue;
+                }
+
+                result.Add(p);
             }
 
             return result;
