@@ -47565,6 +47565,8 @@ GameObject:
   - component: {fileID: 1765629982}
   - component: {fileID: 1765629983}
   - component: {fileID: 1765629984}
+  - component: {fileID: 1765629986}
+  - component: {fileID: 1765629985}
   m_Layer: 0
   m_Name: PivotFantasma
   m_TagString: Untagged
@@ -47666,6 +47668,43 @@ MonoBehaviour:
   cancelKey: 8
   actionMando: 335
   cancelMando: 331
+--- !u!114 &1765629985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765629979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a13edeeb69f3c444868827b755acadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  possessionKey: 122
+  cancelKey: 8
+  possessionMando: 334
+  cancelMando: 331
+--- !u!114 &1765629986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765629979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 997ba5bf172ea154c8e825e461730bd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  config: {fileID: 11400000, guid: 1560a3edd62c6144685b3566c12b3fa1, type: 2}
+  playerTransform: {fileID: 1085320232}
+  outlineController: {fileID: 801272533}
+  camara: {fileID: 952506072}
+  playerMovimiento: {fileID: 1639417671}
+  playerController: {fileID: 1639417672}
+  playerModel: {fileID: 1628989492}
+  possessionDuration: 5
+  uiCooldown: {fileID: 322296178}
 --- !u!1 &1771348364
 GameObject:
   m_ObjectHideFlags: 0
