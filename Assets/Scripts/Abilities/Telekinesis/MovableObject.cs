@@ -66,13 +66,20 @@ namespace Telekinesis
 
         public void ApplyForce(Vector3 direction, float force)
         {
-            // Parar levitación
-            if (floatCoroutine != null) StopCoroutine(floatCoroutine);
+            if (floatCoroutine != null)
+            {
+                StopCoroutine(floatCoroutine);
+                floatCoroutine = null;
+            }
 
-            // Bajar el objeto a su posición original antes de lanzar
-            transform.position = originalPosition;
+            StartCoroutine(LaunchAfterDelay(direction, force));
+        }
 
+        private IEnumerator LaunchAfterDelay(Vector3 direction, float force)
+        {
             rb.isKinematic = false;
+            yield return null; // esperar un frame para que Unity procese el cambio
+
             tocandoSuperficie = false;
 
             float multiplicador = weightClass switch
@@ -84,15 +91,8 @@ namespace Telekinesis
             };
 
             float fuerzaFinal = force * multiplicador;
-            rb.AddForce(direction.normalized * fuerzaFinal, ForceMode.Impulse);
-
-            Vector3 launchDirection =
-    (direction * 0.7f + Vector3.up * 0.8f).normalized;
-
-            rb.AddForce(launchDirection * force, ForceMode.Impulse);
-
-            // Efecto visual de lanzamiento: giro brusco
-            rb.AddTorque(Random.insideUnitSphere * fuerzaFinal * 0.3f, ForceMode.Impulse);
+            Vector3 launchDirection = (direction.normalized * 0.8f + Vector3.up * 0.3f).normalized;
+            rb.AddForce(launchDirection * fuerzaFinal, ForceMode.Impulse);
 
             Debug.Log($"[Telekinesis] Fuerza aplicada a {gameObject.name} | Peso: {weightClass} | Fuerza: {fuerzaFinal}");
         }

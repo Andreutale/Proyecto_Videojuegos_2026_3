@@ -876,7 +876,6 @@ Transform:
   m_Children:
   - {fileID: 1056939065}
   - {fileID: 96188182}
-  - {fileID: 459628646}
   m_Father: {fileID: 840772863}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &67860689
@@ -14760,13 +14759,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 459628645}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1010234864}
-  m_Father: {fileID: 63900493}
+  m_Father: {fileID: 1056939065}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &469993784
 GameObject:
@@ -26547,6 +26546,7 @@ Transform:
   - {fileID: 245998529}
   - {fileID: 716400397}
   - {fileID: 1113694270}
+  - {fileID: 459628646}
   m_Father: {fileID: 63900493}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1073159614
@@ -27301,7 +27301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weightClass: 0
-  fuerzaLigero: 1.5
+  fuerzaLigero: 0.3
   fuerzaMedio: 1
   fuerzaPesado: 0.5
   ruidoLigero: 0.6
@@ -27323,9 +27323,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 801503385}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 0.3
+  m_Drag: 0.2
+  m_AngularDrag: 3
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -45768,7 +45768,7 @@ MonoBehaviour:
   weightClass: 2
   fuerzaLigero: 1.5
   fuerzaMedio: 1
-  fuerzaPesado: 0.5
+  fuerzaPesado: 3
   ruidoLigero: 0.6
   ruidoMedio: 1
   ruidoPesado: 1.8
@@ -45788,9 +45788,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1857122013}
   serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 12
+  m_Drag: 2
+  m_AngularDrag: 5
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
