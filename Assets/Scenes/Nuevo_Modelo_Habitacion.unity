@@ -15840,7 +15840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeSlider: {fileID: 586063656}
-  visionCone: {fileID: 0}
+  visionCone: {fileID: 99479947}
   detectorCamara: {fileID: 0}
 --- !u!114 &586063656
 MonoBehaviour:
@@ -17609,7 +17609,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   estadoActual: 0
-  ojos: {fileID: 0}
+  ojos: {fileID: 99479948}
   jugador: {fileID: 1085320232}
   puntosDePatrulla:
   - {fileID: 2121150635}
@@ -17620,8 +17620,8 @@ MonoBehaviour:
   velocidadPatrulla: 3
   tiempoDeEspera: 1.5
   velocidadGiro: 3
-  velocidadPersecucion: 3
-  tiempoDeteccion: 5
+  velocidadPersecucion: 5
+  tiempoDeteccion: 3
   tiempoInvestigacion: 1.5
 --- !u!136 &701722325
 CapsuleCollider:
