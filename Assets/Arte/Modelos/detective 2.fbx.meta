@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5509dfc637729c14ab6084401e9f3c58
+guid: 7f852e5849d58c04daffa6f03f9c5767
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -22,7 +22,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -80,7 +80,32 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: policia 1(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Box008
+      parentName: policia 1(Clone)
+      position: {x: -0, y: 0.92218477, z: -0.22623755}
+      rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Box009
+      parentName: policia 1(Clone)
+      position: {x: -0, y: 1.5897084, z: 0.40565377}
+      rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+      scale: {x: 1.5418, y: 1.5418, z: 1.5418}
+    - name: Box010
+      parentName: policia 1(Clone)
+      position: {x: -0, y: 1.9648899, z: -0.23415288}
+      rotation: {x: 0.000000021855694, y: -1.0961223e-16, z: 2.3956515e-24, w: 1}
+      scale: {x: 0.811557, y: 0.811557, z: 0.811557}
+    - name: Sphere006
+      parentName: policia 1(Clone)
+      position: {x: -0.118, y: 1.5837712, z: 0.3124656}
+      rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 0.476789}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -91,13 +116,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
