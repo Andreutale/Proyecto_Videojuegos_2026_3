@@ -66,20 +66,13 @@ namespace Telekinesis
 
         public void ApplyForce(Vector3 direction, float force)
         {
-            if (floatCoroutine != null)
-            {
-                StopCoroutine(floatCoroutine);
-                floatCoroutine = null;
-            }
+            // Parar levitación
+            if (floatCoroutine != null) StopCoroutine(floatCoroutine);
 
-            StartCoroutine(LaunchAfterDelay(direction, force));
-        }
+            // Bajar el objeto a su posición original antes de lanzar
+            transform.position = originalPosition;
 
-        private IEnumerator LaunchAfterDelay(Vector3 direction, float force)
-        {
             rb.isKinematic = false;
-            yield return null; // esperar un frame para que Unity procese el cambio
-
             tocandoSuperficie = false;
 
             float multiplicador = weightClass switch
@@ -91,8 +84,10 @@ namespace Telekinesis
             };
 
             float fuerzaFinal = force * multiplicador;
-            Vector3 launchDirection = (direction.normalized * 0.8f + Vector3.up * 0.3f).normalized;
-            rb.AddForce(launchDirection * fuerzaFinal, ForceMode.Impulse);
+            rb.AddForce(direction.normalized * fuerzaFinal, ForceMode.Impulse);
+
+            // Efecto visual de lanzamiento: giro brusco
+            rb.AddTorque(Random.insideUnitSphere * fuerzaFinal * 0.3f, ForceMode.Impulse);
 
             Debug.Log($"[Telekinesis] Fuerza aplicada a {gameObject.name} | Peso: {weightClass} | Fuerza: {fuerzaFinal}");
         }
@@ -206,7 +201,6 @@ namespace Telekinesis
             }
 
             // — Fase 2: flotar arriba y abajo indefinidamente —
-            // — Fase 2: flotar arriba y abajo indefinidamente —
             float t = 0f;
             while (true)
             {
@@ -214,9 +208,11 @@ namespace Telekinesis
                 float oscilacion = Mathf.Sin(t * 2.5f) * 0.08f;
                 transform.position = targetPos + Vector3.up * oscilacion;
 
+                // Rotación lenta sobre Y
+                transform.Rotate(0f, 40f * Time.deltaTime, 0f);
+
                 yield return null;
             }
-
         }
     }
 

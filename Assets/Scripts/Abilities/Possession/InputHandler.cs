@@ -19,7 +19,6 @@ namespace Possession
 
         private void Update()
         {
-            if (!GameManager.Instance.juegoIniciado) return;
             // Dispara el evento si se pulsa la Z en el teclado O el LB/L1 en el mando
             if (Input.GetKeyDown(possessionKey) || Input.GetKeyDown(possessionMando))
             {

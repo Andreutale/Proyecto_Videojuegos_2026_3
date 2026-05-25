@@ -21,7 +21,6 @@ namespace Telekinesis
 
         private void Update()
         {
-            if (!GameManager.Instance.juegoIniciado) return;
             if (Input.GetKeyDown(actionKey) || Input.GetKeyDown(actionMando))
                 OnActionKeyPressed?.Invoke();
 

@@ -154,7 +154,7 @@ public class CountdownInicioNivel : MonoBehaviour
                     enemigo.enabled = true;
             }
         }
-        GameManager.Instance.juegoIniciado = true;
+
         // Iniciar temporizador
         TemporizadorGlobal.Instance.IniciarTemporizador();
     }

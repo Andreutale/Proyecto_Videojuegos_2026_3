@@ -242,12 +242,8 @@ namespace Telekinesis
 
             foreach (Collider hit in hits)
             {
-                MovableObject obj = hit.GetComponentInParent<MovableObject>();
-
-                if (obj != null && !result.Contains(obj))
-                {
+                if (hit.TryGetComponent(out MovableObject obj))
                     result.Add(obj);
-                }
             }
 
             return result;

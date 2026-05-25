@@ -21,7 +21,6 @@ public class GameManager : MonoBehaviour
     public GameObject pauseButton;
 
     private bool nivelTerminado = false;
-    public bool juegoIniciado = false;
 
     private void Awake()
     {
