@@ -38,6 +38,7 @@ namespace Telekinesis
 
         private void OnDestroy()
         {
+            if (inputHandler == null) return;
             inputHandler.OnActionKeyPressed -= HandleActionInput;
             inputHandler.OnCancelKeyPressed -= Cancel;
         }
