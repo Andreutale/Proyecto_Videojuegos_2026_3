@@ -24,7 +24,7 @@ public class DetectorCamara : MonoBehaviour
     public float maxAnguloSeguimiento = 45f;
 
     private Quaternion rotacionInicial;
-    private GeneradorCono generador; // Referencia al otro script
+    private GeneradorCono generador;
 
     private float timerDeteccion = 0f;
     private bool alertaActivada = false;
@@ -53,12 +53,6 @@ public class DetectorCamara : MonoBehaviour
         {
             jugadorEncontrado = true;
             timerPerdida = 0f;
-
-            // Si detectamos al jugador y no estamos enviando alertas aún, empezamos la rutina
-            if (rutinaAlertaContinua == null)
-            {
-                rutinaAlertaContinua = StartCoroutine(EnviarAlertasContinuas());
-            }
         }
         else if (jugadorEncontrado)
         {
@@ -68,7 +62,7 @@ public class DetectorCamara : MonoBehaviour
             {
                 jugadorEncontrado = false;
 
-                // Si el jugador desaparece, detenemos la rutina
+                // Si el jugador desaparece, detenemos la rutina de alertas continuas
                 if (rutinaAlertaContinua != null)
                 {
                     StopCoroutine(rutinaAlertaContinua);
@@ -77,7 +71,6 @@ public class DetectorCamara : MonoBehaviour
             }
         }
 
-        // Le pasamos el color a los vértices
         if (generador != null)
         {
             generador.colorActual = jugadorEncontrado ? colorAlerta : colorNormal;
@@ -90,13 +83,25 @@ public class DetectorCamara : MonoBehaviour
 
             EnfocarJugador();
 
-            if (timerDeteccion >= tiempoDeteccion && !alertaActivada)
+            // AQUÍ ESTÁ EL CAMBIO PRINCIPAL:
+            // Solo activamos la alerta y empezamos la corrutina cuando el tiempo se llena
+            if (timerDeteccion >= tiempoDeteccion)
             {
-                ActivarAlerta();
+                if (!alertaActivada)
+                {
+                    ActivarAlerta();
+                }
+
+                // Iniciamos el envío continuo de la posición del jugador solo si ya estamos en alerta máxima
+                if (rutinaAlertaContinua == null)
+                {
+                    rutinaAlertaContinua = StartCoroutine(EnviarAlertasContinuas());
+                }
             }
         }
         else
         {
+            // Reseteo general cuando el jugador no es encontrado
             timerDeteccion = 0f;
             alertaActivada = false;
 
@@ -108,9 +113,9 @@ public class DetectorCamara : MonoBehaviour
         }
     }
 
-    // Asegúrate de tener también la corrutina en la clase
     IEnumerator EnviarAlertasContinuas()
     {
+        // La alerta continua sigue mandándose mientras el jugador esté a la vista
         while (jugadorEncontrado)
         {
             AlertaGlobal.Activar(jugador.position);
@@ -175,7 +180,7 @@ public class DetectorCamara : MonoBehaviour
     void ActivarAlerta()
     {
         alertaActivada = true;
-        Debug.Log("Detector: Activando alerta global en: " + ultimoPuntoDeteccion); // Verifica esto
+        Debug.Log("Detector: Activando alerta global (Tiempo agotado) en: " + ultimoPuntoDeteccion);
         AlertaGlobal.Activar(ultimoPuntoDeteccion);
     }
 }
