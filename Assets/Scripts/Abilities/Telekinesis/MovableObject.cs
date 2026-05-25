@@ -201,6 +201,7 @@ namespace Telekinesis
             }
 
             // — Fase 2: flotar arriba y abajo indefinidamente —
+            // — Fase 2: flotar arriba y abajo indefinidamente —
             float t = 0f;
             while (true)
             {
@@ -208,11 +209,9 @@ namespace Telekinesis
                 float oscilacion = Mathf.Sin(t * 2.5f) * 0.08f;
                 transform.position = targetPos + Vector3.up * oscilacion;
 
-                // Rotación lenta sobre Y
-                transform.Rotate(0f, 40f * Time.deltaTime, 0f);
-
                 yield return null;
             }
+
         }
     }
 
