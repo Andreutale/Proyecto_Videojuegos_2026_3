@@ -44935,7 +44935,7 @@ MonoBehaviour:
   camara: {fileID: 952506072}
   outlineController: {fileID: 1764713947}
   playerMovimiento: {fileID: 1639417671}
-  ghostAnimation: {fileID: 1765629983}
+  fantasmaAnimator: {fileID: 0}
   uiCooldown: {fileID: 1073159616}
 --- !u!114 &1764713949
 MonoBehaviour:
@@ -45040,13 +45040,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1765629979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1283fcdfe84805642af9a33d0833a400, type: 3}
+  m_Script: {fileID: 11500000, guid: f443b25094c32ca4d932dd957f5b3a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostModel: {fileID: 666245471}
-  duration: 1
-  scalePulse: 0.5
-  tiltForward: 60
+  config: {fileID: 11400000, guid: 06f70007716e18041a3fd7282139cb5e, type: 2}
+  playerTransform: {fileID: 1961114608}
+  camara: {fileID: 952506072}
+  outlineController: {fileID: 1764713947}
+  playerMovimiento: {fileID: 1639417671}
+  fantasmaAnimator: {fileID: 1765629981}
+  uiCooldown: {fileID: 1073159616}
 --- !u!1 &1771348364
 GameObject:
   m_ObjectHideFlags: 0
