@@ -74,66 +74,45 @@ public class MovimientoRutaPatrullero : MonoBehaviour
             return;
         }
 
-        if (enBusqueda)
+        // Lógica de transición de estados
+        bool veAlJugador = (ojos != null && ojos.viendoAlJugador);
+
+        if (veAlJugador)
         {
             estadoActual = Estado.Persiguiendo;
+            enBusqueda = false; // Si lo veo, la búsqueda por alerta se cancela
+            estaCambiandoDePunto = false;
+
+            // Limpiar rutinas de investigación
+            if (rutinaInvestigacionActual != null) { StopCoroutine(rutinaInvestigacionActual); rutinaInvestigacionActual = null; }
+
+            timerDeteccion += Time.deltaTime;
+            if (DetectionHUD.Instance != null) DetectionHUD.Instance.ReportTimer(this, tiempoDeteccion - timerDeteccion);
+            if (timerDeteccion >= tiempoDeteccion) timerDeteccion = 0f;
+        }
+        else if (enBusqueda)
+        {
+            estadoActual = Estado.Persiguiendo; // Sigue en modo persecución para ir al punto de alerta
         }
         else
         {
-            // Lógica de visión
-            if (ojos != null && ojos.viendoAlJugador)
+            // Si no lo veo y no estoy en búsqueda, patrullo
+            if (estadoActual == Estado.Persiguiendo)
             {
-                estadoActual = Estado.Persiguiendo;
-                estaCambiandoDePunto = false;
-
-                if (rutinaInvestigacionActual != null)
-                {
-                    StopCoroutine(rutinaInvestigacionActual);
-                    rutinaInvestigacionActual = null;
-                }
-
-                timerDeteccion += Time.deltaTime;
-
-                if (DetectionHUD.Instance != null)
-                    DetectionHUD.Instance.ReportTimer(this, tiempoDeteccion - timerDeteccion);
-
-                if (timerDeteccion >= tiempoDeteccion)
-                    timerDeteccion = 0f;
+                estadoActual = Estado.Patrullando;
+                if (puntosDePatrulla.Length > 0) destinoActual = puntosDePatrulla[indicePuntoActual];
             }
-            else
-            {
-                if (estadoActual == Estado.Persiguiendo)
-                {
-                    // Al perderte de vista, vuelve a buscar el punto actual de su ruta
-                    estadoActual = Estado.Patrullando;
-                    if (puntosDePatrulla.Length > 0)
-                        destinoActual = puntosDePatrulla[indicePuntoActual];
-                }
-
-                timerDeteccion = 0f;
-
-                if (DetectionHUD.Instance != null)
-                    DetectionHUD.Instance.RemoveTimer(this);
-            }
+            timerDeteccion = 0f;
+            if (DetectionHUD.Instance != null) DetectionHUD.Instance.RemoveTimer(this);
         }
 
-        // Lógica de estados
+        // Ejecutar lógica del estado actual
         switch (estadoActual)
         {
-            case Estado.Patrullando:
-                MoverHaciaDestino();
-                break;
-
-            case Estado.Investigando:
-                break;
-
-            case Estado.Persiguiendo:
-                PerseguirJugador();
-                break;
-
-            case Estado.EsperandoYGirando:
-                DetenerMovimientoHorizontal();
-                break;
+            case Estado.Patrullando: MoverHaciaDestino(); break;
+            case Estado.Investigando: break;
+            case Estado.Persiguiendo: PerseguirJugador(); break;
+            case Estado.EsperandoYGirando: DetenerMovimientoHorizontal(); break;
         }
     }
 
@@ -238,16 +217,17 @@ public class MovimientoRutaPatrullero : MonoBehaviour
         AplicarVelocidadHacia(destino, velocidadPersecucion);
         GirarHacia(destino);
 
-        if (enBusqueda && Vector3.Distance(posPlana, destinoPlano) < 0.3f)
+        // --- AQUÍ VA EL BLOQUE QUE PREGUNTABAS ---
+        // Si estoy en modo búsqueda (alerta) y llegué al punto...
+        if (enBusqueda && Vector3.Distance(posPlana, destinoPlano) < 0.5f)
         {
-            enBusqueda = false;
-            estadoActual = Estado.Patrullando;
+            enBusqueda = false; // Ya no estoy en alerta
+            estadoActual = Estado.Patrullando; // Vuelvo a mi rutina
 
-            // Cuando termina de buscar el ruido, se dirige al punto que le tocaba
             if (puntosDePatrulla.Length > 0)
                 destinoActual = puntosDePatrulla[indicePuntoActual];
 
-            Debug.Log(gameObject.name + " llegó al último punto de detección.");
+            Debug.Log(gameObject.name + " llegó al punto de alerta y vuelve a patrullar.");
         }
     }
 
