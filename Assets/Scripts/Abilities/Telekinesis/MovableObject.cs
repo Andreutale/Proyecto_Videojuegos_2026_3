@@ -86,6 +86,11 @@ namespace Telekinesis
             float fuerzaFinal = force * multiplicador;
             rb.AddForce(direction.normalized * fuerzaFinal, ForceMode.Impulse);
 
+            Vector3 launchDirection =
+    (direction * 0.7f + Vector3.up * 0.8f).normalized;
+
+            rb.AddForce(launchDirection * force, ForceMode.Impulse);
+
             // Efecto visual de lanzamiento: giro brusco
             rb.AddTorque(Random.insideUnitSphere * fuerzaFinal * 0.3f, ForceMode.Impulse);
 

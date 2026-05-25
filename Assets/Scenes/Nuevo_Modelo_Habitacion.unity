@@ -45765,7 +45765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dddbbd46cb1d9c48b3145bf5b165104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weightClass: 1
+  weightClass: 2
   fuerzaLigero: 1.5
   fuerzaMedio: 1
   fuerzaPesado: 0.5
@@ -46748,7 +46748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dddbbd46cb1d9c48b3145bf5b165104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weightClass: 0
+  weightClass: 1
   fuerzaLigero: 1.5
   fuerzaMedio: 1
   fuerzaPesado: 0.5
