@@ -38785,7 +38785,7 @@ MonoBehaviour:
   velocidadPatrulla: 2
   tiempoDeEspera: 1.5
   velocidadGiro: 3
-  velocidadPersecucion: 3
+  velocidadPersecucion: 5
   tiempoDeteccion: 5
   tiempoInvestigacion: 1.5
 --- !u!54 &1686480835
@@ -38847,8 +38847,8 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1686480833}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: 34db3156895e78343ac9cd2f78e38008, type: 3}
+  m_Controller: {fileID: 9100000, guid: 2bbef1c89d5a3764a87df3509d67c6c9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
