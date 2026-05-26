@@ -1139,11 +1139,11 @@ Transform:
   m_GameObject: {fileID: 186926169}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0, y: 0.5, z: 0.2}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
+  m_LocalPosition: {x: -0, y: 0.4, z: -0.39}
+  m_LocalScale: {x: 0.04545455, y: 0.045454543, z: 0.04545455}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1765629980}
+  m_Father: {fileID: 1961114608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &186926171
 TrailRenderer:
@@ -2521,6 +2521,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a1fd1a6f57ed4234f9deb33a1822d528, type: 3}
   m_PrefabInstance: {fileID: 1253305656}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &373322553 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2275096619120583637, guid: 1b7c2719ad5633a468cf127429c01188, type: 3}
+  m_PrefabInstance: {fileID: 1880605815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &373834975
 GameObject:
   m_ObjectHideFlags: 0
@@ -4011,11 +4022,11 @@ Transform:
   m_GameObject: {fileID: 670596277}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: -0, y: 0.5, z: 0.2}
-  m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
+  m_LocalPosition: {x: 0, y: 0.4, z: -0.23}
+  m_LocalScale: {x: 0.04545455, y: 0.045454543, z: 0.04545455}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1765629980}
+  m_Father: {fileID: 1961114608}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &670596279
 TrailRenderer:
@@ -5010,7 +5021,7 @@ PrefabInstance:
     - target: {fileID: 1710538285607512070, guid: ca139ec21e0b5274a92e4bb1166f84e3, type: 3}
       propertyPath: textoLlavesDerrota
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 373322553}
     - target: {fileID: 1710538285607512070, guid: ca139ec21e0b5274a92e4bb1166f84e3, type: 3}
       propertyPath: textoLlavesVictoria
       value: 
@@ -12338,7 +12349,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1661258000
 MonoBehaviour:
@@ -13402,9 +13413,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 670596278}
-  - {fileID: 186926170}
-  - {fileID: 2116470659}
   - {fileID: 1961114608}
   m_Father: {fileID: 1085320232}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14648,7 +14656,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1870114581
 MonoBehaviour:
@@ -15911,7 +15919,16 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: f9b002db11dec9145a69a8e1288dd558, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98d3d138ac947da4291d0e50291ce30c, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 670596278}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98d3d138ac947da4291d0e50291ce30c, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 186926170}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 98d3d138ac947da4291d0e50291ce30c, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 2116470659}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98d3d138ac947da4291d0e50291ce30c, type: 3}
       insertIndex: -1
@@ -17177,7 +17194,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1765629980}
+  m_Father: {fileID: 1961114608}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &2116470660
 ParticleSystemRenderer:
