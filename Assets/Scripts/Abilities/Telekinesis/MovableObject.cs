@@ -54,7 +54,16 @@ namespace Telekinesis
         public void ShowArrow(Vector3 direction)
         {
             arrow.Show(direction);
+
+            rb.angularVelocity = Vector3.zero;
+            rb.linearVelocity = Vector3.zero;
+            rb.freezeRotation = true;
+
             originalPosition = transform.position;
+
+            if (floatCoroutine != null)
+                StopCoroutine(floatCoroutine);
+
             floatCoroutine = StartCoroutine(LevitarObjeto());
         }
 
@@ -62,6 +71,7 @@ namespace Telekinesis
         {
             arrow.Hide();
             if (floatCoroutine != null) StopCoroutine(floatCoroutine);
+            rb.freezeRotation = false;
         }
 
         public void ApplyForce(Vector3 direction, float force)
@@ -84,6 +94,7 @@ namespace Telekinesis
             };
 
             float fuerzaFinal = force * multiplicador;
+            rb.freezeRotation = false;
             rb.AddForce(direction.normalized * fuerzaFinal, ForceMode.Impulse);
 
             // Efecto visual de lanzamiento: giro brusco
@@ -208,8 +219,7 @@ namespace Telekinesis
                 float oscilacion = Mathf.Sin(t * 2.5f) * 0.08f;
                 transform.position = targetPos + Vector3.up * oscilacion;
 
-                // Rotación lenta sobre Y
-                transform.Rotate(0f, 40f * Time.deltaTime, 0f);
+                
 
                 yield return null;
             }

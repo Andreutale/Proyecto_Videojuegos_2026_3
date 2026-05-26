@@ -12285,9 +12285,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weightClass: 2
-  fuerzaLigero: 1.5
+  fuerzaLigero: 0.3
   fuerzaMedio: 1
-  fuerzaPesado: 0.5
+  fuerzaPesado: 3
   ruidoLigero: 0.6
   ruidoMedio: 1
   ruidoPesado: 1.8
@@ -14592,9 +14592,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weightClass: 2
-  fuerzaLigero: 1.5
+  fuerzaLigero: 0.3
   fuerzaMedio: 1
-  fuerzaPesado: 0.5
+  fuerzaPesado: 3
   ruidoLigero: 0.6
   ruidoMedio: 1
   ruidoPesado: 1.8
