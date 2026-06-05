@@ -50,8 +50,7 @@ public class InitialMenu : MonoBehaviour
             }
         }
 
-        // 3. Cuando ya está todo negro, cargamos la siguiente escena (buildIndex + 1)
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("LevelSelector");
     }
 
     // Tu método de salir se queda intacto
