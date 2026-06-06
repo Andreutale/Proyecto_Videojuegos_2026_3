@@ -15,6 +15,8 @@ public class BotonPiso : MonoBehaviour
     public Image estrella2;
     public Image estrella3;
 
+    public AnimacionPuerta animacionPuerta; 
+
     private Color colorEncendida = Color.white;
     private Color colorApagada = new Color(0.3f, 0.3f, 0.3f, 0.5f);
 
@@ -60,6 +62,11 @@ public class BotonPiso : MonoBehaviour
     public void AlHacerClic()
     {
         if (!estaBloqueado)
-            SceneManager.LoadScene(indicePiso);
+        {
+            if (animacionPuerta != null)
+                animacionPuerta.EntrarPuerta(); 
+            else
+                SceneManager.LoadScene(indicePiso); 
+        }
     }
 }
