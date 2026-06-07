@@ -8,7 +8,7 @@ public class VictoryMenu : MonoBehaviour
     public void SiguienteNivel()
     {
         Time.timeScale = 1f;
-        SceneManager.LoadScene(siguienteNivel);
+        SceneManager.LoadScene("LevelSelector");
     }
 
     public void ReiniciarNivel()
