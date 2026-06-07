@@ -35,6 +35,9 @@ public class Dash : MonoBehaviour
 
     void Start()
     {
+        if (playerCam == null)
+            playerCam = Camera.main.transform;
+
         rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
 
@@ -184,18 +187,18 @@ public class Dash : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
 
-        Vector3 forward = playerCam.forward;
-        Vector3 right = playerCam.right;
+        Vector3 adelanteCamara = playerCam.forward;
+        Vector3 derechaCamara = playerCam.right;
 
-        forward.y = 0;
-        right.y = 0;
+        adelanteCamara.y = 0f;
+        derechaCamara.y = 0f;
 
-        forward.Normalize();
-        right.Normalize();
+        adelanteCamara.Normalize();
+        derechaCamara.Normalize();
 
         if (h == 0 && v == 0)
-            return forward;
+            return transform.forward;
 
-        return (forward * v + right * h).normalized;
+        return (derechaCamara * h + adelanteCamara * v).normalized;
     }
 }

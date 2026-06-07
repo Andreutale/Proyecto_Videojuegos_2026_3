@@ -716,7 +716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animAbrirPuerta: AbrirPuerta
-  indiceSala: 1
+  indiceSala: 4
   fantasmaUI: {fileID: 960972851}
   destinoUI: {fileID: 35378767}
 --- !u!1 &188681518
@@ -3088,8 +3088,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ee85ae76ef72d42a01e9b99f3b7f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreNivel: Nuevo_Modelo_Habitacion
-  indicePiso: 1
+  nombreNivel: Nivel_2
+  indicePiso: 4
   estaBloqueado: 1
   candado: {fileID: 1130948842}
   estrellas: {fileID: 518585499}
