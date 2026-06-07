@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -67,6 +67,10 @@ public class GameManager : MonoBehaviour
             panelVictoria.SetActive(true);
 
         ActualizarTextoLlaves();
+
+        string nombreNivel = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetInt(nombreNivel + "_Completado", 1);
+        PlayerPrefs.Save();
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
