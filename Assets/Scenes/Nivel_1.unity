@@ -3310,6 +3310,26 @@ PrefabInstance:
       propertyPath: animatorPuerta
       value: 
       objectReference: {fileID: 1383892974}
+    - target: {fileID: 2739730268861422833, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 88.28593
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739730268861422833, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -4.9703813
+      objectReference: {fileID: 0}
+    - target: {fileID: 2739730268861422833, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -4.7024064
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958635096134231352, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958635096134231352, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 54
+      objectReference: {fileID: 0}
     - target: {fileID: 3532689887146424834, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
       propertyPath: m_Name
       value: Salida
@@ -3369,6 +3389,14 @@ PrefabInstance:
     - target: {fileID: 6171578457633077118, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267830240528941929, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
+      propertyPath: m_Range
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6267830240528941929, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
+      propertyPath: m_Intensity
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9738,6 +9766,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1143365470939093358, guid: fb5b62cde662ca143bca39a18d5ba88e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e55fd6598d372b541ba781e1af7b2837, type: 2}
     - target: {fileID: 919132149155446097, guid: fb5b62cde662ca143bca39a18d5ba88e, type: 3}
       propertyPath: m_Name
       value: Puerta_salida_modelo
@@ -9746,6 +9778,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 9d2b4a241eee3384f943008d95d996c4, type: 2}
+    - target: {fileID: 4407187375235809858, guid: fb5b62cde662ca143bca39a18d5ba88e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e55fd6598d372b541ba781e1af7b2837, type: 2}
     - target: {fileID: 6721992597810065892, guid: fb5b62cde662ca143bca39a18d5ba88e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.2
