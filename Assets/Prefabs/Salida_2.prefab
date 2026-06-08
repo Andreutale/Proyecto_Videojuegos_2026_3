@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3532689887146424834, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
       propertyPath: m_Name
-      value: Salida Variant
+      value: Salida_2
       objectReference: {fileID: 0}
     - target: {fileID: 6171578457633077118, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
       propertyPath: m_LocalScale.x
@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8675589864520616136, guid: 4ea60ef9c99c1614f863fc95b761e226, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1fddbe41fbd531142a0c025d261f4882, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
