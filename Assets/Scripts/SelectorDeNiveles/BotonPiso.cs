@@ -22,10 +22,10 @@ public class BotonPiso : MonoBehaviour
 
     void Start()
     {
-        if (indicePiso == 1)
+        if (indicePiso == 4) 
             estaBloqueado = PlayerPrefs.GetInt("Nivel_1_Completado", 0) == 0;
 
-        if (indicePiso == 3)
+        if (indicePiso == 1)
             estaBloqueado = PlayerPrefs.GetInt("Nuevo_Modelo_Habitacion_Completado", 0) == 0;
 
         if (estaBloqueado)
