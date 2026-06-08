@@ -13,8 +13,8 @@ AnimatorStateMachine:
     m_State: {fileID: 7524259646109263207}
     m_Position: {x: 40, y: 190, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 7235591425150077857}
-    m_Position: {x: 40, y: 250, z: 0}
+    m_State: {fileID: 5304371568779772226}
+    m_Position: {x: 40, y: 270, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -47,7 +47,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &7235591425150077857
+--- !u!1102 &5304371568779772226
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
@@ -55,7 +55,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: AbrirPuerta
-  m_Speed: 1
+  m_Speed: 0.3
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -67,7 +67,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1827226128182048838, guid: fb5b62cde662ca143bca39a18d5ba88e, type: 3}
+  m_Motion: {fileID: 7400000, guid: 3c7a93e47152cee4f829f4978e21cecd, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
