@@ -20,6 +20,10 @@ public class GameManager : MonoBehaviour
     [Header("Pause")]
     public GameObject pauseButton;
 
+    [Header("Estrellas")]
+    public GestorEstrellas gestorEstrellas;
+    public int cantidadEstrellas = 3; 
+
     private bool nivelTerminado = false;
 
     private void Awake()
@@ -65,6 +69,9 @@ public class GameManager : MonoBehaviour
 
         if (panelVictoria != null)
             panelVictoria.SetActive(true);
+
+        if (gestorEstrellas != null)
+            gestorEstrellas.MostrarEstrellas(cantidadEstrellas);
 
         ActualizarTextoLlaves();
 
