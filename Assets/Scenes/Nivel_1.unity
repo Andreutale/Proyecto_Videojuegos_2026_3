@@ -24329,11 +24329,20 @@ PrefabInstance:
       propertyPath: audioVictoria
       value: 
       objectReference: {fileID: 1549571677}
+    - target: {fileID: 5724452370588161421, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
+      propertyPath: animatorPuerta
+      value: 
+      objectReference: {fileID: 1015170010}
+    - target: {fileID: 5724452370588161421, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
+      propertyPath: nombreAnimacion
+      value: AbrirPuerta_Nivel1
+      objectReference: {fileID: 0}
     - target: {fileID: 8947420653388716549, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
       propertyPath: m_Name
       value: Salida
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3839562867304786127, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1767914612435212153, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
