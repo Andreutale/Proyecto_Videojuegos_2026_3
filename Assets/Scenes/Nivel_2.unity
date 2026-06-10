@@ -623,6 +623,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LlaveCocinaPasilloIzquierdo
       objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
+      objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -999,6 +1003,10 @@ PrefabInstance:
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlavePrincipal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
       objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
@@ -8642,6 +8650,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LlaveHabitacionFinalDerecha
       objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
+      objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -9483,7 +9495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyText: {fileID: 1702220042}
-  totalKeys: 5
+  totalKeys: 7
 --- !u!1 &708949821 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6648467477460275822, guid: 122cb4164c3b09241b1863aa3a8c5f8e, type: 3}
@@ -15100,6 +15112,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LlaveHabitacionPrimeraIzquierda
       objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
+      objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -17133,6 +17149,10 @@ PrefabInstance:
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveSalaDeEstar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
       objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
@@ -20572,7 +20592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0/5
+  m_text: 0/7
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20662,6 +20682,10 @@ PrefabInstance:
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveHabitacionCentral
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
       objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
@@ -24948,6 +24972,10 @@ PrefabInstance:
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveHabitacionFinal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
       objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
