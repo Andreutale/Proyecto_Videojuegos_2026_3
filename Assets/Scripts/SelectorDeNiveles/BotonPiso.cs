@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class BotonPiso : MonoBehaviour
 {
-    public string nombreNivel;    
+    public string nombreNivel;
     public int indicePiso;
     public bool estaBloqueado;
 
@@ -15,14 +15,14 @@ public class BotonPiso : MonoBehaviour
     public Image estrella2;
     public Image estrella3;
 
-    public AnimacionPuerta animacionPuerta; 
+    public AnimacionPuerta animacionPuerta;
 
     private Color colorEncendida = Color.white;
     private Color colorApagada = new Color(0.3f, 0.3f, 0.3f, 0.5f);
 
-    void Start()
+    void Awake()
     {
-        if (indicePiso == 4) 
+        if (indicePiso == 4)
             estaBloqueado = PlayerPrefs.GetInt("Nivel_1_Completado", 0) == 0;
 
         if (indicePiso == 1)
@@ -32,13 +32,15 @@ public class BotonPiso : MonoBehaviour
         {
             candado.SetActive(true);
             estrellas.SetActive(false);
-
             Button btn = GetComponentInChildren<Button>();
             if (btn != null) btn.interactable = false;
         }
-        else
+
+else
         {
-            candado.SetActive(false);
+            AnimacionDesbloqueo anim = GetComponent<AnimacionDesbloqueo>();
+            if (anim == null)
+                candado.SetActive(false);
 
             Button btn = GetComponentInChildren<Button>();
             if (btn != null) btn.interactable = true;
@@ -64,9 +66,9 @@ public class BotonPiso : MonoBehaviour
         if (!estaBloqueado)
         {
             if (animacionPuerta != null)
-                animacionPuerta.EntrarPuerta(); 
+                animacionPuerta.EntrarPuerta();
             else
-                SceneManager.LoadScene(indicePiso); 
+                SceneManager.LoadScene(indicePiso);
         }
     }
 }
