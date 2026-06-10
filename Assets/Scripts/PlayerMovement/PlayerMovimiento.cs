@@ -18,8 +18,6 @@ public class PlayerMovimiento : MonoBehaviour
     [SerializeField] private float Gravedad = -9f;
     private Vector3 velocidadVertical;
 
-    private Dash dash;
-
     private Animator animator;
 
     void Start()
@@ -29,7 +27,6 @@ public class PlayerMovimiento : MonoBehaviour
 
     private void Awake()
     {
-        dash = GetComponent<Dash>();
         controlador = GetComponent<CharacterController>();
 
         if (camara == null && Camera.main != null)
@@ -47,8 +44,6 @@ public class PlayerMovimiento : MonoBehaviour
 
     private void MoverJugadorEnPlano()
     {
-        if (dash != null && dash.IsDashing) return;
-
         if (!controlador.enabled) return;
 
         float Horizontal = Input.GetAxisRaw("Horizontal");
