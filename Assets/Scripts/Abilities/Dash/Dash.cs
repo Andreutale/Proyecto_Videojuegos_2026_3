@@ -5,7 +5,6 @@ public class Dash : MonoBehaviour
 {
     [Header("Referencias")]
     public Transform playerCam;
-    private Rigidbody rb;
     private CharacterController controller;
 
     [Header("Ajustes de Dash")]
@@ -24,6 +23,9 @@ public class Dash : MonoBehaviour
     [Header("Luz Dash")]
     [SerializeField] private Light luzDash;
 
+    private bool isDashing = false;
+    public bool IsDashing => isDashing;
+
     private Color colorLuzNormal;
     private float intensidadNormal;
     private float rangeNormal;
@@ -38,17 +40,7 @@ public class Dash : MonoBehaviour
         if (playerCam == null)
             playerCam = Camera.main.transform;
 
-        rb = GetComponent<Rigidbody>();
         controller = GetComponent<CharacterController>();
-
-        if (rb != null)
-        {
-            rb.useGravity = false;
-            rb.isKinematic = true;
-            rb.interpolation = RigidbodyInterpolation.Interpolate;
-            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
-        }
 
         if (psIdle != null)
         {
@@ -82,34 +74,30 @@ public class Dash : MonoBehaviour
 
     private IEnumerator DashRoutine()
     {
+        if (isDashing)
+            yield break;
+
+        isDashing = true;
+
         ActivarTrailDash();
-
-        if (controller != null)
-            controller.enabled = false;
-
-        yield return null;
-
-        rb.isKinematic = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        rb.linearVelocity = Vector3.zero;
 
         Vector3 direction = GetDirection();
 
-        rb.AddForce(direction * dashForce, ForceMode.Impulse);
+        float elapsed = 0f;
 
-        yield return new WaitForSeconds(dashDuration);
+        while (elapsed < dashDuration)
+        {
+            controller.Move(
+                direction * dashForce * Time.deltaTime
+            );
 
-        rb.linearVelocity = Vector3.zero;
-
-        rb.isKinematic = true;
-        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
-
-        yield return new WaitForFixedUpdate();
-
-        if (controller != null)
-            controller.enabled = true;
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
 
         DesactivarTrailDash();
+
+        isDashing = false;
     }
 
     private void ActivarTrailDash()
