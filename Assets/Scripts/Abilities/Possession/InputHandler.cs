@@ -25,7 +25,7 @@ namespace Possession
                 OnPossessionKeyPressed?.Invoke();
             }
 
-            // Dispara el evento si se pulsa Backspace en el teclado O el botón A/X en el mando
+            // Dispara el evento si se pulsa Backspace en el teclado O el botÃ³n A/X en el mando
             if (Input.GetKeyDown(cancelKey) || Input.GetKeyDown(cancelMando))
             {
                 OnCancelKeyPressed?.Invoke();
