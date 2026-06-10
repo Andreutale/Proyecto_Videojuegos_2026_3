@@ -6,22 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Polterguest/Escenas/MenuInicial.unity
+    path: Assets/POLTERGUEST/Escenas/MenuInicial.unity
     guid: 6e20804b9b118b041a0485cbb44638f5
   - enabled: 0
     path: Assets/Scenes/Nivel_Prototipo.unity
     guid: 0bd381842c9e4374ba8f27b7fef40695
   - enabled: 1
-    path: Assets/Polterguest/Escenas/Nuevo_Modelo_Habitacion.unity
+    path: Assets/POLTERGUEST/Escenas/Nuevo_Modelo_Habitacion.unity
     guid: 9d7c5b3a7e0529f4a8424e050daa6865
   - enabled: 1
-    path: Assets/Polterguest/Escenas/Nivel_1.unity
+    path: Assets/POLTERGUEST/Escenas/Nivel_1.unity
     guid: 8383f1454c63c104eb9692cca942a8da
   - enabled: 1
-    path: Assets/Polterguest/Escenas/LevelSelector.unity
+    path: Assets/POLTERGUEST/Escenas/LevelSelector.unity
     guid: 858b52542c86fe94ba72131316a91dfc
   - enabled: 1
-    path: Assets/Polterguest/Escenas/Nivel_2.unity
+    path: Assets/POLTERGUEST/Escenas/Nivel_2.unity
     guid: 3dd6bd2bef7c2704cbe848ff33c2adfa
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
