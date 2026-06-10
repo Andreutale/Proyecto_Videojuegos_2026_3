@@ -29,15 +29,16 @@ public class AnimacionPuerta : MonoBehaviour
 
         if (fantasmaUI != null && destinoUI != null)
         {
-            float sure = 2f;
-            float gecenSure = 0f;
-            Vector2 baslangic = fantasmaUI.anchoredPosition;
-            Vector2 destino = destinoUI.anchoredPosition;
+            float duracion = 2f;
+            float tiempoTranscurrido = 0f;
+            Vector2 posicionInicial = fantasmaUI.anchoredPosition;
+            Vector2 posicionDestino = destinoUI.anchoredPosition;
 
-            while (gecenSure < sure)
+
+            while (tiempoTranscurrido < duracion)
             {
-                gecenSure += Time.deltaTime;
-                fantasmaUI.anchoredPosition = Vector2.Lerp(baslangic, destino, gecenSure / sure);
+                tiempoTranscurrido += Time.deltaTime;
+                fantasmaUI.anchoredPosition = Vector2.Lerp(posicionInicial, posicionDestino, tiempoTranscurrido / duracion);
                 yield return null;
             }
 
