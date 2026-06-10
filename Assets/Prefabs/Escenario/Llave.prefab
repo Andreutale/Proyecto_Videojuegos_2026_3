@@ -4899,11 +4899,15 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: dc001c9a7fbdd3c4d83a11cb75e03cd1, type: 2}
     - target: {fileID: 919132149155446097, guid: 47cf3829b7c6b4c4099c2de01597046d, type: 3}
       propertyPath: m_Name
-      value: LlaveCocina
+      value: Llave
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 47cf3829b7c6b4c4099c2de01597046d, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 47cf3829b7c6b4c4099c2de01597046d, type: 3}
+      propertyPath: m_TagString
+      value: Llave
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

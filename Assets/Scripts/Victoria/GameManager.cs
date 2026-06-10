@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        llavesTotales = GameObject.FindGameObjectsWithTag("Llave").Length;
+        llavesRecogidas = 0;
+
         if (panelDerrota != null)
             panelDerrota.SetActive(false);
 
