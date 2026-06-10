@@ -34,8 +34,6 @@ public class AnimacionPuerta : MonoBehaviour
             Vector2 posicionInicial = fantasmaUI.anchoredPosition;
             Vector2 posicionDestino = destinoUI.anchoredPosition;
 
-            RastroFantasma rastro = fantasmaUI.GetComponent<RastroFantasma>();
-            if (rastro != null) rastro.IniciarRastro();
 
             while (tiempoTranscurrido < duracion)
             {
@@ -43,8 +41,6 @@ public class AnimacionPuerta : MonoBehaviour
                 fantasmaUI.anchoredPosition = Vector2.Lerp(posicionInicial, posicionDestino, tiempoTranscurrido / duracion);
                 yield return null;
             }
-
-            if (rastro != null) rastro.DetenerRastro();
 
             fantasmaUI.gameObject.SetActive(false);
         }
