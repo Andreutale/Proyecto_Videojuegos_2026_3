@@ -4,9 +4,9 @@ using UnityEngine.SceneManagement;
 public class PauseManager : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject configMenu;
     public GameObject pauseButton;
     public Animator pauseAnimator;
-    public GameObject CanvasAjustes;
 
     private bool isPaused = false;
 
@@ -18,6 +18,9 @@ public class PauseManager : MonoBehaviour
 
         pauseMenu.SetActive(true);
         pauseButton.SetActive(false);
+
+        if (configMenu != null)
+            configMenu.SetActive(false);
 
         if (pauseAnimator != null)
         {
@@ -34,29 +37,24 @@ public class PauseManager : MonoBehaviour
         pauseMenu.SetActive(false);
         pauseButton.SetActive(true);
 
+        if (configMenu != null)
+            configMenu.SetActive(false);
+
         Time.timeScale = 1f;
     }
 
-    public void OpenSettings()
+    public void AbrirConfiguracion()
     {
-        Debug.Log("Abriendo ajustes desde: " + gameObject.name);
-
-        if (pauseMenu != null)
-            pauseMenu.SetActive(false);
-
-        if (CanvasAjustes != null)
-            CanvasAjustes.SetActive(true);
-        else
-            Debug.LogError("CanvasAjustes NO asignado en el Inspector");
+        // Ocultamos los botones de pausa y mostramos los de configuración
+        if (pauseMenu != null) pauseMenu.SetActive(false);
+        if (configMenu != null) configMenu.SetActive(true);
     }
 
-    public void CloseSettings()
+    public void CerrarConfiguracion()
     {
-        if (CanvasAjustes != null)
-            CanvasAjustes.SetActive(false);
-
-        if (pauseMenu != null)
-            pauseMenu.SetActive(true);
+        // Ocultamos la configuración y volvemos a mostrar la pausa normal
+        if (configMenu != null) configMenu.SetActive(false);
+        if (pauseMenu != null) pauseMenu.SetActive(true);
     }
 
     public void HidePauseButton()

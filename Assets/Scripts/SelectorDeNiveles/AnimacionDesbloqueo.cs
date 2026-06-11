@@ -30,6 +30,9 @@ public class AnimacionDesbloqueo : MonoBehaviour
     public Color colorParticula1 = new Color(1f, 0.85f, 0.2f, 1f);
     public Color colorParticula2 = new Color(1f, 0.4f, 0.1f, 1f);
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip sonidoDesbloqueo;
+
     private Vector2 posicionOriginal;
     private Vector3 escalaOriginal;
     private bool yaReproducido = false;
@@ -97,6 +100,10 @@ public class AnimacionDesbloqueo : MonoBehaviour
 
     private IEnumerator Sacudir()
     {
+
+        if (sonidoDesbloqueo != null)
+            SFXManager.Instance.PlaySFX(sonidoDesbloqueo, transform, 1f);
+
         float t = 0f;
 
         while (t < duracionSacudida)

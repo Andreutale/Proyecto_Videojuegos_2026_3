@@ -12,6 +12,8 @@ namespace Telekinesis
         [SerializeField] private TelekinesisOutlineController outlineController;
         [SerializeField] private PlayerMovimiento playerMovimiento;
         [SerializeField] private Animator fantasmaAnimator;
+        [SerializeField] private AudioClip aimingSFX;
+        [SerializeField] private AudioClip moveSFX;
 
         [Header("Sistema de Cooldown UI")]
         [SerializeField] private HabilidadCooldown uiCooldown;
@@ -22,6 +24,7 @@ namespace Telekinesis
         private List<MovableObject> nearbyObjects = new List<MovableObject>();
         private float scanRefreshTimer;
         private Transform originalCameraTarget;
+        private AudioSource aimingAudioSource;
 
 
         // -------------------------------------------------- Unity
@@ -142,6 +145,11 @@ namespace Telekinesis
             if (currentTarget == null) return;
 
             currentState = TelekinesisState.Aiming;
+            if (aimingSFX != null)
+            {
+                aimingAudioSource = SFXManager.Instance.PlayLoopingSFX(aimingSFX, transform, 1f);
+            }
+
             outlineController.HideOutlines();
 
             playerMovimiento.enabled = false;
@@ -161,15 +169,17 @@ namespace Telekinesis
         {
             if (currentTarget == null) return;
 
+            SFXManager.Instance.PlaySFX(moveSFX, transform, 1f);
+
             Vector3 direction = GetWorldDirection(inputHandler.LastDirection);
 
-            // 🔹 ocultar flecha
+            // ocultar flecha
             currentTarget.HideArrow();
 
             currentTarget.ApplyForce(direction, config.pushForce);
             Debug.Log("Intentando lanzar animación fantasma");
 
-            // 🔹 activar cooldown
+            // activar cooldown
             if (uiCooldown != null)
                 uiCooldown.IniciarCooldown();
 
@@ -195,6 +205,13 @@ namespace Telekinesis
             camara.SetTarget(originalCameraTarget);
 
             playerMovimiento.enabled = true;
+
+            if (aimingAudioSource != null)
+            {
+                aimingAudioSource.Stop();
+                Destroy(aimingAudioSource.gameObject);
+                aimingAudioSource = null;
+            }
 
             currentTarget = null;
             currentState = TelekinesisState.Idle;
