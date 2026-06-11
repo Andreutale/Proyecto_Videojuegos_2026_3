@@ -13,6 +13,7 @@ namespace Telekinesis
         [SerializeField] private PlayerMovimiento playerMovimiento;
         [SerializeField] private Animator fantasmaAnimator;
         [SerializeField] private AudioClip aimingSFX;
+        [SerializeField] private AudioClip moveSFX;
 
         [Header("Sistema de Cooldown UI")]
         [SerializeField] private HabilidadCooldown uiCooldown;
@@ -168,15 +169,17 @@ namespace Telekinesis
         {
             if (currentTarget == null) return;
 
+            SFXManager.Instance.PlaySFX(moveSFX, transform, 1f);
+
             Vector3 direction = GetWorldDirection(inputHandler.LastDirection);
 
-            // 🔹 ocultar flecha
+            // ocultar flecha
             currentTarget.HideArrow();
 
             currentTarget.ApplyForce(direction, config.pushForce);
             Debug.Log("Intentando lanzar animación fantasma");
 
-            // 🔹 activar cooldown
+            // activar cooldown
             if (uiCooldown != null)
                 uiCooldown.IniciarCooldown();
 
