@@ -6,6 +6,7 @@ public class PauseManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject pauseButton;
     public Animator pauseAnimator;
+    public GameObject CanvasAjustes;
 
     private bool isPaused = false;
 
@@ -34,6 +35,28 @@ public class PauseManager : MonoBehaviour
         pauseButton.SetActive(true);
 
         Time.timeScale = 1f;
+    }
+
+    public void OpenSettings()
+    {
+        Debug.Log("Abriendo ajustes desde: " + gameObject.name);
+
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
+
+        if (CanvasAjustes != null)
+            CanvasAjustes.SetActive(true);
+        else
+            Debug.LogError("CanvasAjustes NO asignado en el Inspector");
+    }
+
+    public void CloseSettings()
+    {
+        if (CanvasAjustes != null)
+            CanvasAjustes.SetActive(false);
+
+        if (pauseMenu != null)
+            pauseMenu.SetActive(true);
     }
 
     public void HidePauseButton()
