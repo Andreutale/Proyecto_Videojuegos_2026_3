@@ -40,10 +40,11 @@ public class GeneradorCono : MonoBehaviour
         // El color final es el mismo que el actual, pero con Alfa a 0 (invisible)
         Color colorFin = new Color(colorActual.r, colorActual.g, colorActual.b, 0f);
 
-        // 0. Vértice central
+        // 0. Vértice central (origen de la cámara)
         vertices.Add(Vector3.zero);
         colores.Add(colorActual);
 
+        // Generar vértices del borde del cono
         for (int i = 0; i < resolucion; i++)
         {
             float progreso = (float)i / resolucion;
@@ -73,10 +74,31 @@ public class GeneradorCono : MonoBehaviour
             }
         }
 
+        // --- CORRECCIÓN APLICADA AQUÍ ---
         int indiceCentroTapa = vertices.Count;
-        vertices.Add(new Vector3(0, 0, distanciaVision));
-        colores.Add(colorFin);
 
+        // Definimos dónde debería ir el centro idealmente
+        Vector3 centroTapaIdeal = new Vector3(0, 0, distanciaVision);
+        Vector3 centroTapaReal = centroTapaIdeal;
+        Color colorCentroTapa = colorFin;
+
+        // Lanzamos un rayo hacia adelante (centro del cono) para ver si la pared lo frena
+        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hitCentro, distanciaVision, capaObstaculos, QueryTriggerInteraction.Ignore))
+        {
+            // Si choca, acortamos el punto central hasta la pared
+            centroTapaReal = transform.InverseTransformPoint(hitCentro.point);
+
+            // Calculamos el color adecuado según la distancia a la que se ha quedado
+            float porcentajeDistanciaCentro = Mathf.Clamp01(centroTapaReal.z / distanciaVision);
+            colorCentroTapa = Color.Lerp(colorActual, colorFin, porcentajeDistanciaCentro);
+        }
+
+        // Añadimos el vértice corregido
+        vertices.Add(centroTapaReal);
+        colores.Add(colorCentroTapa);
+        // --------------------------------
+
+        // Generar triángulos de las paredes laterales del cono
         for (int i = 1; i <= resolucion; i++)
         {
             int siguiente = (i == resolucion) ? 1 : i + 1;
@@ -85,6 +107,7 @@ public class GeneradorCono : MonoBehaviour
             triangulos.Add(i);
         }
 
+        // Generar triángulos de la tapa frontal (base del cono)
         for (int i = 1; i <= resolucion; i++)
         {
             int siguiente = (i == resolucion) ? 1 : i + 1;
@@ -93,6 +116,7 @@ public class GeneradorCono : MonoBehaviour
             triangulos.Add(siguiente);
         }
 
+        // Actualizar la malla
         mesh.Clear();
         mesh.vertices = vertices.ToArray();
         mesh.triangles = triangulos.ToArray();
