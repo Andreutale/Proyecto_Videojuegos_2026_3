@@ -13970,6 +13970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCam: {fileID: 952506075}
+  dashSFX: {fileID: 8300000, guid: 84c042bf8c79ab34a9f77094048a4758, type: 3}
   dashForce: 30
   dashDuration: 0.25
   trailDashObject: {fileID: 186926169}

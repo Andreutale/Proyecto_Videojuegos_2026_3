@@ -8,6 +8,9 @@ public class Dash : MonoBehaviour
     private Rigidbody rb;
     private CharacterController controller;
 
+    [Header("Sonido Dash")]
+    public AudioClip dashSFX;
+
     [Header("Ajustes de Dash")]
     public float dashForce = 25f;
     public float dashDuration = 0.25f;
@@ -109,6 +112,7 @@ public class Dash : MonoBehaviour
         if (controller != null)
             controller.enabled = true;
 
+        SFXManager.Instance.PlaySFX(dashSFX, transform, 1f);
         DesactivarTrailDash();
     }
 
