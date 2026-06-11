@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class MovimientoRutaPatrullero : MonoBehaviour
 {
     private enum Estado { Patrullando, Investigando, Persiguiendo, EsperandoYGirando }
@@ -15,43 +16,50 @@ public class MovimientoRutaPatrullero : MonoBehaviour
     public Transform[] puntosDePatrulla;
     public bool patrullaAleatoria = false;
 
-    public float velocidadPatrulla    = 2f;
-    public float tiempoDeEspera       = 1.5f;
-    public float velocidadGiro        = 3f;
+    public float velocidadPatrulla = 2f;
+    public float tiempoDeEspera = 1.5f;
+    public float velocidadGiro = 3f;
 
     [Header("Persecución")]
     public float velocidadPersecucion = 3f;
-    public float tiempoDeteccion      = 5f;
+    public float tiempoDeteccion = 5f;
 
     [Header("Investigación por Ruido")]
-    public float tiempoInvestigacion  = 2.5f;
+    public float tiempoInvestigacion = 2.5f;
 
     private Transform destinoActual;
-    private int   indicePuntoActual     = 0;
-    private bool  estaCambiandoDePunto  = false;
-    private Rigidbody rb;
+    private int indicePuntoActual = 0;
+    private bool estaCambiandoDePunto = false;
+    private NavMeshAgent agente;
 
-    private float timerDeteccion  = 0f;
-    private bool  derrotaActivada = false;
+    private float timerDeteccion = 0f;
+    private bool derrotaActivada = false;
 
     private Coroutine rutinaInvestigacionActual;
     private Coroutine rutinaCambioPuntoActual;
-    private Animator  animator;
+    private Animator animator;
 
     private Vector3 puntoAlerta;
-    private bool    enBusqueda = false;
+    private bool enBusqueda = false;
 
-    void OnEnable()  { AlertaGlobal.OnAlertaGlobal += RecibirAlerta; }
+    void OnEnable() { AlertaGlobal.OnAlertaGlobal += RecibirAlerta; }
     void OnDisable() { AlertaGlobal.OnAlertaGlobal -= RecibirAlerta; }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
+        agente = GetComponent<NavMeshAgent>();
+        agente.speed = velocidadPatrulla;
+        agente.angularSpeed = 120f;
+        agente.acceleration = 8f;
+        agente.stoppingDistance = 0.3f;
+
         animator = GetComponent<Animator>();
 
         if (puntosDePatrulla.Length > 0)
+        {
             destinoActual = puntosDePatrulla[0];
+            agente.SetDestination(destinoActual.position);
+        }
 
         if (ojos == null)
             ojos = GetComponent<OjosPatrullero>();
@@ -61,7 +69,7 @@ public class MovimientoRutaPatrullero : MonoBehaviour
     {
         if (derrotaActivada)
         {
-            DetenerMovimientoHorizontal();
+            agente.isStopped = true;
             return;
         }
 
@@ -69,12 +77,11 @@ public class MovimientoRutaPatrullero : MonoBehaviour
 
         if (veAlJugador)
         {
-            // Cancela cualquier rutina activa al ver al jugador
             if (rutinaCambioPuntoActual != null)
             {
                 StopCoroutine(rutinaCambioPuntoActual);
                 rutinaCambioPuntoActual = null;
-                estaCambiandoDePunto    = false;
+                estaCambiandoDePunto = false;
             }
             if (rutinaInvestigacionActual != null)
             {
@@ -83,7 +90,7 @@ public class MovimientoRutaPatrullero : MonoBehaviour
             }
 
             estadoActual = Estado.Persiguiendo;
-            enBusqueda   = false;
+            enBusqueda = false;
 
             timerDeteccion += Time.deltaTime;
             if (DetectionHUD.Instance != null)
@@ -101,7 +108,10 @@ public class MovimientoRutaPatrullero : MonoBehaviour
             {
                 estadoActual = Estado.Patrullando;
                 if (puntosDePatrulla.Length > 0)
+                {
                     destinoActual = puntosDePatrulla[indicePuntoActual];
+                    agente.SetDestination(destinoActual.position);
+                }
             }
 
             timerDeteccion = 0f;
@@ -111,54 +121,31 @@ public class MovimientoRutaPatrullero : MonoBehaviour
 
         switch (estadoActual)
         {
-            case Estado.Patrullando:        MoverHaciaDestino();           break;
-            case Estado.Investigando:                                       break;
-            case Estado.Persiguiendo:       PerseguirJugador();            break;
-            case Estado.EsperandoYGirando:  DetenerMovimientoHorizontal(); break;
+            case Estado.Patrullando: MoverHaciaDestino(); break;
+            case Estado.Investigando: break;
+            case Estado.Persiguiendo: PerseguirJugador(); break;
+            case Estado.EsperandoYGirando: agente.isStopped = true; break;
         }
 
         if (animator != null)
         {
-            float velocidadHorizontal = new Vector3(rb.linearVelocity.x, 0, rb.linearVelocity.z).magnitude;
+            float velocidadHorizontal = new Vector3(agente.velocity.x, 0, agente.velocity.z).magnitude;
             animator.SetFloat("velocidad", velocidadHorizontal);
         }
     }
-
-    // -------------------------------------------------- MOVIMIENTO
-
-    private void AplicarVelocidadHacia(Vector3 destino, float velocidad)
-    {
-        Vector3 posPlana      = new Vector3(rb.position.x, 0, rb.position.z);
-        Vector3 destinoPlano  = new Vector3(destino.x, 0, destino.z);
-        Vector3 direccion     = (destinoPlano - posPlana).normalized;
-
-        rb.linearVelocity = new Vector3(direccion.x * velocidad, rb.linearVelocity.y, direccion.z * velocidad);
-    }
-
-    private void DetenerMovimientoHorizontal()
-    {
-        rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
-    }
-
-    // -------------------------------------------------- ESTADOS
 
     void MoverHaciaDestino()
     {
         if (destinoActual == null || puntosDePatrulla.Length == 0) return;
         if (estaCambiandoDePunto) return;
 
-        Vector3 posPlana     = new Vector3(rb.position.x, 0, rb.position.z);
-        Vector3 destinoPlano = new Vector3(destinoActual.position.x, 0, destinoActual.position.z);
+        agente.isStopped = false;
+        agente.speed = velocidadPatrulla;
 
-        if (Vector3.Distance(posPlana, destinoPlano) > 0.3f)
+        if (!agente.pathPending && agente.remainingDistance <= agente.stoppingDistance)
         {
-            AplicarVelocidadHacia(destinoPlano, velocidadPatrulla);
-            GirarHacia(destinoPlano);
-        }
-        else
-        {
-            DetenerMovimientoHorizontal();
-            estaCambiandoDePunto    = true;
+            agente.isStopped = true;
+            estaCambiandoDePunto = true;
             rutinaCambioPuntoActual = StartCoroutine(SecuenciaCambioDePunto());
         }
     }
@@ -166,11 +153,10 @@ public class MovimientoRutaPatrullero : MonoBehaviour
     IEnumerator SecuenciaCambioDePunto()
     {
         estadoActual = Estado.EsperandoYGirando;
-        DetenerMovimientoHorizontal();
+        agente.isStopped = true;
 
         yield return new WaitForSeconds(tiempoDeEspera);
 
-        // Calcular siguiente punto
         if (puntosDePatrulla.Length > 1)
         {
             if (patrullaAleatoria)
@@ -187,64 +173,34 @@ public class MovimientoRutaPatrullero : MonoBehaviour
         }
 
         destinoActual = puntosDePatrulla[indicePuntoActual];
+        agente.SetDestination(destinoActual.position);
+        agente.isStopped = false;
 
-        // Girar hacia el nuevo destino
-        Vector3 destinoPlano = new Vector3(destinoActual.position.x, 0, destinoActual.position.z);
-        float   angulo       = Quaternion.Angle(transform.rotation, Quaternion.LookRotation(destinoPlano - rb.position));
-
-        while (angulo > 2f)
-        {
-            Vector3 direccion = destinoPlano - new Vector3(rb.position.x, 0, rb.position.z);
-
-            if (direccion.sqrMagnitude > 0.01f)
-            {
-                Quaternion rotacionDeseada = Quaternion.LookRotation(direccion);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotacionDeseada, velocidadGiro * Time.deltaTime);
-                angulo             = Quaternion.Angle(transform.rotation, rotacionDeseada);
-            }
-            else
-            {
-                break;
-            }
-
-            yield return null;
-        }
-
-        estadoActual            = Estado.Patrullando;
-        estaCambiandoDePunto    = false;
+        estadoActual = Estado.Patrullando;
+        estaCambiandoDePunto = false;
         rutinaCambioPuntoActual = null;
     }
 
     void PerseguirJugador()
     {
-        Vector3 destino      = enBusqueda ? puntoAlerta : jugador.position;
-        Vector3 posPlana     = new Vector3(rb.position.x, 0, rb.position.z);
-        Vector3 destinoPlano = new Vector3(destino.x, 0, destino.z);
+        Vector3 destino = enBusqueda ? puntoAlerta : jugador.position;
+        agente.isStopped = false;
+        agente.speed = velocidadPersecucion;
+        agente.SetDestination(destino);
 
-        AplicarVelocidadHacia(destino, velocidadPersecucion);
-        GirarHacia(destino);
+        Vector3 posPlana = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 destinoPlano = new Vector3(destino.x, 0, destino.z);
 
         if (enBusqueda && Vector3.Distance(posPlana, destinoPlano) < 0.5f)
         {
-            enBusqueda   = false;
+            enBusqueda = false;
             estadoActual = Estado.Patrullando;
 
             if (puntosDePatrulla.Length > 0)
+            {
                 destinoActual = puntosDePatrulla[indicePuntoActual];
-
-            Debug.Log(gameObject.name + " llegó al punto de alerta y vuelve a patrullar.");
-        }
-    }
-
-    void GirarHacia(Vector3 objetivo)
-    {
-        Vector3 direccion = objetivo - transform.position;
-        direccion.y = 0f;
-
-        if (direccion.magnitude > 0.01f)
-        {
-            Quaternion rotacion = Quaternion.LookRotation(direccion);
-            transform.rotation  = Quaternion.Slerp(transform.rotation, rotacion, velocidadGiro * Time.deltaTime);
+                agente.SetDestination(destinoActual.position);
+            }
         }
     }
 
@@ -255,37 +211,38 @@ public class MovimientoRutaPatrullero : MonoBehaviour
         if (rutinaInvestigacionActual != null)
             StopCoroutine(rutinaInvestigacionActual);
 
-        estaCambiandoDePunto      = false;
+        estaCambiandoDePunto = false;
         rutinaInvestigacionActual = StartCoroutine(IrAInvestigar(posicionInteraccion));
     }
 
     IEnumerator IrAInvestigar(Vector3 punto)
     {
         estadoActual = Estado.Investigando;
-        Vector3 puntoPlano = new Vector3(punto.x, 0, punto.z);
+        agente.isStopped = false;
+        agente.speed = velocidadPatrulla;
+        agente.SetDestination(punto);
 
-        while (Vector3.Distance(new Vector3(rb.position.x, 0, rb.position.z), puntoPlano) > 0.3f)
-        {
-            AplicarVelocidadHacia(punto, velocidadPatrulla);
-            GirarHacia(punto);
+        while (agente.remainingDistance > 0.3f || agente.pathPending)
             yield return null;
-        }
 
-        DetenerMovimientoHorizontal();
+        agente.isStopped = true;
         yield return new WaitForSeconds(tiempoInvestigacion);
 
         rutinaInvestigacionActual = null;
-        estadoActual              = Estado.Patrullando;
+        estadoActual = Estado.Patrullando;
 
         if (puntosDePatrulla.Length > 0)
+        {
             destinoActual = puntosDePatrulla[indicePuntoActual];
+            agente.SetDestination(destinoActual.position);
+        }
     }
 
     void RecibirAlerta(Vector3 punto)
     {
-        puntoAlerta          = punto;
-        enBusqueda           = true;
-        estadoActual         = Estado.Persiguiendo;
+        puntoAlerta = punto;
+        enBusqueda = true;
+        estadoActual = Estado.Persiguiendo;
         estaCambiandoDePunto = false;
 
         if (rutinaInvestigacionActual != null)
@@ -299,5 +256,9 @@ public class MovimientoRutaPatrullero : MonoBehaviour
             StopCoroutine(rutinaCambioPuntoActual);
             rutinaCambioPuntoActual = null;
         }
+
+        agente.isStopped = false;
+        agente.speed = velocidadPersecucion;
+        agente.SetDestination(puntoAlerta);
     }
 }
