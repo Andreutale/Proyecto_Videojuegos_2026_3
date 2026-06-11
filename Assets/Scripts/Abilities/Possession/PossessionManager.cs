@@ -16,7 +16,7 @@ namespace Possession
         [SerializeField] private GameObject playerModel;
         [SerializeField] private float possessionDuration = 5f;
         [SerializeField] private AudioClip possessionSFX;
-        //[SerializeField] private AudioClip depossessionSFX;
+        [SerializeField] private AudioClip depossessionSFX;
 
         [Header("Sistema de Cooldown UI")]
         [SerializeField] private HabilidadCooldown uiCooldown;
@@ -231,6 +231,8 @@ namespace Possession
             {
                 uiCooldown.IniciarCooldown();
             }
+
+            SFXManager.Instance.PlaySFX(depossessionSFX, playerTransform, 1f);
 
             Debug.Log("[Possession] Jugador expulsado del objeto.");
         }

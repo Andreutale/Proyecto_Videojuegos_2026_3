@@ -5991,7 +5991,8 @@ MonoBehaviour:
   playerController: {fileID: 1639417672}
   playerModel: {fileID: 1765629979}
   possessionDuration: 10
-  possessionSFX: {fileID: 8300000, guid: 824a6a4228c2e5d468b8d181fe175cee, type: 3}
+  possessionSFX: {fileID: 8300000, guid: d0e81a06a893cf34285821bbf72c247c, type: 3}
+  depossessionSFX: {fileID: 8300000, guid: 2d6344f7fad79bb4b8833a55c4ee6046, type: 3}
   uiCooldown: {fileID: 322296178}
 --- !u!1 &801934726
 GameObject:
@@ -15542,7 +15543,8 @@ MonoBehaviour:
   playerController: {fileID: 1639417672}
   playerModel: {fileID: 1628989492}
   possessionDuration: 5
-  possessionSFX: {fileID: 8300000, guid: 824a6a4228c2e5d468b8d181fe175cee, type: 3}
+  possessionSFX: {fileID: 8300000, guid: d0e81a06a893cf34285821bbf72c247c, type: 3}
+  depossessionSFX: {fileID: 8300000, guid: 2d6344f7fad79bb4b8833a55c4ee6046, type: 3}
   uiCooldown: {fileID: 322296178}
 --- !u!1001 &1765927052
 PrefabInstance:
