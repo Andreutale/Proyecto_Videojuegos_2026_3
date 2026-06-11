@@ -17,6 +17,8 @@ public class BotonPiso : MonoBehaviour
 
     public AnimacionPuerta animacionPuerta;
 
+    [SerializeField] private AudioClip sonidoClic;
+
     private Color colorEncendida = Color.white;
     private Color colorApagada = new Color(0.3f, 0.3f, 0.3f, 0.5f);
 
@@ -35,8 +37,7 @@ public class BotonPiso : MonoBehaviour
             Button btn = GetComponentInChildren<Button>();
             if (btn != null) btn.interactable = false;
         }
-
-else
+        else
         {
             AnimacionDesbloqueo anim = GetComponent<AnimacionDesbloqueo>();
             if (anim == null)
@@ -65,6 +66,9 @@ else
     {
         if (!estaBloqueado)
         {
+            if (sonidoClic != null)
+                SFXManager.Instance.PlaySFX(sonidoClic, transform, 1f);
+
             if (animacionPuerta != null)
                 animacionPuerta.EntrarPuerta();
             else
