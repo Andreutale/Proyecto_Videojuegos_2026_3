@@ -10273,6 +10273,10 @@ PrefabInstance:
       propertyPath: animatorPuerta
       value: 
       objectReference: {fileID: 964862541}
+    - target: {fileID: 5724452370588161421, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
+      propertyPath: nombreAnimacion
+      value: AbrirPuerta_Nivel1
+      objectReference: {fileID: 0}
     - target: {fileID: 7215351406882309439, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0
@@ -15131,6 +15135,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c5d68f5f3e9e3274497c6a5e2927390c, type: 3}
   m_PrefabInstance: {fileID: 1713113057}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1254852085
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1254852086}
+  - component: {fileID: 1254852087}
+  m_Layer: 0
+  m_Name: SFXManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1254852086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254852085}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2041956682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1254852087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254852085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f43cab7cf8e5124ba95e7e206519865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXObject: {fileID: 1308174721}
 --- !u!1001 &1256026421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15982,6 +16031,73 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 299426724066996155, guid: 122cb4164c3b09241b1863aa3a8c5f8e, type: 3}
+--- !u!1001 &1308174720
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2041956682}
+    m_Modifications:
+    - target: {fileID: 1373345392640536190, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_Name
+      value: SFXObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+--- !u!82 &1308174721 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1869826578086107587, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+  m_PrefabInstance: {fileID: 1308174720}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1308174722 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4825994653507839116, guid: 8d25ec7104a298d4a83c9119b98c82ea, type: 3}
+  m_PrefabInstance: {fileID: 1308174720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1316090227 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3780348248182164018, guid: 772bcb8039c8d62489c7b1de889ec7a4, type: 3}
@@ -21508,6 +21624,7 @@ MonoBehaviour:
   outlineController: {fileID: 1764713947}
   playerMovimiento: {fileID: 1639417671}
   fantasmaAnimator: {fileID: 0}
+  telekinesisSFX: {fileID: 0}
   uiCooldown: {fileID: 1073159616}
 --- !u!114 &1764713949
 MonoBehaviour:
@@ -21620,6 +21737,7 @@ MonoBehaviour:
   outlineController: {fileID: 1764713947}
   playerMovimiento: {fileID: 1639417671}
   fantasmaAnimator: {fileID: 1961114609}
+  telekinesisSFX: {fileID: 0}
   uiCooldown: {fileID: 1073159616}
 --- !u!114 &1765629984
 MonoBehaviour:
@@ -21673,8 +21791,8 @@ MonoBehaviour:
   playerController: {fileID: 1639417672}
   playerModel: {fileID: 1628989492}
   possessionDuration: 5
-  possessionSFX: {fileID: 0}
-  depossessionSFX: {fileID: 0}
+  possessionSFX: {fileID: 8300000, guid: d0e81a06a893cf34285821bbf72c247c, type: 3}
+  depossessionSFX: {fileID: 8300000, guid: 2d6344f7fad79bb4b8833a55c4ee6046, type: 3}
   uiCooldown: {fileID: 322296178}
 --- !u!1 &1771167697 stripped
 GameObject:
@@ -25287,6 +25405,8 @@ Transform:
   - {fileID: 1887190129}
   - {fileID: 1795981074}
   - {fileID: 565580876}
+  - {fileID: 1308174722}
+  - {fileID: 1254852086}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2059102933 stripped
