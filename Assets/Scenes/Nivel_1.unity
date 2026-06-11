@@ -5465,7 +5465,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 701722322}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
@@ -6373,7 +6373,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 842448177}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
@@ -6720,7 +6720,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.1
+  m_VoxelSize: 0.26666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 52ac61351866ab94b803c82bf18b43ce, type: 2}
   m_BuildHeightMesh: 0
@@ -11024,7 +11024,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1316090227}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
@@ -14295,7 +14295,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.1
+  m_VoxelSize: 0.26666668
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
@@ -14795,7 +14795,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1686480833}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
