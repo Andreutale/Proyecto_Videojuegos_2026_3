@@ -15496,6 +15496,7 @@ MonoBehaviour:
   outlineController: {fileID: 1764713947}
   playerMovimiento: {fileID: 1639417671}
   fantasmaAnimator: {fileID: 0}
+  telekinesisSFX: {fileID: 8300000, guid: 48ca5cb2ec224f54a9593dfaaa8601c9, type: 3}
   uiCooldown: {fileID: 1073159616}
 --- !u!114 &1764713949
 MonoBehaviour:
@@ -15608,6 +15609,7 @@ MonoBehaviour:
   outlineController: {fileID: 1764713947}
   playerMovimiento: {fileID: 1639417671}
   fantasmaAnimator: {fileID: 1961114609}
+  telekinesisSFX: {fileID: 8300000, guid: 48ca5cb2ec224f54a9593dfaaa8601c9, type: 3}
   uiCooldown: {fileID: 1073159616}
 --- !u!114 &1765629984
 MonoBehaviour:

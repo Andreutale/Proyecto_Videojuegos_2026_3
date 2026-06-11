@@ -12,6 +12,7 @@ namespace Telekinesis
         [SerializeField] private TelekinesisOutlineController outlineController;
         [SerializeField] private PlayerMovimiento playerMovimiento;
         [SerializeField] private Animator fantasmaAnimator;
+        [SerializeField] private AudioClip telekinesisSFX;
 
         [Header("Sistema de Cooldown UI")]
         [SerializeField] private HabilidadCooldown uiCooldown;
@@ -45,14 +46,14 @@ namespace Telekinesis
 
         private void Update()
         {
-            // 🔹 ACTUALIZAR FLECHA EN TIEMPO REAL (del Script 2)
+            // ACTUALIZAR FLECHA EN TIEMPO REAL (del Script 2)
             if (currentState == TelekinesisState.Aiming && currentTarget != null)
             {
                 Vector3 direction = GetWorldDirection(inputHandler.LastDirection);
                 currentTarget.UpdateArrow(direction);
             }
 
-            // 🔹 ESCANEO (de ambos scripts)
+            // ESCANEO (de ambos scripts)
             if (currentState != TelekinesisState.Scanning) return;
 
             scanRefreshTimer += Time.deltaTime;
@@ -92,14 +93,14 @@ namespace Telekinesis
 
         private void HandleActionInput()
         {
-            // 🔹 BLOQUEO POR COOLDOWN
+            // BLOQUEO POR COOLDOWN
             if (uiCooldown != null && uiCooldown.EstaEnEnfriamiento)
             {
                 Debug.Log("[Telekinesis] En cooldown.");
                 return;
             }
 
-            // 🔹 BLOQUEO POR OTRA HABILIDAD
+            // BLOQUEO POR OTRA HABILIDAD
             if (!AbilityManager.Instance.CanUseAbility(this)) return;
 
             switch (currentState)
@@ -141,6 +142,8 @@ namespace Telekinesis
         {
             if (currentTarget == null) return;
 
+            SFXManager.Instance.PlaySFX(telekinesisSFX, transform, 1f);
+
             currentState = TelekinesisState.Aiming;
             outlineController.HideOutlines();
 
@@ -149,7 +152,7 @@ namespace Telekinesis
             originalCameraTarget = playerTransform;
             camara.SetTarget(currentTarget.transform);
 
-            // 🔹 Mostrar flecha (Script 2)
+            // Mostrar flecha (Script 2)
             Vector3 initialDirection = GetWorldDirection(inputHandler.LastDirection);
             currentTarget.ShowArrow(initialDirection);
 
