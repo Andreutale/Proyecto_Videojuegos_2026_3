@@ -5,6 +5,7 @@ public class PlayerMovimiento : MonoBehaviour
     [Header("Referencias")]
     [SerializeField] private Transform camara;
     private CharacterController controlador;
+    private Dash scriptDash;
 
     [Header("Movimiento")]
     [Tooltip("Velocidad base del jugador. Ahora es igual a la antigua velocidad de correr.")]
@@ -28,6 +29,7 @@ public class PlayerMovimiento : MonoBehaviour
     private void Awake()
     {
         controlador = GetComponent<CharacterController>();
+        scriptDash = GetComponent<Dash>();
 
         if (camara == null && Camera.main != null)
         {
@@ -38,6 +40,9 @@ public class PlayerMovimiento : MonoBehaviour
     void Update()
     {
         if (!enabled) return;
+
+        if (scriptDash != null && scriptDash.IsDashing) return;
+
         MoverJugadorEnPlano();
         AplicarGravedad();
     }

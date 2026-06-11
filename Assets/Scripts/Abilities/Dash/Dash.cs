@@ -5,14 +5,13 @@ public class Dash : MonoBehaviour
 {
     [Header("Referencias")]
     public Transform playerCam;
-    private Rigidbody rb;
     private CharacterController controller;
 
     [Header("Sonido Dash")]
     public AudioClip dashSFX;
 
     [Header("Ajustes de Dash")]
-    public float dashForce = 25f;
+    public float dashForce = 25f; // Ahora actúa como "Velocidad del Dash"
     public float dashDuration = 0.25f;
 
     [Header("Trail Dash")]
@@ -27,6 +26,7 @@ public class Dash : MonoBehaviour
     [Header("Luz Dash")]
     [SerializeField] private Light luzDash;
 
+    // Variables de respaldo estéticas
     private Color colorLuzNormal;
     private float intensidadNormal;
     private float rangeNormal;
@@ -36,27 +36,21 @@ public class Dash : MonoBehaviour
     private float psSizeNormal;
     private float psRateNormal;
 
+    // NUEVO: Control de estado del dash
+    private bool estaDaseando = false;
+
     void Start()
     {
         if (playerCam == null)
             playerCam = Camera.main.transform;
 
-        rb = GetComponent<Rigidbody>();
+        // Ya NO buscamos ni inicializamos el Rigidbody
         controller = GetComponent<CharacterController>();
 
-        if (rb != null)
-        {
-            rb.useGravity = false;
-            rb.isKinematic = true;
-            rb.interpolation = RigidbodyInterpolation.Interpolate;
-            rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-            rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
-        }
-
+        // Respaldo de partículas
         if (psIdle != null)
         {
             var main = psIdle.main;
-
             psColorNormal = main.startColor.color;
             psSpeedNormal = main.startSpeed.constant;
             psSizeNormal = main.startSize.constant;
@@ -78,64 +72,64 @@ public class Dash : MonoBehaviour
         }
     }
 
+    // Propiedad pública para que PlayerMovimiento sepa si estamos en mitad de un dash
+    public bool IsDashing => estaDaseando;
+
     public void ExecuteDash()
     {
-        StartCoroutine(DashRoutine());
+        // Evitamos ejecutar un dash si ya estamos en uno
+        if (!estaDaseando)
+        {
+            StartCoroutine(DashRoutine());
+        }
     }
 
     private IEnumerator DashRoutine()
     {
+        estaDaseando = true;
         ActivarTrailDash();
         SFXManager.Instance.PlaySFX(dashSFX, transform, 1f);
 
-        if (controller != null)
-            controller.enabled = false;
-
-        yield return null;
-
-        rb.isKinematic = false;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
-        rb.linearVelocity = Vector3.zero;
-
+        // Conseguimos la dirección exacta del dash basada en los inputs y la cámara
         Vector3 direction = GetDirection();
 
-        rb.AddForce(direction * dashForce, ForceMode.Impulse);
+        // NUEVO: Forzar la rotación instantánea del jugador hacia donde va a dasear
+        if (direction != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(direction);
+        }
 
-        yield return new WaitForSeconds(dashDuration);
+        float tiempoTranscurrido = 0f;
 
-        rb.linearVelocity = Vector3.zero;
+        // Bucle que moverá al jugador frame a frame de manera cinemática
+        while (tiempoTranscurrido < dashDuration)
+        {
+            // Calculamos el desplazamiento de este frame: Dirección * Velocidad * DeltaTime
+            Vector3 desplazamientoDash = direction * (dashForce * Time.deltaTime);
 
-        rb.isKinematic = true;
-        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePosition;
+            // Movemos mediante el CharacterController para respetar colisiones
+            if (controller != null && controller.enabled)
+            {
+                controller.Move(desplazamientoDash);
+            }
 
-        yield return new WaitForFixedUpdate();
-
-        if (controller != null)
-            controller.enabled = true;
+            tiempoTranscurrido += Time.deltaTime;
+            yield return null; // Espera al siguiente frame (Update)
+        }
 
         DesactivarTrailDash();
+        estaDaseando = false;
     }
 
     private void ActivarTrailDash()
     {
-        if (animator != null)
-        {
-            animator.SetTrigger("Dash");
-        }
-
-        if (trailDashObject != null)
-        {
-            trailDashObject.SetActive(true);
-        }
+        if (animator != null) animator.SetTrigger("Dash");
+        if (trailDashObject != null) trailDashObject.SetActive(true);
 
         if (psIdle != null)
         {
             var main = psIdle.main;
-
-            main.startColor = new ParticleSystem.MinMaxGradient(
-                new Color(1f, 0.85f, 0f, 1f)
-            );
-
+            main.startColor = new ParticleSystem.MinMaxGradient(new Color(1f, 0.85f, 0f, 1f));
             main.startSpeed = 2.5f;
             main.startSize = 0.08f;
 
@@ -148,24 +142,18 @@ public class Dash : MonoBehaviour
         if (luzDash != null)
         {
             luzDash.color = new Color(1f, 0.95f, 0.15f, 1f);
-
             luzDash.intensity = 5f;
-
             luzDash.range = 2.5f;
         }
     }
 
     private void DesactivarTrailDash()
     {
-        if (trailDashObject != null)
-        {
-            trailDashObject.SetActive(false);
-        }
+        if (trailDashObject != null) trailDashObject.SetActive(false);
 
         if (psIdle != null)
         {
             var main = psIdle.main;
-
             main.startColor = new ParticleSystem.MinMaxGradient(psColorNormal);
             main.startSpeed = psSpeedNormal;
             main.startSize = psSizeNormal;
@@ -179,9 +167,7 @@ public class Dash : MonoBehaviour
         if (luzDash != null)
         {
             luzDash.color = colorLuzNormal;
-
             luzDash.intensity = intensidadNormal;
-
             luzDash.range = rangeNormal;
         }
     }
