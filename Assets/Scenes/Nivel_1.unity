@@ -15492,6 +15492,7 @@ MonoBehaviour:
   playerMovimiento: {fileID: 1639417671}
   fantasmaAnimator: {fileID: 0}
   aimingSFX: {fileID: 8300000, guid: 48ca5cb2ec224f54a9593dfaaa8601c9, type: 3}
+  moveSFX: {fileID: 8300000, guid: f55d9a72cee01364ea0211738f14212a, type: 3}
   uiCooldown: {fileID: 1073159616}
 --- !u!114 &1764713949
 MonoBehaviour:
@@ -15605,6 +15606,7 @@ MonoBehaviour:
   playerMovimiento: {fileID: 1639417671}
   fantasmaAnimator: {fileID: 1961114609}
   aimingSFX: {fileID: 8300000, guid: 48ca5cb2ec224f54a9593dfaaa8601c9, type: 3}
+  moveSFX: {fileID: 8300000, guid: f55d9a72cee01364ea0211738f14212a, type: 3}
   uiCooldown: {fileID: 1073159616}
 --- !u!114 &1765629984
 MonoBehaviour:
