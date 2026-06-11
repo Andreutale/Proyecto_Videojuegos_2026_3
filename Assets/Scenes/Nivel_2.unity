@@ -9406,9 +9406,9 @@ MonoBehaviour:
   - {fileID: 1601172719}
   - {fileID: 1117086104}
   patrullaAleatoria: 0
-  velocidadPatrulla: 4
-  tiempoDeEspera: 1
-  velocidadGiro: 5
+  velocidadPatrulla: 3
+  tiempoDeEspera: 1.5
+  velocidadGiro: 3
   velocidadPersecucion: 5
   tiempoDeteccion: 5
   tiempoInvestigacion: 1.5
@@ -9467,16 +9467,16 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &705573607
@@ -11434,6 +11434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 913108970}
+  - component: {fileID: 913108971}
   m_Layer: 0
   m_Name: Escenario
   m_TagString: Untagged
@@ -11459,6 +11460,38 @@ Transform:
   - {fileID: 224545730}
   m_Father: {fileID: 69060237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &913108971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 913108969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 16375
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.1
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 489c13b55856dc845b476e132f3e8a49, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1 &926180053 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
@@ -16066,7 +16099,7 @@ MonoBehaviour:
   - {fileID: 1990077592}
   - {fileID: 1921329788}
   patrullaAleatoria: 1
-  velocidadPatrulla: 4
+  velocidadPatrulla: 3
   tiempoDeEspera: 1.5
   velocidadGiro: 3
   velocidadPersecucion: 5
@@ -16104,16 +16137,16 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1322610945 stripped
@@ -19696,6 +19729,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 7939224145801796309, guid: b8abc7ebd71d721438c9bf88b0c2f1ec, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8965382013182309364, guid: b8abc7ebd71d721438c9bf88b0c2f1ec, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.00033333333
@@ -20602,16 +20639,16 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!1 &1702220040
@@ -21508,6 +21545,7 @@ MonoBehaviour:
   outlineController: {fileID: 1764713947}
   playerMovimiento: {fileID: 1639417671}
   fantasmaAnimator: {fileID: 0}
+  telekinesisSFX: {fileID: 0}
   uiCooldown: {fileID: 1073159616}
 --- !u!114 &1764713949
 MonoBehaviour:
@@ -21620,6 +21658,7 @@ MonoBehaviour:
   outlineController: {fileID: 1764713947}
   playerMovimiento: {fileID: 1639417671}
   fantasmaAnimator: {fileID: 1961114609}
+  telekinesisSFX: {fileID: 0}
   uiCooldown: {fileID: 1073159616}
 --- !u!114 &1765629984
 MonoBehaviour:
@@ -22151,7 +22190,7 @@ GameObject:
   - component: {fileID: 1817922731}
   - component: {fileID: 1817922730}
   - component: {fileID: 1817922729}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: vOID
   m_TagString: Untagged
   m_Icon: {fileID: 0}
