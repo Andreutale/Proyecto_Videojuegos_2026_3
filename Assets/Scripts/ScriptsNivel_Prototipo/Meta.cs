@@ -68,7 +68,7 @@ public class Meta : MonoBehaviour
         // Si el jugador está cerca, pulsa E, y AÚN NO ha llegado a la meta
         if (jugadorCerca && !metaAlcanzada && Input.GetKeyDown(KeyCode.E))
         {
-            if (KeyCounterUI.Instance != null && KeyCounterUI.Instance.HasAllKeys())
+            if (GameManager.Instance != null && GameManager.Instance.llavesRecogidas >= GameManager.Instance.llavesTotales)
             {
                 StartCoroutine(RutinaMeta());
             }
@@ -92,7 +92,7 @@ public class Meta : MonoBehaviour
             {
                 mensajeUI.SetActive(true);
 
-                if (KeyCounterUI.Instance != null && KeyCounterUI.Instance.HasAllKeys())
+                if (GameManager.Instance != null && GameManager.Instance.llavesRecogidas >= GameManager.Instance.llavesTotales)
                 {
                     mensajeUI.GetComponent<TextMeshPro>().text = "Pulsa [E] para salir";
                 }
