@@ -86,6 +86,7 @@ public class Dash : MonoBehaviour
     private IEnumerator DashRoutine()
     {
         ActivarTrailDash();
+        SFXManager.Instance.PlaySFX(dashSFX, transform, 1f);
 
         if (controller != null)
             controller.enabled = false;
@@ -112,7 +113,6 @@ public class Dash : MonoBehaviour
         if (controller != null)
             controller.enabled = true;
 
-        SFXManager.Instance.PlaySFX(dashSFX, transform, 1f);
         DesactivarTrailDash();
     }
 

@@ -34,4 +34,21 @@ public class SFXManager : MonoBehaviour
         //Destruir el gameObject después de reproducirse
         Destroy(audioSource.gameObject, clipLength);
     }
+
+    public AudioSource PlayLoopingSFX(AudioClip audioClip, Transform spawnTransform, float volume)
+    {
+        AudioSource audioSource = Instantiate(
+            SFXObject,
+            spawnTransform.position,
+            Quaternion.identity
+        );
+    
+        audioSource.clip = audioClip;
+        audioSource.volume = volume;
+        audioSource.loop = true;
+    
+        audioSource.Play();
+    
+        return audioSource;
+    }
 }
