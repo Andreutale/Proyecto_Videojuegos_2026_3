@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class BotonPiso : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class BotonPiso : MonoBehaviour
     public AnimacionPuerta animacionPuerta;
 
     [SerializeField] private AudioClip sonidoClic;
+    [SerializeField] private GameObject panelMensaje;
 
     private Color colorEncendida = Color.white;
     private Color colorApagada = new Color(0.3f, 0.3f, 0.3f, 0.5f);
@@ -28,7 +30,12 @@ public class BotonPiso : MonoBehaviour
             estaBloqueado = PlayerPrefs.GetInt("Nivel_1_Completado", 0) == 0;
 
         if (indicePiso == 1)
-            estaBloqueado = PlayerPrefs.GetInt("Nuevo_Modelo_Habitacion_Completado", 0) == 0;
+        {
+            int estrellasNivel1 = PlayerPrefs.GetInt("Nivel_1_Estrellas", 0);
+            int estrellasNivel2 = PlayerPrefs.GetInt("Nuevo_Modelo_Habitacion_Estrellas", 0);
+            int totalEstrellas = estrellasNivel1 + estrellasNivel2;
+            estaBloqueado = totalEstrellas < 5;
+        }
 
         if (estaBloqueado)
         {
@@ -49,9 +56,7 @@ public class BotonPiso : MonoBehaviour
             int mejorEstrellas = PlayerPrefs.GetInt(nombreNivel + "_Estrellas", 0);
 
             if (mejorEstrellas == 0)
-            {
                 estrellas.SetActive(false);
-            }
             else
             {
                 estrellas.SetActive(true);
@@ -64,7 +69,12 @@ public class BotonPiso : MonoBehaviour
 
     public void AlHacerClic()
     {
-        if (!estaBloqueado)
+        if (estaBloqueado)
+        {
+            if (indicePiso == 1 && panelMensaje != null)
+                StartCoroutine(MostrarMensaje());
+        }
+        else
         {
             if (sonidoClic != null)
                 SFXManager.Instance.PlaySFX(sonidoClic, transform, 1f);
@@ -74,5 +84,12 @@ public class BotonPiso : MonoBehaviour
             else
                 SceneManager.LoadScene(indicePiso);
         }
+    }
+
+    private IEnumerator MostrarMensaje()
+    {
+        panelMensaje.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        panelMensaje.SetActive(false);
     }
 }

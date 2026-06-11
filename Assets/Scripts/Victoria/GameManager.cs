@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
@@ -22,20 +23,16 @@ public class GameManager : MonoBehaviour
 
     [Header("Estrellas")]
     public GestorEstrellas gestorEstrellas;
-    public int cantidadEstrellas = 3; 
+    public int cantidadEstrellas = 3;
 
     private bool nivelTerminado = false;
 
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
         else
-        {
             Destroy(gameObject);
-        }
     }
 
     private void Start()
@@ -70,6 +67,18 @@ public class GameManager : MonoBehaviour
         if (pauseButton != null)
             pauseButton.SetActive(false);
 
+        // Puan hesapla
+        if (TemporizadorGlobal.Instance != null && GestorPuntuacion.Instance != null)
+        {
+            GestorPuntuacion.Instance.CalcularPuntuacionPorTiempo(TemporizadorGlobal.Instance.tiempoTranscurrido);
+
+            int puntos = GestorPuntuacion.Instance.PuntuacionFinal;
+            if (puntos >= 2000) cantidadEstrellas = 3;
+            else if (puntos >= 1500) cantidadEstrellas = 2;
+            else if (puntos >= 1000) cantidadEstrellas = 1;
+            else cantidadEstrellas = 0;
+        }
+
         if (panelVictoria != null)
             panelVictoria.SetActive(true);
 
@@ -97,7 +106,7 @@ public class GameManager : MonoBehaviour
         if (panelDerrota != null)
             panelDerrota.SetActive(true);
 
-        ActualizarTextoLlaves(); 
+        ActualizarTextoLlaves();
 
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
