@@ -8,6 +8,9 @@ public class Meta : MonoBehaviour
     [Tooltip("El texto del Canvas que dice 'Pulsa E'")]
     public GameObject mensajeUI;
 
+    [Header("Audio Puerta")]
+    public AudioSource audioPuerta;
+
 
     [Tooltip("El texto 3D flotante sobre la puerta")]
     public GameObject textoSobrePuerta;
@@ -129,6 +132,10 @@ public class Meta : MonoBehaviour
         if (animatorPuerta != null)
         {
             animatorPuerta.Play(nombreAnimacion);
+        }
+        if (audioPuerta != null)
+        {
+            audioPuerta.Play();
         }
 
         yield return new WaitForSeconds(0.5f);
