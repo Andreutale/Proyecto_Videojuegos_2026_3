@@ -12,7 +12,8 @@ namespace Telekinesis
         [SerializeField] private TelekinesisOutlineController outlineController;
         [SerializeField] private PlayerMovimiento playerMovimiento;
         [SerializeField] private Animator fantasmaAnimator;
-        [SerializeField] private AudioClip telekinesisSFX;
+        [SerializeField] private AudioClip aimingSFX;
+        [SerializeField] private AudioClip moveSFX;
 
         [Header("Sistema de Cooldown UI")]
         [SerializeField] private HabilidadCooldown uiCooldown;
@@ -23,6 +24,7 @@ namespace Telekinesis
         private List<MovableObject> nearbyObjects = new List<MovableObject>();
         private float scanRefreshTimer;
         private Transform originalCameraTarget;
+        private AudioSource aimingAudioSource;
 
 
         // -------------------------------------------------- Unity
@@ -46,14 +48,14 @@ namespace Telekinesis
 
         private void Update()
         {
-            // ACTUALIZAR FLECHA EN TIEMPO REAL (del Script 2)
+            // 🔹 ACTUALIZAR FLECHA EN TIEMPO REAL (del Script 2)
             if (currentState == TelekinesisState.Aiming && currentTarget != null)
             {
                 Vector3 direction = GetWorldDirection(inputHandler.LastDirection);
                 currentTarget.UpdateArrow(direction);
             }
 
-            // ESCANEO (de ambos scripts)
+            // 🔹 ESCANEO (de ambos scripts)
             if (currentState != TelekinesisState.Scanning) return;
 
             scanRefreshTimer += Time.deltaTime;
@@ -93,14 +95,14 @@ namespace Telekinesis
 
         private void HandleActionInput()
         {
-            // BLOQUEO POR COOLDOWN
+            // 🔹 BLOQUEO POR COOLDOWN
             if (uiCooldown != null && uiCooldown.EstaEnEnfriamiento)
             {
                 Debug.Log("[Telekinesis] En cooldown.");
                 return;
             }
 
-            // BLOQUEO POR OTRA HABILIDAD
+            // 🔹 BLOQUEO POR OTRA HABILIDAD
             if (!AbilityManager.Instance.CanUseAbility(this)) return;
 
             switch (currentState)
@@ -142,9 +144,12 @@ namespace Telekinesis
         {
             if (currentTarget == null) return;
 
-            SFXManager.Instance.PlaySFX(telekinesisSFX, transform, 1f);
-
             currentState = TelekinesisState.Aiming;
+            if (aimingSFX != null)
+            {
+                aimingAudioSource = SFXManager.Instance.PlayLoopingSFX(aimingSFX, transform, 1f);
+            }
+
             outlineController.HideOutlines();
 
             playerMovimiento.enabled = false;
@@ -152,7 +157,7 @@ namespace Telekinesis
             originalCameraTarget = playerTransform;
             camara.SetTarget(currentTarget.transform);
 
-            // Mostrar flecha (Script 2)
+            // 🔹 Mostrar flecha (Script 2)
             Vector3 initialDirection = GetWorldDirection(inputHandler.LastDirection);
             currentTarget.ShowArrow(initialDirection);
 
@@ -164,15 +169,17 @@ namespace Telekinesis
         {
             if (currentTarget == null) return;
 
+            SFXManager.Instance.PlaySFX(moveSFX, transform, 1f);
+
             Vector3 direction = GetWorldDirection(inputHandler.LastDirection);
 
-            // 🔹 ocultar flecha
+            // ocultar flecha
             currentTarget.HideArrow();
 
             currentTarget.ApplyForce(direction, config.pushForce);
             Debug.Log("Intentando lanzar animación fantasma");
 
-            // 🔹 activar cooldown
+            // activar cooldown
             if (uiCooldown != null)
                 uiCooldown.IniciarCooldown();
 
@@ -198,6 +205,13 @@ namespace Telekinesis
             camara.SetTarget(originalCameraTarget);
 
             playerMovimiento.enabled = true;
+
+            if (aimingAudioSource != null)
+            {
+                aimingAudioSource.Stop();
+                Destroy(aimingAudioSource.gameObject);
+                aimingAudioSource = null;
+            }
 
             currentTarget = null;
             currentState = TelekinesisState.Idle;
