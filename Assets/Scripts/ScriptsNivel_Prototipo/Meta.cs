@@ -20,7 +20,7 @@ public class Meta : MonoBehaviour
     public Animator animatorPuerta;
 
     [Tooltip("El nombre exacto del estado en el Animator")]
-    public string nombreAnimacion = "AbrirPuerta";
+    public string nombreAnimacion = "AbrirPuerta_Nivel1";
 
     [Header("Cinemática del Jugador")]
     [Tooltip("Arrastra a tu jugador aquí")]
