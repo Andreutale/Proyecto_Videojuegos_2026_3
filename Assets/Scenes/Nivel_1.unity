@@ -170,6 +170,10 @@ MonoBehaviour:
   maxAngle: 25
   returnSpeed: 1.2
   rotationOffset: {x: 0, y: 0, z: 0}
+  sonidoRotacion: {fileID: 8300000, guid: a724d8930d4bdb24d96ba26208da541f, type: 3}
+  maxDistanciaAudio: 50
+  volumenRotacion: 1
+  jugador: {fileID: 1085320232}
 --- !u!1001 &19279372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -373,6 +377,10 @@ PrefabInstance:
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlavePasilloFinal
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
       objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
@@ -612,6 +620,10 @@ PrefabInstance:
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveHab2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
       objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
@@ -1952,6 +1964,10 @@ PrefabInstance:
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveCocina
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
       objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
@@ -9554,6 +9570,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LlaveInicio
       objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
+      objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
       value: 4
@@ -11770,6 +11790,10 @@ PrefabInstance:
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveSalaDeEstar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: m_TagString
+      value: Llave
       objectReference: {fileID: 0}
     - target: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_LocalScale.x
@@ -25257,6 +25281,7 @@ MonoBehaviour:
   colorNormal: {r: 0, g: 1, b: 0, a: 0.3}
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.5}
   maxAnguloSeguimiento: 45
+  sonidoAlerta: {fileID: 8300000, guid: 88377c7d169141c4a93d9ff7096c9514, type: 3}
 --- !u!1 &4886654807768764970
 GameObject:
   m_ObjectHideFlags: 0
