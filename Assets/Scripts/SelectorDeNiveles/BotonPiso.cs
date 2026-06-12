@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class BotonPiso : MonoBehaviour
 {
@@ -19,7 +18,6 @@ public class BotonPiso : MonoBehaviour
     public AnimacionPuerta animacionPuerta;
 
     [SerializeField] private AudioClip sonidoClic;
-    [SerializeField] private GameObject panelMensaje;
 
     private Color colorEncendida = Color.white;
     private Color colorApagada = new Color(0.3f, 0.3f, 0.3f, 0.5f);
@@ -29,24 +27,24 @@ public class BotonPiso : MonoBehaviour
         if (indicePiso == 4)
             estaBloqueado = PlayerPrefs.GetInt("Nivel_1_Completado", 0) == 0;
 
-        if (nombreNivel == "Nivel_3")
-        {
-            int estrellasNivel1 = PlayerPrefs.GetInt("Nivel_1_Estrellas", 0);
-            int estrellasNivel2 = PlayerPrefs.GetInt("Nivel_2_Estrellas", 0);
-            int totalEstrellas = estrellasNivel1 + estrellasNivel2;
-            estaBloqueado = totalEstrellas < 5;
-        }
+        if (indicePiso == 1)
+            estaBloqueado = PlayerPrefs.GetInt("Nuevo_Modelo_Habitacion_Completado", 0) == 0;
 
         if (estaBloqueado)
         {
             candado.SetActive(true);
             estrellas.SetActive(false);
+            Button btn = GetComponentInChildren<Button>();
+            if (btn != null) btn.interactable = false;
         }
         else
         {
             AnimacionDesbloqueo anim = GetComponent<AnimacionDesbloqueo>();
             if (anim == null)
                 candado.SetActive(false);
+
+            Button btn = GetComponentInChildren<Button>();
+            if (btn != null) btn.interactable = true;
 
             int mejorEstrellas = PlayerPrefs.GetInt(nombreNivel + "_Estrellas", 0);
 
@@ -66,12 +64,7 @@ public class BotonPiso : MonoBehaviour
 
     public void AlHacerClic()
     {
-        if (estaBloqueado)
-        {
-            if (panelMensaje != null)
-                StartCoroutine(MostrarMensaje());
-        }
-        else
+        if (!estaBloqueado)
         {
             if (sonidoClic != null)
                 SFXManager.Instance.PlaySFX(sonidoClic, transform, 1f);
@@ -81,12 +74,5 @@ public class BotonPiso : MonoBehaviour
             else
                 SceneManager.LoadScene(indicePiso);
         }
-    }
-
-    private IEnumerator MostrarMensaje()
-    {
-        panelMensaje.SetActive(true);
-        yield return new WaitForSeconds(5f);
-        panelMensaje.SetActive(false);
     }
 }
