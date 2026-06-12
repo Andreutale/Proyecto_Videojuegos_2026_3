@@ -2558,7 +2558,7 @@ MonoBehaviour:
   estrella2: {fileID: 753690411}
   estrella3: {fileID: 1055077055}
   animacionPuerta: {fileID: 449151082}
-  sonidoClic: {fileID: 8300000, guid: a315159156d6df2499668d21507dbb07, type: 3}
+  sonidoClic: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
   panelMensaje: {fileID: 515143461}
 --- !u!114 &916805643
 MonoBehaviour:
@@ -2759,7 +2759,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.5, y: -127}
+  m_AnchoredPosition: {x: 12.5, y: -140}
   m_SizeDelta: {x: 10, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &959010278
@@ -3851,7 +3851,7 @@ MonoBehaviour:
   estrella2: {fileID: 112595640}
   estrella3: {fileID: 821053181}
   animacionPuerta: {fileID: 118750173}
-  sonidoClic: {fileID: 8300000, guid: a315159156d6df2499668d21507dbb07, type: 3}
+  sonidoClic: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
   panelMensaje: {fileID: 0}
 --- !u!114 &1404515462
 MonoBehaviour:
@@ -4465,7 +4465,7 @@ MonoBehaviour:
   estrella2: {fileID: 1121680860}
   estrella3: {fileID: 453920262}
   animacionPuerta: {fileID: 1832801250}
-  sonidoClic: {fileID: 8300000, guid: a315159156d6df2499668d21507dbb07, type: 3}
+  sonidoClic: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
   panelMensaje: {fileID: 0}
 --- !u!1 &1780513889
 GameObject:
