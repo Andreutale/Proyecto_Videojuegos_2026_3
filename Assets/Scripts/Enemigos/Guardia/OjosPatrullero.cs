@@ -12,15 +12,18 @@ public class OjosPatrullero : MonoBehaviour
     public Color colorNormal = new Color(0, 1, 0, 0.3f);
     public Color colorAlerta = new Color(1, 0, 0, 0.5f);
 
-    [Header("Detección Visual de Objetos")]
+    [Header("Detecciï¿½n Visual de Objetos")]
     public MovimientoRutaPatrullero cerebro;
     public float velocidadMinimaDeteccion = 1f;
 
+    [SerializeField] private AudioClip detectarSFX;
+
     public bool viendoAlJugador = false;
+    private bool veiaAlJugadorAntes = false;
     private Mesh mesh;
     private float cooldownVisual = 0f;
 
-    // Guardamos la máscara de colisión para no recalcularla en cada frame
+    // Guardamos la mï¿½scara de colisiï¿½n para no recalcularla en cada frame
     private int mascaraObstaculos;
 
     void Start()
@@ -47,6 +50,14 @@ public class OjosPatrullero : MonoBehaviour
         if (cooldownVisual > 0) cooldownVisual -= Time.deltaTime;
 
         DetectarJugadorYObjetos();
+        
+        if (viendoAlJugador && !veiaAlJugadorAntes)
+        {
+            SFXManager.Instance.PlaySFX(detectarSFX, transform, 1f);
+        }
+
+        veiaAlJugadorAntes = viendoAlJugador;
+
         DibujarCono();
 
         materialCono.color = viendoAlJugador ? colorAlerta : colorNormal;
@@ -64,7 +75,7 @@ public class OjosPatrullero : MonoBehaviour
             {
                 if (cosa.CompareTag("Player"))
                 {
-                    // NUEVO: Le pasamos la máscara y le decimos que ignore los Triggers
+                    // NUEVO: Le pasamos la mï¿½scara y le decimos que ignore los Triggers
                     if (Physics.Raycast(transform.position, direccionHaciaCosa, out RaycastHit hit, rangoVision, mascaraObstaculos, QueryTriggerInteraction.Ignore))
                     {
                         if (hit.collider.CompareTag("Player"))
@@ -79,7 +90,7 @@ public class OjosPatrullero : MonoBehaviour
 
                     if (rb != null && rb.linearVelocity.magnitude >= velocidadMinimaDeteccion)
                     {
-                        // NUEVO: Le pasamos la máscara y le decimos que ignore los Triggers
+                        // NUEVO: Le pasamos la mï¿½scara y le decimos que ignore los Triggers
                         if (Physics.Raycast(transform.position, direccionHaciaCosa, out RaycastHit hitCaja, rangoVision, mascaraObstaculos, QueryTriggerInteraction.Ignore))
                         {
                             if (hitCaja.collider == cosa)
@@ -114,7 +125,7 @@ public class OjosPatrullero : MonoBehaviour
             RaycastHit hit;
             float distance = rangoVision;
 
-            // NUEVO: Usamos la máscara para dibujar, ignorando los Triggers
+            // NUEVO: Usamos la mï¿½scara para dibujar, ignorando los Triggers
             if (Physics.Raycast(ray, out hit, rangoVision, mascaraObstaculos, QueryTriggerInteraction.Ignore))
             {
                 distance = hit.distance;

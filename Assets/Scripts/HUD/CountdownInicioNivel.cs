@@ -18,6 +18,9 @@ public class CountdownInicioNivel : MonoBehaviour
     public float tiempoEntreNumeros = 1f;
     public float tiempoTextoFinal = 0.5f;
 
+    [Header("Sonido")]
+    [SerializeField] private AudioClip sonidoCountdown;
+
     [Header("Jugador")]
     public MonoBehaviour movimientoJugador;
 
@@ -97,6 +100,10 @@ public class CountdownInicioNivel : MonoBehaviour
         // Mostrar countdown
         if (countdownPanel != null)
             countdownPanel.SetActive(true);
+
+        // Reproducir sonido del countdown (una sola vez)
+        if (sonidoCountdown != null)
+            SFXManager.Instance.PlaySFX(sonidoCountdown, transform, 1f);
 
         if (countdownText != null)
             countdownText.text = "3";
