@@ -29,10 +29,10 @@ public class BotonPiso : MonoBehaviour
         if (indicePiso == 4)
             estaBloqueado = PlayerPrefs.GetInt("Nivel_1_Completado", 0) == 0;
 
-        if (indicePiso == 1)
+        if (nombreNivel == "Nivel_3")
         {
             int estrellasNivel1 = PlayerPrefs.GetInt("Nivel_1_Estrellas", 0);
-            int estrellasNivel2 = PlayerPrefs.GetInt("Nuevo_Modelo_Habitacion_Estrellas", 0);
+            int estrellasNivel2 = PlayerPrefs.GetInt("Nivel_2_Estrellas", 0);
             int totalEstrellas = estrellasNivel1 + estrellasNivel2;
             estaBloqueado = totalEstrellas < 5;
         }
