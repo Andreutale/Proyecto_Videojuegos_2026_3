@@ -13,14 +13,27 @@ public class CameraIdleRotation : MonoBehaviour
     [Header("Offset")]
     public Vector3 rotationOffset;
 
+    [Header("Sonido")]
+    [SerializeField] private AudioClip sonidoRotacion;
+    [SerializeField] private float maxDistanciaAudio = 10f;
+    [SerializeField] private float volumenRotacion = 1f;
+    [SerializeField] private Transform jugador;
+
+    private AudioSource audioSource;
     private Quaternion startRotation;
     private bool wasDetected = false;
     private bool returningCenter = false;
     private float idleTimer = 0f;
+    private float ultimoAngulo = 0f;
+    private bool yendoDerecha = true;
 
     void Start()
     {
         startRotation = transform.rotation;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.spatialBlend = 0f;
+        audioSource.volume = volumenRotacion;
     }
 
     void LateUpdate()
@@ -74,11 +87,27 @@ public class CameraIdleRotation : MonoBehaviour
 
             idleTimer += Time.deltaTime;
 
-            float angle = Mathf.Sin(idleTimer * idleSpeed) * maxAngle;
+            float anguloActual = Mathf.Sin(idleTimer * idleSpeed) * maxAngle;
+
+            bool ahoraYendoDerecha = anguloActual > ultimoAngulo;
+            if (ahoraYendoDerecha != yendoDerecha)
+            {
+                yendoDerecha = ahoraYendoDerecha;
+                if (sonidoRotacion != null && jugador != null)
+                {
+                    float distancia = Vector3.Distance(transform.position, jugador.position);
+                    if (distancia <= maxDistanciaAudio)
+                    {
+                        float vol = Mathf.Clamp01(1f - (distancia / maxDistanciaAudio)) * volumenRotacion;
+                        audioSource.PlayOneShot(sonidoRotacion, vol);
+                    }
+                }
+            }
+            ultimoAngulo = anguloActual;
 
             Quaternion idleRotation =
                 startRotation *
-                Quaternion.Euler(0f, angle, 0f) *
+                Quaternion.Euler(0f, anguloActual, 0f) *
                 Quaternion.Euler(rotationOffset);
 
             transform.rotation = Quaternion.Slerp(

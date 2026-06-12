@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
         if (panelDerrota != null)
             panelDerrota.SetActive(true);
 
-        ActualizarTextoLlaves();
+        ActualizarTextoLlaves(); 
 
         Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
