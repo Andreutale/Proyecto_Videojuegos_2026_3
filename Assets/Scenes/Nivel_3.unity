@@ -317,6 +317,10 @@ MonoBehaviour:
   maxAngle: 25
   returnSpeed: 1.2
   rotationOffset: {x: 0, y: 0, z: 0}
+  sonidoRotacion: {fileID: 0}
+  maxDistanciaAudio: 10
+  volumenRotacion: 1
+  jugador: {fileID: 0}
 --- !u!1001 &19279372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7218,6 +7222,10 @@ MonoBehaviour:
   maxAngle: 25
   returnSpeed: 1.2
   rotationOffset: {x: 0, y: 0, z: 0}
+  sonidoRotacion: {fileID: 0}
+  maxDistanciaAudio: 10
+  volumenRotacion: 1
+  jugador: {fileID: 0}
 --- !u!1 &596041909 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4752296629863629501, guid: caa9ff24d6f1ff148813e3152afbde02, type: 3}
@@ -12226,6 +12234,7 @@ MonoBehaviour:
   colorNormal: {r: 0, g: 1, b: 0, a: 0.3}
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.5}
   maxAnguloSeguimiento: 45
+  sonidoAlerta: {fileID: 0}
 --- !u!114 &1015713132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12622,8 +12631,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 261, y: 47.899994}
-  m_SizeDelta: {x: 100, y: 103}
+  m_AnchoredPosition: {x: 261.4, y: 44.940002}
+  m_SizeDelta: {x: 109.4, y: 118.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1073159616
 MonoBehaviour:
@@ -16498,6 +16507,7 @@ MonoBehaviour:
   colorNormal: {r: 0, g: 1, b: 0, a: 0.3}
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.5}
   maxAnguloSeguimiento: 45
+  sonidoAlerta: {fileID: 0}
 --- !u!114 &1334763740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17565,7 +17575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -23, y: 106.82}
+  m_AnchoredPosition: {x: -22.999878, y: 106.82001}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1431096774
@@ -20010,6 +20020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camara: {fileID: 0}
   velocidadMovimiento: 8
+  flotarSFX: {fileID: 0}
   velocidadRotacion: 10
   Gravedad: -9
 --- !u!143 &1639417672
@@ -20402,6 +20413,10 @@ MonoBehaviour:
   maxAngle: 25
   returnSpeed: 1.2
   rotationOffset: {x: 0, y: 0, z: 0}
+  sonidoRotacion: {fileID: 0}
+  maxDistanciaAudio: 10
+  volumenRotacion: 1
+  jugador: {fileID: 0}
 --- !u!1001 &1686480832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21974,6 +21989,7 @@ MonoBehaviour:
   countdownText: {fileID: 393510073}
   tiempoEntreNumeros: 1
   tiempoTextoFinal: 0.5
+  sonidoCountdown: {fileID: 0}
   movimientoJugador: {fileID: 1639417671}
   cooldownDash: {fileID: 67860693}
   cooldownPosesion: {fileID: 322296178}
@@ -25533,6 +25549,7 @@ MonoBehaviour:
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.39215687}
   cerebro: {fileID: 0}
   velocidadMinimaDeteccion: 1
+  detectarSFX: {fileID: 0}
   viendoAlJugador: 0
 --- !u!114 &1963272715
 MonoBehaviour:
@@ -33189,6 +33206,7 @@ MonoBehaviour:
   colorNormal: {r: 0, g: 1, b: 0, a: 0.3}
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.5}
   maxAnguloSeguimiento: 45
+  sonidoAlerta: {fileID: 0}
 --- !u!1 &4886654807768764970
 GameObject:
   m_ObjectHideFlags: 0
