@@ -19,6 +19,7 @@ public class OjosPatrullero : MonoBehaviour
     [SerializeField] private AudioClip detectarSFX;
 
     public bool viendoAlJugador = false;
+    private bool veiaAlJugadorAntes = false;
     private Mesh mesh;
     private float cooldownVisual = 0f;
 
@@ -49,6 +50,14 @@ public class OjosPatrullero : MonoBehaviour
         if (cooldownVisual > 0) cooldownVisual -= Time.deltaTime;
 
         DetectarJugadorYObjetos();
+        
+        if (viendoAlJugador && !veiaAlJugadorAntes)
+        {
+            SFXManager.Instance.PlaySFX(detectarSFX, transform, 1f);
+        }
+
+        veiaAlJugadorAntes = viendoAlJugador;
+
         DibujarCono();
 
         materialCono.color = viendoAlJugador ? colorAlerta : colorNormal;
@@ -71,7 +80,6 @@ public class OjosPatrullero : MonoBehaviour
                     {
                         if (hit.collider.CompareTag("Player"))
                         {
-                            SFXManager.Instance.PlaySFX(detectarSFX, transform, .1f);
                             viendoAlJugador = true;
                         }
                     }
