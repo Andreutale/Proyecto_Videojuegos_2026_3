@@ -52,10 +52,16 @@ public class PauseManager : MonoBehaviour
 
     public void CerrarConfiguracion()
     {
-        // Ocultamos la configuración y volvemos a mostrar la pausa normal
+        Debug.Log("Cerrando configuración y regresando a la pausa...");
+
+        // 1. Apagamos los ajustes y encendemos el menú de pausa
         if (configMenu != null) configMenu.SetActive(false);
         if (pauseMenu != null) pauseMenu.SetActive(true);
-    }   
+
+        // 2. ¡LA CLAVE! Aseguramos que el botón de pausa de la pantalla permanezca apagado 
+        // mientras sigamos en el menú de pausa principal.
+        if (pauseButton != null) pauseButton.SetActive(false);
+    }
 
     public void HidePauseButton()
     {
