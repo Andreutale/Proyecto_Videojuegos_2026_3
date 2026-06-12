@@ -2344,7 +2344,8 @@ MonoBehaviour:
   estrella2: {fileID: 753690411}
   estrella3: {fileID: 1055077055}
   animacionPuerta: {fileID: 449151082}
-  sonidoClic: {fileID: 8300000, guid: a315159156d6df2499668d21507dbb07, type: 3}
+  sonidoClic: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
+  panelMensaje: {fileID: 515143461}
 --- !u!114 &916805643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2373,7 +2374,7 @@ MonoBehaviour:
   duracionParticula: 0.7
   colorParticula1: {r: 0.5372549, g: 0.5372549, b: 0.5372549, a: 1}
   colorParticula2: {r: 0.4, g: 0.4, b: 0.4, a: 1}
-  sonidoDesbloqueo: {fileID: 8300000, guid: edd2e005a50fb8d46be4b96e2bba1eae, type: 3}
+  sonidoDesbloqueo: {fileID: 8300000, guid: 85870a3e5bcae7e42ad7ee0ffe0c45ce, type: 3}
 --- !u!1 &955731226
 GameObject:
   m_ObjectHideFlags: 0
@@ -2544,7 +2545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.5, y: -127}
+  m_AnchoredPosition: {x: 12.5, y: -140}
   m_SizeDelta: {x: 10, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &959010278
@@ -3095,7 +3096,6 @@ GameObject:
   - component: {fileID: 1130948843}
   - component: {fileID: 1130948845}
   - component: {fileID: 1130948844}
-  - component: {fileID: 1130948846}
   m_Layer: 5
   m_Name: lock
   m_TagString: Untagged
@@ -3162,18 +3162,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1130948842}
   m_CullTransparentMesh: 1
---- !u!114 &1130948846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1130948842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 938b6d99cb1af3d41ba2aeb20cd2bc23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1143540492
 GameObject:
   m_ObjectHideFlags: 0
@@ -3388,7 +3376,6 @@ GameObject:
   - component: {fileID: 1314953939}
   - component: {fileID: 1314953938}
   - component: {fileID: 1314953937}
-  - component: {fileID: 1314953940}
   m_Layer: 5
   m_Name: Button_piso2
   m_TagString: Untagged
@@ -3511,103 +3498,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1314953935}
   m_CullTransparentMesh: 1
---- !u!82 &1314953940
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1314953935}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 9056858056027448002, guid: a05ad92d9ad42604a96bd2909ca46c11, type: 2}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &1338921066
 GameObject:
   m_ObjectHideFlags: 0
@@ -3747,7 +3637,8 @@ MonoBehaviour:
   estrella2: {fileID: 112595640}
   estrella3: {fileID: 821053181}
   animacionPuerta: {fileID: 118750173}
-  sonidoClic: {fileID: 8300000, guid: a315159156d6df2499668d21507dbb07, type: 3}
+  sonidoClic: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
+  panelMensaje: {fileID: 0}
 --- !u!114 &1404515462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3776,7 +3667,7 @@ MonoBehaviour:
   duracionParticula: 0.7
   colorParticula1: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   colorParticula2: {r: 0.4009434, g: 0.4009434, b: 0.4009434, a: 1}
-  sonidoDesbloqueo: {fileID: 8300000, guid: edd2e005a50fb8d46be4b96e2bba1eae, type: 3}
+  sonidoDesbloqueo: {fileID: 8300000, guid: 85870a3e5bcae7e42ad7ee0ffe0c45ce, type: 3}
 --- !u!1 &1427134833
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,7 +4251,8 @@ MonoBehaviour:
   estrella2: {fileID: 1121680860}
   estrella3: {fileID: 453920262}
   animacionPuerta: {fileID: 1832801250}
-  sonidoClic: {fileID: 8300000, guid: a315159156d6df2499668d21507dbb07, type: 3}
+  sonidoClic: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
+  panelMensaje: {fileID: 0}
 --- !u!1 &1780513889
 GameObject:
   m_ObjectHideFlags: 0
@@ -4715,7 +4607,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ce2f6313e5d69b74bab323abf5a20cdc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8251d6b8749e74f42b882104aa44c356, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -5411,6 +5303,8 @@ MonoBehaviour:
   outlineController: {fileID: 0}
   playerMovimiento: {fileID: 0}
   fantasmaAnimator: {fileID: 1590932041996031346}
+  aimingSFX: {fileID: 0}
+  moveSFX: {fileID: 0}
   uiCooldown: {fileID: 0}
 --- !u!136 &1313604040968684243
 CapsuleCollider:
@@ -5998,7 +5892,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.173, y: 2.109, z: -0.668}
-  m_LocalScale: {x: 0.95265895, y: 1, z: 0.8513364}
+  m_LocalScale: {x: 1, y: 1, z: 0.8513364}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1832801248}

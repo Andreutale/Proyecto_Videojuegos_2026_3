@@ -23,6 +23,9 @@ public class DetectorCamara : MonoBehaviour
     [Header("Límite de seguimiento")]
     public float maxAnguloSeguimiento = 45f;
 
+    [Header("Sonido")]
+    [SerializeField] private AudioClip sonidoAlerta;
+
     private Quaternion rotacionInicial;
     private GeneradorCono generador;
 
@@ -51,6 +54,7 @@ public class DetectorCamara : MonoBehaviour
 
         if (detectadoAhora)
         {
+
             jugadorEncontrado = true;
             timerPerdida = 0f;
         }
@@ -62,7 +66,6 @@ public class DetectorCamara : MonoBehaviour
             {
                 jugadorEncontrado = false;
 
-                // Si el jugador desaparece, detenemos la rutina de alertas continuas
                 if (rutinaAlertaContinua != null)
                 {
                     StopCoroutine(rutinaAlertaContinua);
@@ -83,25 +86,17 @@ public class DetectorCamara : MonoBehaviour
 
             EnfocarJugador();
 
-            // AQUÍ ESTÁ EL CAMBIO PRINCIPAL:
-            // Solo activamos la alerta y empezamos la corrutina cuando el tiempo se llena
             if (timerDeteccion >= tiempoDeteccion)
             {
                 if (!alertaActivada)
-                {
                     ActivarAlerta();
-                }
 
-                // Iniciamos el envío continuo de la posición del jugador solo si ya estamos en alerta máxima
                 if (rutinaAlertaContinua == null)
-                {
                     rutinaAlertaContinua = StartCoroutine(EnviarAlertasContinuas());
-                }
             }
         }
         else
         {
-            // Reseteo general cuando el jugador no es encontrado
             timerDeteccion = 0f;
             alertaActivada = false;
 
@@ -115,7 +110,6 @@ public class DetectorCamara : MonoBehaviour
 
     IEnumerator EnviarAlertasContinuas()
     {
-        // La alerta continua sigue mandándose mientras el jugador esté a la vista
         while (jugadorEncontrado)
         {
             AlertaGlobal.Activar(jugador.position);
@@ -141,9 +135,7 @@ public class DetectorCamara : MonoBehaviour
 
         Vector3 direccionAlJugador = jugador.position - transform.position;
         if (Physics.Raycast(transform.position, direccionAlJugador.normalized, out RaycastHit hit, direccionAlJugador.magnitude, capaObstaculos))
-        {
             return false;
-        }
 
         return true;
     }
@@ -180,7 +172,9 @@ public class DetectorCamara : MonoBehaviour
     void ActivarAlerta()
     {
         alertaActivada = true;
-        Debug.Log("Detector: Activando alerta global (Tiempo agotado) en: " + ultimoPuntoDeteccion);
+        if (sonidoAlerta != null)
+            SFXManager.Instance.PlaySFX(sonidoAlerta, transform, 1f);
+        Debug.Log("Detector: Activando alerta global en: " + ultimoPuntoDeteccion);
         AlertaGlobal.Activar(ultimoPuntoDeteccion);
     }
 }

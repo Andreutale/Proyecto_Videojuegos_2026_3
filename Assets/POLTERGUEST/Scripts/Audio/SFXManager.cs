@@ -35,6 +35,30 @@ public class SFXManager : MonoBehaviour
         Destroy(audioSource.gameObject, clipLength);
     }
 
+    public void PlayRandomSFX(AudioClip[] audioClip, Transform spawnTransform, float volume)
+    {
+        //Índice aleatorio
+        int rand = Random.Range(0, audioClip.Length);
+
+        // Crear gameObject
+        AudioSource audioSource = Instantiate(SFXObject, spawnTransform.position, Quaternion.identity);
+    
+        // Asignar el audioClip
+        audioSource.clip = audioClip[rand];
+
+        //Asignar el volumen
+        audioSource.volume = volume;
+
+        //Reproducir el sonido
+        audioSource.Play(); 
+
+        //Obtener longitud del clip de audio
+        float clipLength = audioSource.clip.length;
+
+        //Destruir el gameObject después de reproducirse
+        Destroy(audioSource.gameObject, clipLength);
+    }
+
     public AudioSource PlayLoopingSFX(AudioClip audioClip, Transform spawnTransform, float volume)
     {
         AudioSource audioSource = Instantiate(

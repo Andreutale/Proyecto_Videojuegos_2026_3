@@ -21,7 +21,9 @@ public class AnimacionPuerta : MonoBehaviour
     {
         reproduciendo = true;
 
-        Animator anim = GetComponentInChildren<Animator>();
+        Animator anim = GetComponent<Animator>();
+        if (anim == null)
+            anim = GetComponentInChildren<Animator>(true);
         if (anim != null)
             anim.SetTrigger("Abrir");
 
