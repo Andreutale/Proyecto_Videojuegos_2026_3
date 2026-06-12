@@ -10,6 +10,7 @@ public class PlayerMovimiento : MonoBehaviour
     [Header("Movimiento")]
     [Tooltip("Velocidad base del jugador. Ahora es igual a la antigua velocidad de correr.")]
     [SerializeField] private float velocidadMovimiento = 8f;
+    [SerializeField] private AudioClip flotarSFX;
 
     // NUEVO: Variable para controlar lo rápido que gira el personaje
     [Tooltip("Velocidad a la que el personaje gira hacia la dirección de movimiento.")]
@@ -20,6 +21,8 @@ public class PlayerMovimiento : MonoBehaviour
     private Vector3 velocidadVertical;
 
     private Animator animator;
+    private AudioSource flotarAudioSource;
+    private bool estabaMoviendose = false;
 
     void Start()
     {
@@ -56,8 +59,33 @@ public class PlayerMovimiento : MonoBehaviour
 
         Vector3 inputDireccion = new Vector3(Horizontal, 0, Vertical);
 
+        bool moviendose = inputDireccion.magnitude > 0.1f;
+
+        // Empieza a sonar
+        if (moviendose && !estabaMoviendose)
+        {
+            flotarAudioSource = SFXManager.Instance.PlayLoopingSFX(
+                flotarSFX,
+                transform,
+                0.5f
+            );
+        }
+
+        // Deja de sonar
+        if (!moviendose && estabaMoviendose)
+        {
+            if (flotarAudioSource != null)
+            {
+                Destroy(flotarAudioSource.gameObject);
+                flotarAudioSource = null;
+            }
+        }
+
+        estabaMoviendose = moviendose;
+
         if (animator != null)
         {
+
             animator.SetFloat("Speed", inputDireccion.magnitude);
         }
 

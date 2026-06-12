@@ -26,7 +26,6 @@ public class DetectorCamara : MonoBehaviour
     [Header("Sonido")]
     [SerializeField] private AudioClip sonidoAlerta;
 
-    private AudioSource audioSourceAlerta;
     private Quaternion rotacionInicial;
     private GeneradorCono generador;
 
@@ -47,10 +46,6 @@ public class DetectorCamara : MonoBehaviour
     {
         rotacionInicial = transform.rotation;
         generador = GetComponent<GeneradorCono>();
-
-        audioSourceAlerta = gameObject.AddComponent<AudioSource>();
-        audioSourceAlerta.spatialBlend = 0f;
-        audioSourceAlerta.loop = false;
     }
 
     void LateUpdate()
@@ -59,6 +54,7 @@ public class DetectorCamara : MonoBehaviour
 
         if (detectadoAhora)
         {
+
             jugadorEncontrado = true;
             timerPerdida = 0f;
         }
@@ -69,8 +65,6 @@ public class DetectorCamara : MonoBehaviour
             if (timerPerdida >= tiempoPerdida)
             {
                 jugadorEncontrado = false;
-                alertaActivada = false;
-                audioSourceAlerta.Stop();
 
                 if (rutinaAlertaContinua != null)
                 {
@@ -179,7 +173,8 @@ public class DetectorCamara : MonoBehaviour
     {
         alertaActivada = true;
         if (sonidoAlerta != null)
-            audioSourceAlerta.PlayOneShot(sonidoAlerta);
+            SFXManager.Instance.PlaySFX(sonidoAlerta, transform, 1f);
+        Debug.Log("Detector: Activando alerta global en: " + ultimoPuntoDeteccion);
         AlertaGlobal.Activar(ultimoPuntoDeteccion);
     }
 }
