@@ -170,14 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b702030d8f1509e4ebefa2e09dbfbe68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titulo: "Posesi\xF3n"
-  texto: 'Pulsa Z para escanear objetos cercanos.
-
-    Vuelve a pulsar Z para poseerlos.'
-  icono: {fileID: 0}
-  tutorialUI: {fileID: 0}
-  soloUnaVez: 0
-  yaMostrado: 0
 --- !u!65 &2445099
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2802,6 +2794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &268666104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5812,6 +5805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &685665193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6074,6 +6068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &697592960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10351,6 +10346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &1227281843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10676,6 +10672,7 @@ MonoBehaviour:
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.39215687}
   cerebro: {fileID: 0}
   velocidadMinimaDeteccion: 1
+  detectarSFX: {fileID: 0}
   viendoAlJugador: 0
 --- !u!23 &1242588211
 MeshRenderer:
@@ -11096,6 +11093,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &1253305662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11403,6 +11401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!54 &1259714326
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11671,7 +11670,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.25, y: 4.75, z: 1}
+  m_Size: {x: 1.25, y: 4.75, z: 1.61}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1275839011
 GameObject:
@@ -12828,6 +12827,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &1325697401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13764,6 +13764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &1428240391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14853,6 +14854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &1485418093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15351,7 +15353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6d09b291eb608443a908dfb9aaee92a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.45714274
+      value: 0.233
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6d09b291eb608443a908dfb9aaee92a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15442,6 +15444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &1556731925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15935,6 +15938,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   camara: {fileID: 0}
   velocidadMovimiento: 8
+  flotarSFX: {fileID: 0}
   velocidadRotacion: 10
   Gravedad: -9
 --- !u!143 &1639417672
@@ -16267,6 +16271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!54 &1661257999
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17580,7 +17585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6a2566e82f72014d8217f4ae68434c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1.39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f6a2566e82f72014d8217f4ae68434c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18009,6 +18014,7 @@ MonoBehaviour:
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.39215687}
   cerebro: {fileID: 0}
   velocidadMinimaDeteccion: 1
+  detectarSFX: {fileID: 0}
   viendoAlJugador: 0
 --- !u!23 &1787926153
 MeshRenderer:
@@ -18127,6 +18133,7 @@ MonoBehaviour:
   scriptTutorial: {fileID: 443304482}
   tiempoEntreNumeros: 1
   tiempoTextoFinal: 0.5
+  sonidoCountdown: {fileID: 0}
   movimientoJugador: {fileID: 1639417671}
   cooldownDash: {fileID: 67860693}
   cooldownPosesion: {fileID: 322296178}
@@ -18206,6 +18213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &1806526456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18821,7 +18829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a71cf95c641d8cb4a9282247ce31dc88, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.41766942
+      value: 0.062
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a71cf95c641d8cb4a9282247ce31dc88, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18906,8 +18914,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 49.1254, y: 21.150135, z: 24.341187}
-  m_Center: {x: 0.32602555, y: -0.032122284, z: 10.708751}
+  m_Size: {x: 49.1254, y: 21.150135, z: 11.1}
+  m_Center: {x: 0.32602555, y: -0.032122284, z: 4.2}
 --- !u!114 &1870114577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18960,6 +18968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!54 &1870114580
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19932,12 +19941,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6515b59118356d34989e161c9fb072b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelRaiz: {fileID: 0}
-  textoTitulo: {fileID: 0}
-  textoCuerpo: {fileID: 0}
-  imagenIcono: {fileID: 0}
-  fadeDuration: 0.25
-  canvasGroup: {fileID: 0}
 --- !u!1 &1940123408 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5530086888638535244, guid: b91aedaf1641d3646821d75708335664, type: 3}
@@ -20213,7 +20216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2485713
+      value: 0.047
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -20330,6 +20333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &1947537886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20754,6 +20758,7 @@ MonoBehaviour:
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.39215687}
   cerebro: {fileID: 0}
   velocidadMinimaDeteccion: 1
+  detectarSFX: {fileID: 0}
   viendoAlJugador: 0
 --- !u!114 &1963272715
 MonoBehaviour:
@@ -21639,6 +21644,7 @@ MonoBehaviour:
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.39215687}
   cerebro: {fileID: 0}
   velocidadMinimaDeteccion: 1
+  detectarSFX: {fileID: 0}
   viendoAlJugador: 0
 --- !u!23 &2040506267
 MeshRenderer:
@@ -21870,6 +21876,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  radioDespertar: 1.5
 --- !u!114 &2059576300
 MonoBehaviour:
   m_ObjectHideFlags: 0
