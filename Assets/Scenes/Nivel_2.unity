@@ -443,6 +443,10 @@ MonoBehaviour:
   maxAngle: 25
   returnSpeed: 1.2
   rotationOffset: {x: 0, y: 0, z: 0}
+  sonidoRotacion: {fileID: 0}
+  maxDistanciaAudio: 10
+  volumenRotacion: 1
+  jugador: {fileID: 0}
 --- !u!1 &14999943 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6014246715378849002, guid: 122cb4164c3b09241b1863aa3a8c5f8e, type: 3}
@@ -8020,6 +8024,10 @@ MonoBehaviour:
   maxAngle: 25
   returnSpeed: 1.2
   rotationOffset: {x: 0, y: 0, z: 0}
+  sonidoRotacion: {fileID: 0}
+  maxDistanciaAudio: 10
+  volumenRotacion: 1
+  jugador: {fileID: 0}
 --- !u!1001 &607272077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11496,7 +11504,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.26666668
+  m_VoxelSize: 0.1
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 489c13b55856dc845b476e132f3e8a49, type: 2}
   m_BuildHeightMesh: 0
@@ -12684,6 +12692,7 @@ MonoBehaviour:
   colorNormal: {r: 0, g: 1, b: 0, a: 0.3}
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.5}
   maxAnguloSeguimiento: 45
+  sonidoAlerta: {fileID: 0}
 --- !u!114 &1015713132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16477,6 +16486,7 @@ MonoBehaviour:
   colorNormal: {r: 0, g: 1, b: 0, a: 0.3}
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.5}
   maxAnguloSeguimiento: 45
+  sonidoAlerta: {fileID: 0}
 --- !u!114 &1334763740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20631,6 +20641,10 @@ MonoBehaviour:
   maxAngle: 25
   returnSpeed: 1.2
   rotationOffset: {x: 0, y: 0, z: 0}
+  sonidoRotacion: {fileID: 0}
+  maxDistanciaAudio: 10
+  volumenRotacion: 1
+  jugador: {fileID: 0}
 --- !u!1001 &1686480832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31343,6 +31357,7 @@ MonoBehaviour:
   colorNormal: {r: 0, g: 1, b: 0, a: 0.3}
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.5}
   maxAnguloSeguimiento: 45
+  sonidoAlerta: {fileID: 0}
 --- !u!1 &4886654807768764970
 GameObject:
   m_ObjectHideFlags: 0
