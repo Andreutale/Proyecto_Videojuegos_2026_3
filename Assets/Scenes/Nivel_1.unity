@@ -11431,6 +11431,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2005204582}
     m_Modifications:
+    - target: {fileID: 1516444853842729103, guid: 85ca4c7115443e14a949ef5f17196e98, type: 3}
+      propertyPath: sonidoReiniciar
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
+    - target: {fileID: 1516444853842729103, guid: 85ca4c7115443e14a949ef5f17196e98, type: 3}
+      propertyPath: sonidoMenuPrincipal
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
+    - target: {fileID: 1516444853842729103, guid: 85ca4c7115443e14a949ef5f17196e98, type: 3}
+      propertyPath: sonidoSiguienteNivel
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
     - target: {fileID: 2298509893729081531, guid: 85ca4c7115443e14a949ef5f17196e98, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -17305,6 +17317,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7202320451488005500, guid: 1b7c2719ad5633a468cf127429c01188, type: 3}
+      propertyPath: sonidoReiniciar
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
+    - target: {fileID: 7202320451488005500, guid: 1b7c2719ad5633a468cf127429c01188, type: 3}
+      propertyPath: sonidoMenuPrincipal
+      value: 
+      objectReference: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8703099337633157687, guid: 1b7c2719ad5633a468cf127429c01188, type: 3}
