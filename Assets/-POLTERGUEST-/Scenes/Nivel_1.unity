@@ -1768,6 +1768,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d4a2f5bf57918d946bc7ba039d8b8dbf, type: 2}
     - target: {fileID: 919132149155446097, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
       propertyPath: m_Name
       value: mesita (2)
@@ -2679,6 +2683,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f6d09b291eb608443a908dfb9aaee92a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 07d4fe20c63f40241ac44180e7ff6ea6, type: 2}
     - target: {fileID: 919132149155446097, guid: f6d09b291eb608443a908dfb9aaee92a, type: 3}
       propertyPath: m_Name
       value: silla (2)
@@ -3925,6 +3933,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d4a2f5bf57918d946bc7ba039d8b8dbf, type: 2}
     - target: {fileID: 919132149155446097, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
       propertyPath: m_Name
       value: mesita (1)
@@ -5613,6 +5625,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f6d09b291eb608443a908dfb9aaee92a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 07d4fe20c63f40241ac44180e7ff6ea6, type: 2}
     - target: {fileID: 919132149155446097, guid: f6d09b291eb608443a908dfb9aaee92a, type: 3}
       propertyPath: m_Name
       value: silla
@@ -6129,6 +6145,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 623d66b5fbd9b1f45b20d6888af0d7d8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 91bff7a3e73bf154793a9a2b70bc1a14, type: 2}
     - target: {fileID: 919132149155446097, guid: 623d66b5fbd9b1f45b20d6888af0d7d8, type: 3}
       propertyPath: m_Name
       value: recepcion
@@ -6592,6 +6612,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c748e34f4b08cf245b3e4248ca14b878, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 07d4fe20c63f40241ac44180e7ff6ea6, type: 2}
+    - target: {fileID: -7511558181221131132, guid: c748e34f4b08cf245b3e4248ca14b878, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 07d4fe20c63f40241ac44180e7ff6ea6, type: 2}
     - target: {fileID: 919132149155446097, guid: c748e34f4b08cf245b3e4248ca14b878, type: 3}
       propertyPath: m_Name
       value: armario 1
@@ -6684,6 +6712,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f6d09b291eb608443a908dfb9aaee92a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 07d4fe20c63f40241ac44180e7ff6ea6, type: 2}
     - target: {fileID: 919132149155446097, guid: f6d09b291eb608443a908dfb9aaee92a, type: 3}
       propertyPath: m_Name
       value: silla (1)
@@ -7586,6 +7618,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: mesaSalon 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4407187375235809858, guid: 2655e24080a48d848b428d13c7d2e261, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e87f2eb7783eab247bfb5c45ba7b2919, type: 2}
+    - target: {fileID: 8424073627695423409, guid: 2655e24080a48d848b428d13c7d2e261, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e87f2eb7783eab247bfb5c45ba7b2919, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8934,6 +8974,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d4a2f5bf57918d946bc7ba039d8b8dbf, type: 2}
     - target: {fileID: 919132149155446097, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
       propertyPath: m_Name
       value: mesita
@@ -11100,6 +11144,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f6d09b291eb608443a908dfb9aaee92a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 07d4fe20c63f40241ac44180e7ff6ea6, type: 2}
     - target: {fileID: 919132149155446097, guid: f6d09b291eb608443a908dfb9aaee92a, type: 3}
       propertyPath: m_Name
       value: silla (3)
@@ -15388,6 +15436,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d4a2f5bf57918d946bc7ba039d8b8dbf, type: 2}
     - target: {fileID: 919132149155446097, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
       propertyPath: m_Name
       value: mesita (4)
