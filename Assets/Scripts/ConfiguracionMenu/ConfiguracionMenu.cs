@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.Audio;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class ConfiguracionMenu : MonoBehaviour
 {
@@ -20,28 +19,56 @@ public class ConfiguracionMenu : MonoBehaviour
     public Sprite spriteActivado;
     public Sprite spriteDesactivado;
 
-    [Header("Botón de Guardar")]
-    public Image btnGuardar; // Arrastra aquí tu 'btnGuardar'
+    [Header("Botón de Guardar (Imagen)")]
+    public Image btnGuardar;
 
-    // Variables temporales para almacenar los cambios antes de guardar
+    [Header("Gestión de Menús para Salir")]
+    public GameObject canvasAjustes; // Arrastra aquí tu 'CanvasAjustes'
+    public GameObject pauseMenu;     // Arrastra aquí tu 'PauseMenu'
+
+    // Variables temporales (las que se mueven con los sliders)
     private bool estadoPantallaTemporal;
     private float volGlobalTemporal;
     private float volMusicaTemporal;
     private float volEnemigosTemporal;
     private float volEfectosTemporal;
 
+    // Variables para guardar el estado exacto al abrir el menú (para el botón Cancelar)
+    private bool pantallaAlAbrir;
+    private float volGlobalAlAbrir;
+    private float volMusicaAlAbrir;
+    private float volEnemigosAlAbrir;
+    private float volEfectosAlAbrir;
+
     void Start()
     {
-        // --- 1. CARGAR CONFIGURACIÓN ACTUAL AL ENTRAR ---
+        // 1. Cargar la configuración real del perfil nada más iniciar el juego
+        CargarConfiguracionInicialDelPerfil();
+
+        // 2. Escuchar los cambios que haga el usuario en la UI
+        sliderGlobal.onValueChanged.AddListener(val => volGlobalTemporal = val);
+        sliderMusica.onValueChanged.AddListener(val => volMusicaTemporal = val);
+        sliderEnemigos.onValueChanged.AddListener(val => volEnemigosTemporal = val);
+        sliderEfectos.onValueChanged.AddListener(val => volEfectosTemporal = val);
+
+        if (togglePantallaCompleta != null)
+        {
+            togglePantallaCompleta.onValueChanged.AddListener(SeleccionarPantallaCompletaTemporal);
+        }
+
+        // 3. Configurar el click de la imagen de guardar automáticamente
+        ConfigurarBotonGuardar();
+    }
+
+    private void CargarConfiguracionInicialDelPerfil()
+    {
         volGlobalTemporal = PlayerPrefs.GetFloat("VolMaster", 0.75f);
         volMusicaTemporal = PlayerPrefs.GetFloat("VolMusica", 0.75f);
         volEnemigosTemporal = PlayerPrefs.GetFloat("VolEnemigos", 0.75f);
         volEfectosTemporal = PlayerPrefs.GetFloat("VolEfectos", 0.75f);
+        estadoPantallaTemporal = (PlayerPrefs.GetInt("PantallaCompleta", 1) == 1);
 
-        int pantallaCompletaGuardada = PlayerPrefs.GetInt("PantallaCompleta", 1);
-        estadoPantallaTemporal = (pantallaCompletaGuardada == 1);
-
-        // --- 2. ASIGNAR VALORES VISUALES A LA UI ---
+        // Aplicar a los elementos visuales
         sliderGlobal.value = volGlobalTemporal;
         sliderMusica.value = volMusicaTemporal;
         sliderEnemigos.value = volEnemigosTemporal;
@@ -49,81 +76,93 @@ public class ConfiguracionMenu : MonoBehaviour
 
         if (togglePantallaCompleta != null)
         {
-            togglePantallaCompleta.onValueChanged.RemoveAllListeners();
+            togglePantallaCompleta.onValueChanged.RemoveListener(SeleccionarPantallaCompletaTemporal);
             togglePantallaCompleta.isOn = estadoPantallaTemporal;
             ActualizarVisualCheckbox(estadoPantallaTemporal);
-
-            // Cuando cambie el toggle, solo guardamos el valor temporalmente
             togglePantallaCompleta.onValueChanged.AddListener(SeleccionarPantallaCompletaTemporal);
         }
 
-        // Cuando cambien los sliders, solo guardamos el valor temporalmente
-        sliderGlobal.onValueChanged.AddListener(val => volGlobalTemporal = val);
-        sliderMusica.onValueChanged.AddListener(val => volMusicaTemporal = val);
-        sliderEnemigos.onValueChanged.AddListener(val => volEnemigosTemporal = val);
-        sliderEfectos.onValueChanged.AddListener(val => volEfectosTemporal = val);
-
-        // --- 3. ASIGNAR FUNCIÓN A LA IMAGEN DE GUARDAR ---
-        if (btnGuardar != null)
-        {
-            // Nos aseguramos de que la imagen pueda recibir clics
-            btnGuardar.raycastTarget = true;
-
-            // Le añadimos el componente que detecta eventos si no lo tiene
-            EventTrigger trigger = btnGuardar.gameObject.GetComponent<EventTrigger>();
-            if (trigger == null) trigger = btnGuardar.gameObject.AddComponent<EventTrigger>();
-
-            trigger.triggers.Clear();
-
-            // Creamos el evento de "Hacer Clic" (PointerClick)
-            EventTrigger.Entry entry = new EventTrigger.Entry();
-            entry.eventID = EventTriggerType.PointerClick;
-            entry.callback.AddListener((data) => { GuardarConfiguracion(); });
-
-            trigger.triggers.Add(entry);
-        }
+        // Aplicar los volúmenes reales al Mixer al arrancar el juego
+        SetMixerVolumeReal("VolMaster", volGlobalTemporal);
+        SetMixerVolumeReal("VolMusica", volMusicaTemporal);
+        SetMixerVolumeReal("VolEnemigos", volEnemigosTemporal);
+        SetMixerVolumeReal("VolEfectos", volEfectosTemporal);
     }
 
-    // Cambia el aspecto visual de la checkbox inmediatamente para que el usuario vea que hizo clic
+    // Cada vez que se abre el panel, guardamos cómo estaba por si le da a Cancelar
+    void OnEnable()
+    {
+        volGlobalAlAbrir = sliderGlobal.value;
+        volMusicaAlAbrir = sliderMusica.value;
+        volEnemigosAlAbrir = sliderEnemigos.value;
+        volEfectosAlAbrir = sliderEfectos.value;
+        if (togglePantallaCompleta != null) pantallaAlAbrir = togglePantallaCompleta.isOn;
+
+        volGlobalTemporal = volGlobalAlAbrir;
+        volMusicaTemporal = volMusicaAlAbrir;
+        volEnemigosTemporal = volEnemigosAlAbrir;
+        volEfectosTemporal = volEfectosAlAbrir;
+        estadoPantallaTemporal = pantallaAlAbrir;
+    }
+
     public void SeleccionarPantallaCompletaTemporal(bool esCompleta)
     {
         estadoPantallaTemporal = esCompleta;
         ActualizarVisualCheckbox(esCompleta);
     }
 
-    // ¡ESTA ES LA FUNCIÓN CLAVE! Se ejecuta solo al pulsar "btnGuardar"
+    // --- BOTÓN GUARDAR: Guarda y sale al menú de pausa ---
     public void GuardarConfiguracion()
     {
-        Debug.Log("Guardando configuración aplicada por el usuario...");
+        Debug.Log("¡Configuración guardada! Saliendo al menú de pausa...");
 
-        // APLICAR Y GUARDAR PANTALLA COMPLETA
+        // 1. Aplicamos los cambios al juego y los guardamos en el perfil
         Screen.fullScreen = estadoPantallaTemporal;
         PlayerPrefs.SetInt("PantallaCompleta", estadoPantallaTemporal ? 1 : 0);
 
-        // APLICAR Y GUARDAR VOLÚMENES EN EL MIXER
         AplicarYGuardarVolumen("VolMaster", volGlobalTemporal);
         AplicarYGuardarVolumen("VolMusica", volMusicaTemporal);
         AplicarYGuardarVolumen("VolEnemigos", volEnemigosTemporal);
         AplicarYGuardarVolumen("VolEfectos", volEfectosTemporal);
+        PlayerPrefs.Save(); // Forzar escritura en disco
 
-        // Forzar el guardado físico en el disco duro/dispositivo
-        PlayerPrefs.Save();
+        // 2. SALIR DEL MENÚ (Cierra ajustes y vuelve a la pausa)
+        if (canvasAjustes != null) canvasAjustes.SetActive(false);
+        if (pauseMenu != null) pauseMenu.SetActive(true);
+    }
+
+    // --- BOTÓN CANCELAR: Restaura los valores de antes de abrir y sale ---
+    public void CancelarCambios()
+    {
+        Debug.Log("Restaurando valores anteriores y saliendo...");
+
+        sliderGlobal.value = volGlobalAlAbrir;
+        sliderMusica.value = volMusicaAlAbrir;
+        sliderEnemigos.value = volEnemigosAlAbrir;
+        sliderEfectos.value = volEfectosAlAbrir;
+
+        if (togglePantallaCompleta != null)
+        {
+            togglePantallaCompleta.onValueChanged.RemoveListener(SeleccionarPantallaCompletaTemporal);
+            togglePantallaCompleta.isOn = pantallaAlAbrir;
+            ActualizarVisualCheckbox(pantallaAlAbrir);
+            togglePantallaCompleta.onValueChanged.AddListener(SeleccionarPantallaCompletaTemporal);
+        }
+
+        if (canvasAjustes != null) canvasAjustes.SetActive(false);
+        if (pauseMenu != null) pauseMenu.SetActive(true);
     }
 
     private void AplicarYGuardarVolumen(string nombreParametro, float valorSlider)
     {
-        // Aplicamos al Mixer real
-        if (valorSlider <= 0.001f)
-        {
-            audioMixer.SetFloat(nombreParametro, -80f);
-        }
-        else
-        {
-            audioMixer.SetFloat(nombreParametro, Mathf.Log10(valorSlider) * 20);
-        }
-
-        // Guardamos en los datos locales
+        SetMixerVolumeReal(nombreParametro, valorSlider);
         PlayerPrefs.SetFloat(nombreParametro, valorSlider);
+    }
+
+    private void SetMixerVolumeReal(string nombreParametro, float valorSlider)
+    {
+        if (valorSlider <= 0.001f) audioMixer.SetFloat(nombreParametro, -80f);
+        else audioMixer.SetFloat(nombreParametro, Mathf.Log10(valorSlider) * 20);
     }
 
     private void ActualizarVisualCheckbox(bool esCompleta)
@@ -131,6 +170,22 @@ public class ConfiguracionMenu : MonoBehaviour
         if (checkboxImagen != null && spriteActivado != null && spriteDesactivado != null)
         {
             checkboxImagen.sprite = esCompleta ? spriteActivado : spriteDesactivado;
+        }
+    }
+
+    private void ConfigurarBotonGuardar()
+    {
+        if (btnGuardar != null)
+        {
+            btnGuardar.raycastTarget = true;
+            UnityEngine.EventSystems.EventTrigger trigger = btnGuardar.gameObject.GetComponent<UnityEngine.EventSystems.EventTrigger>();
+            if (trigger == null) trigger = btnGuardar.gameObject.AddComponent<UnityEngine.EventSystems.EventTrigger>();
+
+            trigger.triggers.Clear();
+            UnityEngine.EventSystems.EventTrigger.Entry entry = new UnityEngine.EventSystems.EventTrigger.Entry();
+            entry.eventID = UnityEngine.EventSystems.EventTriggerType.PointerClick;
+            entry.callback.AddListener((data) => { GuardarConfiguracion(); });
+            trigger.triggers.Add(entry);
         }
     }
 }

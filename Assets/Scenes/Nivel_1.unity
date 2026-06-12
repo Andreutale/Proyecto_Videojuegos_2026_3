@@ -6816,6 +6816,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1988849546}
+        m_TargetAssemblyTypeName: ConfiguracionMenu, Assembly-CSharp
+        m_MethodName: CancelarCambios
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &798312015 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6669032907377952373, guid: 8bcb9a092c4270b4dae0f4bf2d36b909, type: 3}
@@ -7815,6 +7827,8 @@ MonoBehaviour:
   spriteActivado: {fileID: 21300000, guid: 9deeed6acef91994dbfbe138e01559f8, type: 3}
   spriteDesactivado: {fileID: 21300000, guid: e80e4fcca694fc543bee0fbf150f1b0c, type: 3}
   btnGuardar: {fileID: 0}
+  canvasAjustes: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!1 &952506071
 GameObject:
   m_ObjectHideFlags: 0
@@ -20394,6 +20408,8 @@ MonoBehaviour:
   spriteActivado: {fileID: 21300000, guid: 9deeed6acef91994dbfbe138e01559f8, type: 3}
   spriteDesactivado: {fileID: 21300000, guid: e80e4fcca694fc543bee0fbf150f1b0c, type: 3}
   btnGuardar: {fileID: 1118128502}
+  canvasAjustes: {fileID: 2031456699}
+  pauseMenu: {fileID: 1887190128}
 --- !u!1 &1992599516
 GameObject:
   m_ObjectHideFlags: 0
