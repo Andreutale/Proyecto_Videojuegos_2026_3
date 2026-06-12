@@ -751,7 +751,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 12.499983, y: -16}
+  m_AnchoredPosition: {x: 12.499983, y: 245}
   m_SizeDelta: {x: 10, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &217187186
@@ -1103,7 +1103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animAbrirPuerta: AbrirPuerta
-  indiceSala: 1
+  indiceSala: 5
   fantasmaUI: {fileID: 960972851}
   destinoUI: {fileID: 188681519}
 --- !u!95 &449151083
@@ -2412,8 +2412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ee85ae76ef72d42a01e9b99f3b7f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nombreNivel: Nuevo_Modelo_Habitacion
-  indicePiso: 1
+  nombreNivel: Nivel_3
+  indicePiso: 5
   estaBloqueado: 1
   candado: {fileID: 879447044}
   estrellas: {fileID: 723757681}
