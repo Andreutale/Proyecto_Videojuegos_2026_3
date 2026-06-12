@@ -10,6 +10,10 @@ public class CountdownInicioNivel : MonoBehaviour
     public GameObject countdownPanel;
     public TMP_Text countdownText;
 
+    [Header("Tutorial Conexión")]
+    // Arrastra aquí el objeto 'GestorTutorial' desde la jerarquía
+    public TutorialSimple scriptTutorial;
+
     [Header("Duracion")]
     public float tiempoEntreNumeros = 1f;
     public float tiempoTextoFinal = 0.5f;
@@ -157,5 +161,20 @@ public class CountdownInicioNivel : MonoBehaviour
 
         // Iniciar temporizador
         TemporizadorGlobal.Instance.IniciarTemporizador();
+
+        // =============================================================
+        // CONTROL DE RASTREO: Comprobamos si envía la señal al terminar
+        // =============================================================
+        Debug.Log("CountdownInicioNivel: La cuenta atrás ha terminado.");
+
+        if (scriptTutorial != null)
+        {
+            Debug.Log("CountdownInicioNivel: Enviando orden a scriptTutorial...");
+            scriptTutorial.ActivarPrimerPanel();
+        }
+        else
+        {
+            Debug.LogError("CountdownInicioNivel: ¡ERROR! La casilla 'Script Tutorial' está VACÍA en el Inspector. Arrastra el objeto del tutorial.");
+        }
     }
 }
