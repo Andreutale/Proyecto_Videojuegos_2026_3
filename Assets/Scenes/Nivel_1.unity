@@ -374,6 +374,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 913108970}
     m_Modifications:
+    - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: sonidoLlave
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlavePasilloFinal
@@ -617,6 +621,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 913108970}
     m_Modifications:
+    - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: sonidoLlave
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveHab2
@@ -9552,6 +9560,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 913108970}
     m_Modifications:
+    - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: sonidoLlave
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveInicio
@@ -11779,6 +11791,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 913108970}
     m_Modifications:
+    - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: sonidoLlave
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveSalaDeEstar

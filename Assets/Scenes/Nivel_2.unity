@@ -629,7 +629,7 @@ PrefabInstance:
     - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: sonidoLlave
       value: 
-      objectReference: {fileID: 8300000, guid: cffc44d1f69d3a5479ae26dfd556e45d, type: 3}
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveCocinaPasilloIzquierdo
@@ -1014,7 +1014,7 @@ PrefabInstance:
     - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: sonidoLlave
       value: 
-      objectReference: {fileID: 8300000, guid: cffc44d1f69d3a5479ae26dfd556e45d, type: 3}
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlavePrincipal
@@ -8669,7 +8669,7 @@ PrefabInstance:
     - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: sonidoLlave
       value: 
-      objectReference: {fileID: 8300000, guid: cffc44d1f69d3a5479ae26dfd556e45d, type: 3}
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveHabitacionFinalDerecha
@@ -15350,7 +15350,7 @@ PrefabInstance:
     - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: sonidoLlave
       value: 
-      objectReference: {fileID: 8300000, guid: cffc44d1f69d3a5479ae26dfd556e45d, type: 3}
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveHabitacionPrimeraIzquierda
@@ -17488,7 +17488,7 @@ PrefabInstance:
     - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: sonidoLlave
       value: 
-      objectReference: {fileID: 8300000, guid: cffc44d1f69d3a5479ae26dfd556e45d, type: 3}
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveSalaDeEstar
@@ -21033,7 +21033,7 @@ PrefabInstance:
     - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: sonidoLlave
       value: 
-      objectReference: {fileID: 8300000, guid: cffc44d1f69d3a5479ae26dfd556e45d, type: 3}
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveHabitacionCentral
@@ -25335,7 +25335,7 @@ PrefabInstance:
     - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: sonidoLlave
       value: 
-      objectReference: {fileID: 8300000, guid: cffc44d1f69d3a5479ae26dfd556e45d, type: 3}
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveHabitacionFinal

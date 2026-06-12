@@ -5,8 +5,7 @@ public class RecogerLlave : MonoBehaviour
     private bool recogida = false;
 
     [Header("Audio")]
-    public AudioClip sonidoLlave;
-    [Range(0f, 1f)] public float volumen = 1f;
+    [SerializeField] private AudioClip sonidoLlave;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -22,8 +21,8 @@ public class RecogerLlave : MonoBehaviour
             if (GameManager.Instance != null)
                 GameManager.Instance.RecogerLlave();
 
-            if (sonidoLlave != null && Camera.main != null)
-                AudioSource.PlayClipAtPoint(sonidoLlave, transform.position, 1f);
+            if (sonidoLlave != null)
+                SFXManager.Instance.PlaySFX(sonidoLlave, other.transform, 1f);
 
             Destroy(gameObject);
         }
