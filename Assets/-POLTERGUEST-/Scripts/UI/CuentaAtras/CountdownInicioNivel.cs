@@ -103,7 +103,7 @@ public class CountdownInicioNivel : MonoBehaviour
 
         // Reproducir sonido del countdown (una sola vez)
         if (sonidoCountdown != null)
-            SFXManager.Instance.PlaySFX(sonidoCountdown, transform, 1f);
+            SFXManager.Instance.PlaySFX(sonidoCountdown, transform, .5f);
 
         if (countdownText != null)
             countdownText.text = "3";

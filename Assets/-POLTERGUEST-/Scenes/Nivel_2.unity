@@ -11162,7 +11162,7 @@ MonoBehaviour:
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.39215687}
   cerebro: {fileID: 0}
   velocidadMinimaDeteccion: 1
-  detectarSFX: {fileID: 0}
+  detectarSFX: {fileID: 8300000, guid: 95d798b61062e6742a396b158857bec2, type: 3}
   viendoAlJugador: 0
 --- !u!23 &927199292
 MeshRenderer:
@@ -14373,7 +14373,7 @@ MonoBehaviour:
   colorAlerta: {r: 1, g: 0, b: 0, a: 0.39215687}
   cerebro: {fileID: 0}
   velocidadMinimaDeteccion: 1
-  detectarSFX: {fileID: 0}
+  detectarSFX: {fileID: 8300000, guid: 95d798b61062e6742a396b158857bec2, type: 3}
   viendoAlJugador: 0
 --- !u!23 &1242588211
 MeshRenderer:
@@ -30274,6 +30274,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 952506074}
+    - target: {fileID: 5728937151429205191, guid: 14c144302018ae84cafbff254114040e, type: 3}
+      propertyPath: detectarSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 95d798b61062e6742a396b158857bec2, type: 3}
     - target: {fileID: 6574052935851592951, guid: 14c144302018ae84cafbff254114040e, type: 3}
       propertyPath: jugador
       value: 

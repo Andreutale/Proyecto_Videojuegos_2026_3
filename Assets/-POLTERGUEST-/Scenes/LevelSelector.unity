@@ -2345,7 +2345,6 @@ MonoBehaviour:
   estrella3: {fileID: 1055077055}
   animacionPuerta: {fileID: 449151082}
   sonidoClic: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
-  panelMensaje: {fileID: 515143461}
 --- !u!114 &916805643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2834,7 +2833,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -900318449834729619, guid: a05ad92d9ad42604a96bd2909ca46c11, type: 2}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: a8537b367df94c74884c7dfa3b1f5535, type: 3}
+  m_Resource: {fileID: 8300000, guid: 21bb0e910c585c54190e8633e3a6aec7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3638,7 +3637,6 @@ MonoBehaviour:
   estrella3: {fileID: 821053181}
   animacionPuerta: {fileID: 118750173}
   sonidoClic: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
-  panelMensaje: {fileID: 0}
 --- !u!114 &1404515462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4252,7 +4250,6 @@ MonoBehaviour:
   estrella3: {fileID: 453920262}
   animacionPuerta: {fileID: 1832801250}
   sonidoClic: {fileID: 8300000, guid: 4c11c4caec4cfb640ba5d32c0cc7469f, type: 3}
-  panelMensaje: {fileID: 0}
 --- !u!1 &1780513889
 GameObject:
   m_ObjectHideFlags: 0
