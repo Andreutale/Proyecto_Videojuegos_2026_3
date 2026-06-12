@@ -748,7 +748,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: cf2a58b3356556c4c8454e3b06cce217, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 725a7e6fd0c8b5147a9d7c8f6a25c9e6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2526,7 +2526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &268666104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2992,7 +2991,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6bb33a1c7b0a58a4896cdca84fe33ab0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a51092a8307b57429bfe0aae5cfb70e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4111,17 +4110,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4783894591166569364, guid: 8bcb9a092c4270b4dae0f4bf2d36b909, type: 3}
---- !u!114 &507691714 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2920414131049528172, guid: 85ca4c7115443e14a949ef5f17196e98, type: 3}
-  m_PrefabInstance: {fileID: 1385440190}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!4 &523354940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8795762703152786762, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
@@ -5530,7 +5518,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &685665193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5793,7 +5780,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &697592960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6173,7 +6159,7 @@ PrefabInstance:
     - target: {fileID: 1710538285607512070, guid: ca139ec21e0b5274a92e4bb1166f84e3, type: 3}
       propertyPath: pauseButton
       value: 
-      objectReference: {fileID: 1544737091}
+      objectReference: {fileID: 0}
     - target: {fileID: 1710538285607512070, guid: ca139ec21e0b5274a92e4bb1166f84e3, type: 3}
       propertyPath: panelDerrota
       value: 
@@ -6197,7 +6183,7 @@ PrefabInstance:
     - target: {fileID: 1710538285607512070, guid: ca139ec21e0b5274a92e4bb1166f84e3, type: 3}
       propertyPath: textoLlavesVictoria
       value: 
-      objectReference: {fileID: 507691714}
+      objectReference: {fileID: 0}
     - target: {fileID: 2932222536096631543, guid: ca139ec21e0b5274a92e4bb1166f84e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.4901478
@@ -7363,7 +7349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 909331066}
   m_Layer: 0
-  m_Name: AmbientSoundManager
+  m_Name: Handle Slide Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7384,10 +7370,10 @@ RectTransform:
   - {fileID: 183189727}
   m_Father: {fileID: 1646436331}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &912695945
 GameObject:
@@ -8399,8 +8385,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 261, y: 46.2}
-  m_SizeDelta: {x: 101.2, y: 102.1}
+  m_AnchoredPosition: {x: 261, y: 47.899994}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1073159616
 MonoBehaviour:
@@ -8442,7 +8428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fa41b7d662ed47b4faa882cb9e818ee9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c399bf0f60791dd4cbb49952a3c8cb00, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9962,7 +9948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &1227281843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10572,7 +10557,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &1253305662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10884,7 +10868,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1259714326
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12385,7 +12368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &1325697401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13368,7 +13350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &1428240391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14322,7 +14303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &1485418093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14849,7 +14829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &1556731925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15898,7 +15877,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1661257999
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17776,7 +17754,6 @@ MonoBehaviour:
   countdownText: {fileID: 393510073}
   tiempoEntreNumeros: 1
   tiempoTextoFinal: 0.5
-  sonidoCountdown: {fileID: 0}
   movimientoJugador: {fileID: 1639417671}
   cooldownDash: {fileID: 67860693}
   cooldownPosesion: {fileID: 322296178}
@@ -17856,7 +17833,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &1806526456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18534,7 +18510,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1870114580
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19868,7 +19843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &1947537886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20723,12 +20697,12 @@ RectTransform:
   m_Children:
   - {fileID: 904783235}
   - {fileID: 1887008762}
-  - {fileID: 250728769}
   - {fileID: 67860690}
-  - {fileID: 1230460699}
+  - {fileID: 250728769}
   - {fileID: 322296177}
-  - {fileID: 673586696}
+  - {fileID: 1230460699}
   - {fileID: 1073159615}
+  - {fileID: 673586696}
   - {fileID: 1431096773}
   - {fileID: 222214002}
   - {fileID: 1392012910}
@@ -21330,7 +21304,6 @@ Transform:
   - {fileID: 705573608}
   - {fileID: 1569284950}
   - {fileID: 947692226}
-  - {fileID: 2099721461}
   - {fileID: 1590845296}
   - {fileID: 1094914032}
   - {fileID: 1795981074}
@@ -21605,7 +21578,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &2059576300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21902,135 +21874,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8084387392185104470, guid: 8bcb9a092c4270b4dae0f4bf2d36b909, type: 3}
---- !u!1 &2099721460
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2099721461}
-  - component: {fileID: 2099721462}
-  m_Layer: 0
-  m_Name: MusicManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2099721461
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099721460}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4662228, y: -5.2356553, z: 10.359853}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2041956682}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &2099721462
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2099721460}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 2938839eace3d7d44bf0929de4e20345, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &2116470658
 GameObject:
   m_ObjectHideFlags: 0

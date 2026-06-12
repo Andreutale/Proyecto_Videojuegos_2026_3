@@ -846,7 +846,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &55200947
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2201,7 +2200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &160561339
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2562,7 +2560,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &182545787
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2673,7 +2670,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &183147276
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2999,7 +2995,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &189182888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4580,7 +4575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!114 &281222926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4745,7 +4739,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &306598750
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5139,7 +5132,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &328505975
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5954,7 +5946,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &438536984
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6480,7 +6471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &465194923
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6764,7 +6754,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &484150201
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7255,7 +7244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &526973361
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7779,7 +7767,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &567609242
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9808,7 +9795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &717306659
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10016,7 +10002,7 @@ PrefabInstance:
     - target: {fileID: 1710538285607512070, guid: ca139ec21e0b5274a92e4bb1166f84e3, type: 3}
       propertyPath: textoLlavesVictoria
       value: 
-      objectReference: {fileID: 1385440195}
+      objectReference: {fileID: 0}
     - target: {fileID: 2932222536096631543, guid: ca139ec21e0b5274a92e4bb1166f84e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.4901478
@@ -10485,7 +10471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &769650152
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11210,7 +11195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &892352017
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12543,7 +12527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &997711845
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13501,7 +13484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1101026874
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16032,7 +16014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1297583658
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16934,7 +16915,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1371548299
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17126,7 +17106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1374752855
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -17510,17 +17489,6 @@ MonoBehaviour:
   duracion: 0.5
   colorParticula: {r: 1, g: 0.95, b: 0.3, a: 1}
   tamanoParticula: 12
---- !u!114 &1385440195 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2920414131049528172, guid: 85ca4c7115443e14a949ef5f17196e98, type: 3}
-  m_PrefabInstance: {fileID: 1385440190}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &1387021737
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17923,7 +17891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1419041224
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18652,7 +18619,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1479094177
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -19670,7 +19636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1579351642
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23208,7 +23173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1861420396
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24601,7 +24565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &1954717517
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -26274,7 +26237,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471f49b3bf33b7a43a7dccac2c083a55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radioDespertar: 1.5
 --- !u!54 &2115777252
 Rigidbody:
   m_ObjectHideFlags: 0
