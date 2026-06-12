@@ -55,7 +55,7 @@ public class PauseManager : MonoBehaviour
         // Ocultamos la configuración y volvemos a mostrar la pausa normal
         if (configMenu != null) configMenu.SetActive(false);
         if (pauseMenu != null) pauseMenu.SetActive(true);
-    }
+    }   
 
     public void HidePauseButton()
     {

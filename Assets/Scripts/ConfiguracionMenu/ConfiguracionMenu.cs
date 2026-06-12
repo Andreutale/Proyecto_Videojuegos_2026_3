@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using UnityEngine.Audio; // Necesario para controlar el AudioMixer
 
 public class ConfiguracionMenu : MonoBehaviour
 {
@@ -19,62 +20,114 @@ public class ConfiguracionMenu : MonoBehaviour
     public Sprite spriteActivado;
     public Sprite spriteDesactivado;
 
+    [Header("Botón de Guardar")]
+    public Image btnGuardar; // Arrastra aquí tu 'btnGuardar'
+
+    // Variables temporales para almacenar los cambios antes de guardar
+    private bool estadoPantallaTemporal;
+    private float volGlobalTemporal;
+    private float volMusicaTemporal;
+    private float volEnemigosTemporal;
+    private float volEfectosTemporal;
+
     void Start()
     {
-        // --- CARGAR VOLÚMENES ---
-        CargarSlider(sliderGlobal, "VolMaster", 0.75f);
-        CargarSlider(sliderMusica, "VolMusica", 0.75f);
-        CargarSlider(sliderEnemigos, "VolEnemigos", 0.75f);
-        CargarSlider(sliderEfectos, "VolEfectos", 0.75f);
+        // --- 1. CARGAR CONFIGURACIÓN ACTUAL AL ENTRAR ---
+        volGlobalTemporal = PlayerPrefs.GetFloat("VolMaster", 0.75f);
+        volMusicaTemporal = PlayerPrefs.GetFloat("VolMusica", 0.75f);
+        volEnemigosTemporal = PlayerPrefs.GetFloat("VolEnemigos", 0.75f);
+        volEfectosTemporal = PlayerPrefs.GetFloat("VolEfectos", 0.75f);
 
-        // --- CARGAR PANTALLA COMPLETA ---
         int pantallaCompletaGuardada = PlayerPrefs.GetInt("PantallaCompleta", 1);
-        bool esPantallaCompleta = (pantallaCompletaGuardada == 1);
-        togglePantallaCompleta.isOn = esPantallaCompleta;
-        CambiarPantallaCompleta(esPantallaCompleta);
+        estadoPantallaTemporal = (pantallaCompletaGuardada == 1);
 
-        // --- ASIGNAR ESCUCHADORES DE EVENTOS ---
-        sliderGlobal.onValueChanged.AddListener(val => CambiarVolumenBase("VolMaster", val));
-        sliderMusica.onValueChanged.AddListener(val => CambiarVolumenBase("VolMusica", val));
-        sliderEnemigos.onValueChanged.AddListener(val => CambiarVolumenBase("VolEnemigos", val));
-        sliderEfectos.onValueChanged.AddListener(val => CambiarVolumenBase("VolEfectos", val));
-        togglePantallaCompleta.onValueChanged.AddListener(CambiarPantallaCompleta);
+        // --- 2. ASIGNAR VALORES VISUALES A LA UI ---
+        sliderGlobal.value = volGlobalTemporal;
+        sliderMusica.value = volMusicaTemporal;
+        sliderEnemigos.value = volEnemigosTemporal;
+        sliderEfectos.value = volEfectosTemporal;
+
+        if (togglePantallaCompleta != null)
+        {
+            togglePantallaCompleta.onValueChanged.RemoveAllListeners();
+            togglePantallaCompleta.isOn = estadoPantallaTemporal;
+            ActualizarVisualCheckbox(estadoPantallaTemporal);
+
+            // Cuando cambie el toggle, solo guardamos el valor temporalmente
+            togglePantallaCompleta.onValueChanged.AddListener(SeleccionarPantallaCompletaTemporal);
+        }
+
+        // Cuando cambien los sliders, solo guardamos el valor temporalmente
+        sliderGlobal.onValueChanged.AddListener(val => volGlobalTemporal = val);
+        sliderMusica.onValueChanged.AddListener(val => volMusicaTemporal = val);
+        sliderEnemigos.onValueChanged.AddListener(val => volEnemigosTemporal = val);
+        sliderEfectos.onValueChanged.AddListener(val => volEfectosTemporal = val);
+
+        // --- 3. ASIGNAR FUNCIÓN A LA IMAGEN DE GUARDAR ---
+        if (btnGuardar != null)
+        {
+            // Nos aseguramos de que la imagen pueda recibir clics
+            btnGuardar.raycastTarget = true;
+
+            // Le añadimos el componente que detecta eventos si no lo tiene
+            EventTrigger trigger = btnGuardar.gameObject.GetComponent<EventTrigger>();
+            if (trigger == null) trigger = btnGuardar.gameObject.AddComponent<EventTrigger>();
+
+            trigger.triggers.Clear();
+
+            // Creamos el evento de "Hacer Clic" (PointerClick)
+            EventTrigger.Entry entry = new EventTrigger.Entry();
+            entry.eventID = EventTriggerType.PointerClick;
+            entry.callback.AddListener((data) => { GuardarConfiguracion(); });
+
+            trigger.triggers.Add(entry);
+        }
     }
 
-    // Función auxiliar para inicializar sliders sin repetir código
-    private void CargarSlider(Slider slider, string nombrePref, float valorPorDefecto)
+    // Cambia el aspecto visual de la checkbox inmediatamente para que el usuario vea que hizo clic
+    public void SeleccionarPantallaCompletaTemporal(bool esCompleta)
     {
-        float volGuardado = PlayerPrefs.GetFloat(nombrePref, valorPorDefecto);
-        slider.value = volGuardado;
-        SetMixerVolume(nombrePref, volGuardado);
+        estadoPantallaTemporal = esCompleta;
+        ActualizarVisualCheckbox(esCompleta);
     }
 
-    // Modifica el volumen en el Mixer y guarda la preferencia
-    private void CambiarVolumenBase(string nombreParametro, float valorSlider)
+    // ¡ESTA ES LA FUNCIÓN CLAVE! Se ejecuta solo al pulsar "btnGuardar"
+    public void GuardarConfiguracion()
     {
-        SetMixerVolume(nombreParametro, valorSlider);
-        PlayerPrefs.SetFloat(nombreParametro, valorSlider);
+        Debug.Log("Guardando configuración aplicada por el usuario...");
+
+        // APLICAR Y GUARDAR PANTALLA COMPLETA
+        Screen.fullScreen = estadoPantallaTemporal;
+        PlayerPrefs.SetInt("PantallaCompleta", estadoPantallaTemporal ? 1 : 0);
+
+        // APLICAR Y GUARDAR VOLÚMENES EN EL MIXER
+        AplicarYGuardarVolumen("VolMaster", volGlobalTemporal);
+        AplicarYGuardarVolumen("VolMusica", volMusicaTemporal);
+        AplicarYGuardarVolumen("VolEnemigos", volEnemigosTemporal);
+        AplicarYGuardarVolumen("VolEfectos", volEfectosTemporal);
+
+        // Forzar el guardado físico en el disco duro/dispositivo
+        PlayerPrefs.Save();
     }
 
-    // Convierte el valor del slider (0 a 1) a Decibelios (-80 a 0) de forma logarítmica
-    private void SetMixerVolume(string nombreParametro, float valorSlider)
+    private void AplicarYGuardarVolumen(string nombreParametro, float valorSlider)
     {
+        // Aplicamos al Mixer real
         if (valorSlider <= 0.001f)
         {
-            audioMixer.SetFloat(nombreParametro, -80f); // Silencio total si el slider está al mínimo
+            audioMixer.SetFloat(nombreParametro, -80f);
         }
         else
         {
-            // Fórmula matemática para que la percepción del oído al mover el slider sea natural
             audioMixer.SetFloat(nombreParametro, Mathf.Log10(valorSlider) * 20);
         }
+
+        // Guardamos en los datos locales
+        PlayerPrefs.SetFloat(nombreParametro, valorSlider);
     }
 
-    public void CambiarPantallaCompleta(bool esCompleta)
+    private void ActualizarVisualCheckbox(bool esCompleta)
     {
-        Screen.fullScreen = esCompleta;
-        PlayerPrefs.SetInt("PantallaCompleta", esCompleta ? 1 : 0);
-
         if (checkboxImagen != null && spriteActivado != null && spriteDesactivado != null)
         {
             checkboxImagen.sprite = esCompleta ? spriteActivado : spriteDesactivado;
