@@ -22365,6 +22365,7 @@ MonoBehaviour:
   countdownText: {fileID: 393510073}
   tiempoEntreNumeros: 1
   tiempoTextoFinal: 0.5
+  sonidoCountdown: {fileID: 8300000, guid: d3322a78564e7494fadfbdffa225bc8e, type: 3}
   movimientoJugador: {fileID: 1639417671}
   cooldownDash: {fileID: 67860693}
   cooldownPosesion: {fileID: 322296178}
