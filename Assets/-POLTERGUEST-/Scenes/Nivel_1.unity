@@ -1541,6 +1541,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1281443937}
     m_Modifications:
+    - target: {fileID: 1889783954300143826, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
+      propertyPath: sonidoLlave
+      value: 
+      objectReference: {fileID: 8300000, guid: 8ff83606b0ad9034eb5850c2186e9d8a, type: 3}
     - target: {fileID: 8168125918296766448, guid: 4fcbf5893653f984ba3185b0f450eb99, type: 3}
       propertyPath: m_Name
       value: LlaveCocina
@@ -2228,6 +2232,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 931816155711707542, guid: e400da29217e9f14fb3e86530e6b89d2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1015170010}
+    - targetCorrespondingSourceObject: {fileID: 931816155711707542, guid: e400da29217e9f14fb3e86530e6b89d2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1015170011}
   m_SourcePrefab: {fileID: 100100000, guid: e400da29217e9f14fb3e86530e6b89d2, type: 3}
 --- !u!4 &367208607 stripped
 Transform:
@@ -5843,6 +5850,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &1015170011
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015170009}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.27, y: 1, z: 2.2}
+  m_Center: {x: -1.23, y: 0, z: -94.32}
 --- !u!1 &1015422768 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -5206893982619949992, guid: 8bcb9a092c4270b4dae0f4bf2d36b909, type: 3}
@@ -9850,6 +9878,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: d4a2f5bf57918d946bc7ba039d8b8dbf, type: 2}
     - target: {fileID: 919132149155446097, guid: 84fb58fbd12465449bfcea8eb5feeba7, type: 3}
       propertyPath: m_Name
       value: mesita (3)
@@ -22496,7 +22528,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1767914612435212153, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.2692555
+      value: -0.269
       objectReference: {fileID: 0}
     - target: {fileID: 1767914612435212153, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22504,7 +22536,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1767914612435212153, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -25.802858
+      value: -25.648
       objectReference: {fileID: 0}
     - target: {fileID: 1767914612435212153, guid: b4e1414e471c8284b9c3bf2a9a5227dd, type: 3}
       propertyPath: m_LocalRotation.w
